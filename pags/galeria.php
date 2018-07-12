@@ -6,7 +6,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#1">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
                                 <div class="modal fade" id="1" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -31,7 +31,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#2">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#2">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#2">
                                 <div class="modal fade" id="2" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -56,7 +56,7 @@
                                 <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#3">
                                     Nome da foto
                                 </div>
-                                <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#3">
+                                <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#3">
                                 <div class="modal fade" id="3" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -81,7 +81,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#4">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#4">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#4">
                             <div class="modal fade" id="4" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -106,7 +106,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#5">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#5">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#5">
                             <div class="modal fade" id="5" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -131,7 +131,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#6">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#6">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#6">
                             <div class="modal fade" id="6" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -156,7 +156,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#7">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#7">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#7">
                             <div class="modal fade" id="7" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -181,7 +181,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#8">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#8">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#8">
                             <div class="modal fade" id="8" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -206,7 +206,7 @@
                             <a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#9">
                                 Nome da foto
                             </div>
-                            <img src="../img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#9">
+                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#9">
                             <div class="modal fade" id="9" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">

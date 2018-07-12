@@ -7,13 +7,13 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="../img/Italianos em Itu.png" height="50%" width="100%" alt="Primeiro slide">
+                <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Primeiro slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="../img/Italianos em Itu.png" height="50%" width="100%" alt="Segundo slide">
+                <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Segundo slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="../img/Italianos em Itu.png" height="50%" width="100%" alt="Terceiro slide">
+                <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Terceiro slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -33,7 +33,7 @@
                   autor 1
                 </div>
                 <div class="card-body">
-                  <img src="../img/Italianos em Itu.png" alt="autor 1" class="img-thumbnail">
+                  <img src="img/Italianos em Itu.png" alt="autor 1" class="img-thumbnail">
                 </div>
                 <div class="card-footer text-muted">
                   ?
@@ -48,7 +48,7 @@
                   autor 2
                 </div>
                 <div class="card-body">
-                  <img src="../img/Italianos em Itu.png" alt="autor 2" class="img-thumbnail">
+                  <img src="img/Italianos em Itu.png" alt="autor 2" class="img-thumbnail">
                 </div>
                 <div class="card-footer text-muted">
                   ??
@@ -63,7 +63,7 @@
                   autor 3
                 </div>
                 <div class="card-body">
-                  <img src="../img/Italianos em Itu.png" alt="autor 3" class="img-thumbnail">
+                  <img src="img/Italianos em Itu.png" alt="autor 3" class="img-thumbnail">
                 </div>
                 <div class="card-footer text-muted">
                   ???
