@@ -1,5 +1,3 @@
-
-  <body>
         <div class="container-fluid mt-2">
             <div class="container">
                 <div class="row">

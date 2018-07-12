@@ -1,33 +1,3 @@
-  <body>
-        <!-- O bagulho do topo, que pesquisa e tals -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="projeto tcc.html"><img src="../img/Logo.png" height="50px" width="50px" alt="Logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active mx-auto">
-                        <a class="nav-link" href="projeto tcc.html">Início <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item mx-auto">
-                         <a class="nav-link" href="#">Galeria</a>
-                    </li>
-                    <li class="nav-item mx-auto">
-                        <a class="nav-link" href="#">Eventos</a>
-                    </li>
-                    <li class="nav-item mx-auto">
-                        <a class="nav-link" href="#">Contato</a>
-                    </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
-                    <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit">Pesquisar</button>
-                  </form>
-                </div>
-              </nav>
-
     <!-- Os slides -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
