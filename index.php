@@ -1,4 +1,5 @@
 <?php
+//index
     @$pag = $_GET['pg'];
 
     include('pags/cabecalho.php');
@@ -18,6 +19,6 @@
     }else{
         include('pags/inicio.php');
     }
-
+    
     include('pags/rodape.php');
 ?>
