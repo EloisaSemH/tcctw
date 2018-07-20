@@ -36,5 +36,9 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
                     <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit">Pesquisar</button>
                   </form>
+                  <form class="form-inline my-2 my-lg-0 ml-4">
+                    <button class="btn btn-success my-2 my-sm-0" type="button">Entrar</button>
+                    <button class="btn btn-success my-2 my-sm-0 ml-4 ml-sm-2" type="button">Cadastre-se</button>
+                  </form>
                 </div>
               </nav>
