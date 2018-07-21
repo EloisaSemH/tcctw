@@ -37,8 +37,8 @@
                     <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit">Pesquisar</button>
                   </form>
                   <form class="form-inline my-2 my-lg-0 ml-4">
-                    <button class="btn btn-success my-2 my-sm-0" type="button">Entrar</button>
-                    <button class="btn btn-success my-2 my-sm-0 ml-4 ml-sm-2" type="button">Cadastre-se</button>
+                    <a class="btn btn-success my-2 my-sm-0"  href="index.php?&pg=login">Entrar</a>
+                    <a class="btn btn-success my-2 my-sm-0 ml-4 ml-sm-2" href="index.php?&pg=cadastro">Cadastre-se</a>
                   </form>
                 </div>
               </nav>

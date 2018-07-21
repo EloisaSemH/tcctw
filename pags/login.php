@@ -16,12 +16,16 @@
                                     <input type="password" max="99999" name="rm" required="" class="form-control"/>
                                 </div>
                             </div>
-
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-3 text-center">
                                     <input type="submit" value="Entrar" id="entrar" name="entrar" class="btn btn-outline-dark">
                                 </div>
                             </div>
+							<div class="form-row justify-content-center">
+								<div class="form-group col-md-3 text-center">
+									<a href="index.php?&pg=cadastro" class="btn btn-link">Cadastre-se</a>
+								</div>
+							</div>
                         </form>
 
                     </div>
