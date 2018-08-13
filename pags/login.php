@@ -24,6 +24,7 @@
 							<div class="form-row justify-content-center">
 								<div class="form-group col-md-3 text-center">
 									<a href="index.php?&pg=cadastro" class="btn btn-link">Cadastre-se</a>
+                                    <a href="#" class="btn btn-link">Esqueceu a senha?</a>
 								</div>
 							</div>
                         </form>

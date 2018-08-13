@@ -17,7 +17,8 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body text-dark">
-                                                a
+                                                <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                                <p class="text-center">a</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -42,7 +43,8 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body text-dark">
-                                                b
+                                                <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                                <p class="text-center">b</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -67,7 +69,8 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body text-dark">
-                                                c
+                                                <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                                <p class="text-center">c</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -92,7 +95,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-dark">
-                                            d
+                                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                            <p class="text-center">d</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -117,7 +121,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-dark">
-                                            e
+                                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                            <p class="text-center">e</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -142,7 +147,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-dark">
-                                            f
+                                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                            <p class="text-center">f</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -167,7 +173,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-dark">
-                                            g
+                                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                            <p class="text-center">g</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -192,7 +199,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-dark">
-                                            h
+                                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                            <p class="text-center">h</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -217,7 +225,8 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-dark">
-                                            i
+                                            <img src="img/galeria/teste.jpg" alt="a" class="img-thumbnail" data-toggle="modal" data-target="#1">
+                                            <p class="text-center">i</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
