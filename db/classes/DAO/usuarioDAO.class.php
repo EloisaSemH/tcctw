@@ -1,7 +1,5 @@
 <?php
-
 require_once ("conexao.class.php");
-
 class usuarioDAO {
 
     function __construct() {
@@ -78,5 +76,4 @@ class usuarioDAO {
         }
     }
 }
-
 ?>

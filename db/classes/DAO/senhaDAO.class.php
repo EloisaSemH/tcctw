@@ -1,7 +1,5 @@
 <?php
-
 require_once ("conexao.class.php");
-
 class senhaDAO {
 
     function __construct() {
@@ -21,5 +19,4 @@ class senhaDAO {
             echo "ERRO 01: {$ex->getMessage()}";
         }
     }
-
 }
