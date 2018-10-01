@@ -6,11 +6,11 @@
 
     session_start();
     // session_register($_SESSION['logado']);
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
 
     @$pag = $_GET['pg'];
     
-    if(empty($_SESSION['logado'])){
+    if(isset($_SESSION['logado'])){
         if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
             $_SESSION['logado'] = 0;
         }
