@@ -37,7 +37,7 @@
                     <div class="form-row justify-content-center">
                         <div class="form-group col-md-3">
                             <label>Senha:</label>
-                            <input onKeyUp="validarSenha('senha1', 'senha2', 'senhasCoin')" type="password" class="form-control" name="usSenha" id="senha1" maxlength="40" required="">
+                            <input onKeyUp="validarSenha('senha1', 'senha2', 'senhasCoin');" type="password" class="form-control" name="usSenha" id="senha1" maxlength="40" required="">
                         </div>
                     </div>
                     <div class="form-row justify-content-center">

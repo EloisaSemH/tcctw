@@ -9,14 +9,15 @@ class usuarioDAO {
 
     function cadastrar(usuario $entUsuario) {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO usuario VALUES ('', :us_nome, :us_email, :us_sexo, :us_data, :us_hora, :us_ip)");
+            $stmt = $this->pdo->prepare("INSERT INTO usuario VALUES ('', :us_nome, :us_email, :us_sexo, :us_data, :us_hora, :us_ip, :us_tipo)");
             $param = array(
                 ":us_nome" => $entUsuario->getUs_nome(),
                 ":us_email" => $entUsuario->getUs_email(),
                 ":us_sexo" => $entUsuario->getUs_sexo(),
                 ":us_data" => date("Y/m/d"),
                 ":us_hora" => date("H:i:s"),
-                ":us_ip" => $_SERVER["REMOTE_ADDR"]
+                ":us_ip" => $_SERVER["REMOTE_ADDR"],
+                ":us_tipo" => '1'
             );
             return $stmt->execute($param);
         } catch (PDOException $ex) {
