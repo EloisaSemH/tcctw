@@ -5,12 +5,16 @@
     date_default_timezone_set('America/Sao_Paulo');
 
     session_start();
+    // session_register($_SESSION['logado']);
+    var_dump($_SESSION);
 
     @$pag = $_GET['pg'];
     
-    // if(isset($_SESSION['logado'])){
-    //     $_SESSION['logado'] = 0;
-    // }
+    if(empty($_SESSION['logado'])){
+        if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
+            $_SESSION['logado'] = 0;
+        }
+    }
 
     echo $_SESSION['logado'];
 

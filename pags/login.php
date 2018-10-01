@@ -38,7 +38,6 @@ $usuario = new usuario();
 <?php
 if (isset($_POST['entrar'])) {
     if ($usuarioDAO->login($_POST['usEmail'], $_POST['usSenha'])) {
-        
 
         $tipo = $usuarioDAO->consultarTipoUsuario($_POST['usEmail']);
         
