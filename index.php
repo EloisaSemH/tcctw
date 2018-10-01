@@ -1,5 +1,21 @@
 <?php
-//index daora
+    //Setando a linguagem e localização
+    setlocale(LC_ALL, 'pt_BR');
+    //Setando a localização do fuso horário
+    date_default_timezone_set('America/Sao_Paulo');
+
+    session_start();
+    require_once ("db/classes/DAO/usuarioDAO.class.php");
+    $usuarioDAO = new usuarioDAO();
+
+    if (isset($_SESSION['logado']) == 1) {
+        ?>
+        <script type="text/javascript">
+            document.location.href = "painel.php";
+        </script>
+        <?php
+    }
+
     @$pag = $_GET['pg'];
 
     include('pags/cabecalho.php');
