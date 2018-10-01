@@ -9,7 +9,6 @@ class usuario {
     private $us_data;
     private $us_hora;
     private $us_ip;
-    // private $us_Ativo;
 
     function getUs_cod() {
         return $this->us_cod;

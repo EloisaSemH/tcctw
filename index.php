@@ -5,18 +5,32 @@
     date_default_timezone_set('America/Sao_Paulo');
 
     session_start();
-    require_once ("db/classes/DAO/usuarioDAO.class.php");
-    $usuarioDAO = new usuarioDAO();
 
-    if (isset($_SESSION['logado']) == 1) {
+    @$pag = $_GET['pg'];
+    
+    // if(isset($_SESSION['logado'])){
+    //     $_SESSION['logado'] = 0;
+    // }
+
+    echo $_SESSION['logado'];
+
+    if ($pag =='erro1') {
         ?>
         <script type="text/javascript">
-            document.location.href = "painel.php";
+            alert("Você não tem permissão para acessar o painel!");
+            document.location.href = "index.php";
         </script>
         <?php
     }
 
-    @$pag = $_GET['pg'];
+    if ($pag == 'logout') {
+        ?>
+        <script type="text/javascript">
+            alert("Até breve!");
+        </script>
+        <?php
+        $_SESSION['logado'] = 0;
+    }
 
     include('pags/cabecalho.php');
 
@@ -32,9 +46,14 @@
         include('pags/cadastro.php');
     }elseif($pag == 'eventos'){
         include('pags/eventos.php');
+    }elseif($pag == 'painel'){
+        include('pags/painel.php');
+    }elseif($pag == 'adm'){
+        include('pags/adm.php');
     }else{
         include('pags/inicio.php');
     }
 
     include('pags/rodape.php');
+    include('pags/js.php');
 ?>

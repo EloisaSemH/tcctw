@@ -75,5 +75,22 @@ class usuarioDAO {
             echo "ERRO 04: {$ex->getMessage()}";
         }
     }
+
+    function consultarTipoUsuario($us_email) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT us_tipo FROM usuario WHERE us_email = :us_email");
+            $param = array(":us_email" => $us_email);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $consulta['us_tipo'];
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 05: {$ex->getMessage()}";
+        }
+    }
 }
 ?>

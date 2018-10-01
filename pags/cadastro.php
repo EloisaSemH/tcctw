@@ -1,11 +1,11 @@
 <?php
-    require_once ("classes/DAO/usuarioDAO.class.php");
-    require_once ("./classes/Entidade/usuario.class.php");
+    require_once ("db/classes/DAO/usuarioDAO.class.php");
+    require_once ("db/classes/Entidade/usuario.class.php");
     $usuarioDAO = new usuarioDAO();
     $usuario = new usuario();
  
-    require_once ("classes/DAO/senhaDAO.class.php");
-    require_once ("./classes/Entidade/senha.class.php");
+    require_once ("db/classes/DAO/senhaDAO.class.php");
+    require_once ("db/classes/Entidade/senha.class.php");
     $senhaDAO = new senhaDAO;
     $senha = new senha;
 ?>

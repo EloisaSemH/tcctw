@@ -1,3 +1,13 @@
+function valida() {
+    var resultado = document.getElementById(campo);
+    // var senha1 = document.validacao.senha1.value;
+    senha1 = document.getElementById(senha1).value;
+
+    if( strlen(senha1) < 8){
+        resultado.innerHTML = "A senha precisa conter, pelo menos, 8 caracteres";
+    }
+}
+
 function validarSenha(senha1, senha2, campo){
     var resultado = document.getElementById(campo);
     senhaPrimaria = document.getElementById(senha1).value;
@@ -8,3 +18,4 @@ function validarSenha(senha1, senha2, campo){
         resultado.innerHTML = "Senhas diferentes";
     }
 }
+
