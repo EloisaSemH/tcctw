@@ -2,6 +2,8 @@
 require_once ("conexao.class.php");
 class usuarioDAO {
 
+    private $us_email;
+
     function __construct() {
         $this->con = new Conexao();
         $this->pdo = $this->con->Connect();
@@ -68,6 +70,9 @@ class usuarioDAO {
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
+
+                $this->us_email = $us_email;
+
                 return TRUE;
             }else{
                 return FALSE;
@@ -86,6 +91,23 @@ class usuarioDAO {
             if($stmt->rowCount() > 0){
                 $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $consulta['us_tipo'];
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 05: {$ex->getMessage()}";
+        }
+    }
+#######################################
+    function pegarInfos(){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE us_email = :us_email");
+            $param = array(":us_email" => $this->us_email);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $consulta;
             }else{
                 return '';
             }

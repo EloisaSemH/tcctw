@@ -62,10 +62,11 @@
         include('pags/painel.php');
     }elseif($pag == 'adm'){
         include('pags/adm.php');
+    }elseif($pag == 'postador'){
+        include('pags/postador.php');
     }else{
         include('pags/inicio.php');
     }
 
     include('pags/rodape.php');
-    include('pags/js.php');
 ?>

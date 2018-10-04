@@ -75,6 +75,7 @@ if (isset($_POST["registrar"])) {
                 ?>
                 <script type="text/javascript">
                     alert("Cadastrado com sucesso!");
+                    document.location.href = "index.php?&pg=login";
                 </script>
                 <?php
             } else {

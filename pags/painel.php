@@ -2,7 +2,7 @@
 require_once ("db/classes/DAO/usuarioDAO.class.php");
 $usuarioDAO = new usuarioDAO();
 
-if ($_SESSION['logado'] != 1 && $_SESSION['logado'] != 2) {
+if ($_SESSION['logado'] != 1 && $_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
     ?>
     <script type="text/javascript">
         alert("Desculpe. você não tem permissão para acessar o painel. Faça login ou crie uma conta para acessá-lo.");

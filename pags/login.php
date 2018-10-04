@@ -42,14 +42,18 @@ if (isset($_POST['entrar'])) {
         $tipo = $usuarioDAO->consultarTipoUsuario($_POST['usEmail']);
         
         if($tipo == 1){
+            // Usuário comum
             $_SESSION['logado'] = 1;
-            
         }elseif($tipo == 2){
+            // Usuário postador
             $_SESSION['logado'] = 2;
+        }elseif($tipo == 3){
+            // Webmaster
+            $_SESSION['logado'] = 3;
         }else{
             ?>
             <script type="text/javascript">
-                alert("Ocorreu um erro!");
+                alert("Desculpe, houve algum erro na sessão. Contate o Webmaster para a verificação.");
             </script>
             <?php
         }
