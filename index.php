@@ -9,12 +9,20 @@
     // var_dump($_SESSION);
 
     @$pag = $_GET['pg'];
-    
-    if(isset($_SESSION['logado'])){
+    // isset($_SESSION['logado'])
+    if($pag == NULL || $pag == ''){
         if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
             $_SESSION['logado'] = 0;
         }
     }
+    
+    // switch($_SESSION['logado']){
+    //     case null:
+    //         $_SESSION['logado'] = 0;
+    //         break;
+    //     case 1:
+    //         echo 'foi';
+    // }
 
     echo $_SESSION['logado'];
 
