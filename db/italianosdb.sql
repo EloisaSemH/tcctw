@@ -46,7 +46,8 @@ CREATE TABLE `usuario` (
   `us_sexo` varchar(1) NOT NULL,
   `us_data` date NOT NULL,
   `us_hora` time NOT NULL,
-  `us_ip` varchar(50) NOT NULL
+  `us_ip` varchar(50) NOT NULL,
+  `us_tipo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
