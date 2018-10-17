@@ -1,0 +1,6 @@
+Códigos de erro
+Usuário = 1XX
+	Banco de dados = 11X
+Notícias = 2XX
+	Banco de dados = 21X
+
