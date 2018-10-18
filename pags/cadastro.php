@@ -63,35 +63,46 @@
 
 <?php
 if (isset($_POST["registrar"])) {
-    $usuario->setUs_nome($_POST["usNome"]);
-    $usuario->setUs_email($_POST["usEmail"]);
-    $usuario->setUs_sexo($_POST["slSexo"]);
-    if (!$usuarioDAO->consultarEmail($_POST['usEmail'])) {
-        if ($usuarioDAO->cadastrar($usuario)) {
-            $codUsu = $usuarioDAO->consultarCodUsuario($_POST['usEmail']);
-            $senha->setSe_senha($_POST['usSenhaRep']);
-            $senha->setUs_cod($codUsu);
-            if ($senhaDAO->cadastrar($senha)) {
-                ?>
-                <script type="text/javascript">
-                    alert("Cadastrado com sucesso!");
-                    document.location.href = "index.php?&pg=login";
-                </script>
-                <?php
-            } else {
-                ?>
-                <script type="text/javascript">
-                    alert("Erro ao cadastrar");
-                </script>
-                <?php
-            }
-        }
-    } else {
+
+    $verifsenha = "<script>document.write(resultado)</script>";
+    if($verifsenha != 'Senhas Iguais'){
         ?>
         <script type="text/javascript">
-            alert("O E-mail informado já foi cadastrado");
+            alert("Há algum problema com a senha, por favor, verifique");
+            document.location.href = "index.php?&pg=cadastro";
         </script>
         <?php
+    }else{
+        $usuario->setUs_nome($_POST["usNome"]);
+        $usuario->setUs_email($_POST["usEmail"]);
+        $usuario->setUs_sexo($_POST["slSexo"]);
+        if (!$usuarioDAO->consultarEmail($_POST['usEmail'])) {
+            if ($usuarioDAO->cadastrar($usuario)) {
+                $codUsu = $usuarioDAO->consultarCodUsuario($_POST['usEmail']);
+                $senha->setSe_senha($_POST['usSenhaRep']);
+                $senha->setUs_cod($codUsu);
+                if ($senhaDAO->cadastrar($senha)) {
+                    ?>
+                    <script type="text/javascript">
+                        alert("Cadastrado com sucesso!");
+                        document.location.href = "index.php?&pg=login";
+                    </script>
+                    <?php
+                } else {
+                    ?>
+                    <script type="text/javascript">
+                        alert("Erro ao cadastrar");
+                    </script>
+                    <?php
+                }
+            }
+        } else {
+            ?>
+            <script type="text/javascript">
+                alert("O E-mail informado já foi cadastrado");
+            </script>
+            <?php
+        }
     }
 }
 ?>

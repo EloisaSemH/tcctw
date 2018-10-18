@@ -9,21 +9,12 @@
     // var_dump($_SESSION);
 
     @$pag = $_GET['pg'];
-    // isset($_SESSION['logado'])
-    if($pag == NULL || $pag == ''){
+    // if($pag == NULL || $pag == ''){
         if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
             $_SESSION['logado'] = 0;
         }
-    }
-    
-    // switch($_SESSION['logado']){
-    //     case null:
-    //         $_SESSION['logado'] = 0;
-    //         break;
-    //     case 1:
-    //         echo 'foi';
     // }
-
+ 
     echo $_SESSION['logado'];
 
     if ($pag =='erro1') {
@@ -48,7 +39,8 @@
 
     if($pag == 'inicio'){
         include('pags/inicio.php');
-    }elseif($pag == 'contato'){
+    } #Menu
+    elseif($pag == 'contato'){
         include('pags/contato.php');
     }elseif($pag == 'galeria'){
         include('pags/galeria.php');
@@ -58,15 +50,28 @@
         include('pags/cadastro.php');
     }elseif($pag == 'eventos'){
         include('pags/eventos.php');
-    }elseif($pag == 'painel'){
+    } #Login
+    elseif($pag == 'painel'){
         include('pags/painel.php');
     }elseif($pag == 'adm'){
         include('pags/adm.php');
     }elseif($pag == 'postador'){
         include('pags/postador.php');
+    } #admin
+    elseif($pag == 'editarusuario'){
+        include('pags/editarusuario.php');
+    }elseif($pag == 'noticiaspendentes'){
+        include('pags/noticiaspendentes.php');
+    }elseif($pag == 'Editar usuário'){
+        include('pags/Editar usuário.php');
+    }elseif($pag == 'editandousuario'){
+        include('pags/editandousuario.php');
+    }elseif($pag == 'usuariopg'){
+        include('pags/usuariopg.php');
+    // }elseif($pag == ''){
+    //     include('pags/.php');
     }else{
         include('pags/inicio.php');
-    }
-
+}
     include('pags/rodape.php');
 ?>

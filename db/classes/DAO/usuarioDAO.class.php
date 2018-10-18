@@ -98,11 +98,11 @@ class usuarioDAO {
             echo "ERRO 05: {$ex->getMessage()}";
         }
     }
-#######################################
-    function pegarInfos(){
+
+    function pegarInfos($us_cod){
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE us_email = :us_email");
-            $param = array(":us_email" => $this->us_email);
+            $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE us_cod = :us_cod");
+            $param = array(":us_cod" => $us_cod);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
@@ -112,7 +112,37 @@ class usuarioDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 05: {$ex->getMessage()}";
+            echo "ERRO 06: {$ex->getMessage()}";
+        }
+    }
+
+    function atualizarUsuario(usuario $entUsuario){
+        try {
+            $stmt = $this->pdo->prepare("UPDATE usuario SET us_nome = :us_nome, us_email = :us_email, us_sexo = :us_sexo, us_tipo = :us_tipo WHERE us_cod = :us_cod");
+            $param = array(
+                ":us_nome" => $entUsuario->getUs_nome(),
+                ":us_email" => $entUsuario->getUs_email(),
+                ":us_sexo" => $entUsuario->getUs_sexo(),
+                ":us_tipo" => $entUsuario->getUs_tipo(),
+                ":us_cod" => $entUsuario->getUs_cod()
+            );
+            return $stmt->execute($param);
+
+        } catch (PDOException $ex) {
+            echo "ERRO 07: {$ex->getMessage()}";
+        }
+    }
+
+    function excluirUsuario(usuario $entUsuario){
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM usuario WHERE us_cod = :us_cod");
+            $param = array(
+                ":us_cod" => $entUsuario->getUs_cod()
+            );
+            return $stmt->execute($param);
+
+        } catch (PDOException $ex) {
+            echo "ERRO 08: {$ex->getMessage()}";
         }
     }
 }

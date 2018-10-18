@@ -9,6 +9,7 @@ class usuario {
     private $us_data;
     private $us_hora;
     private $us_ip;
+    private $us_tipo;
 
     function getUs_cod() {
         return $this->us_cod;
@@ -38,6 +39,10 @@ class usuario {
         return $this->us_ip;
     }
 
+    function getUs_tipo() {
+        return $this->us_tipo;
+    }
+
     function setUs_cod($us_cod) {
         $this->us_cod = $us_cod;
     }
@@ -64,5 +69,9 @@ class usuario {
 
     function setUs_ip($us_ip) {
         $this->us_ip = $us_ip;
+    }
+
+    function setUs_tipo($us_tipo) {
+        $this->us_tipo = $us_tipo;
     }
 }

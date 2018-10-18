@@ -40,6 +40,9 @@ if (isset($_POST['entrar'])) {
     if ($usuarioDAO->login($_POST['usEmail'], $_POST['usSenha'])) {
 
         $tipo = $usuarioDAO->consultarTipoUsuario($_POST['usEmail']);
+        $cod = $usuarioDAO->consultarCodUsuario($_POST['usEmail']);
+        $_SESSION['cod_usuario'] = $cod;
+
         
         if($tipo == 1){
             // Usuário comum
