@@ -9,12 +9,12 @@
     // var_dump($_SESSION);
 
     @$pag = $_GET['pg'];
-    // if($pag == NULL || $pag == ''){
+    if($pag == NULL || $pag == ''){
         if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
             $_SESSION['logado'] = 0;
         }
-    // }
- 
+    }
+
     echo $_SESSION['logado'];
 
     if ($pag =='erro1') {
@@ -58,7 +58,9 @@
     }elseif($pag == 'postador'){
         include('pags/postador.php');
     } #admin
-    elseif($pag == 'editarusuario'){
+    elseif($pag == 'publicarnoticia'){
+        include('pags/publicarnoticia.php');
+    }elseif($pag == 'editarusuario'){
         include('pags/editarusuario.php');
     }elseif($pag == 'noticiaspendentes'){
         include('pags/noticiaspendentes.php');

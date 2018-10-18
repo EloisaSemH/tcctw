@@ -41,6 +41,7 @@ if($dados['us_sexo'] == 'f'){
                 <!-- Noticias -->
                 <h6 class="text-uppercase font-weight-bold text-dark">Noticias</h6>
                 <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><a class="text-secondary" href="index.php?&pg=publicarnoticia">Publicar notícia</a></p>
                 <p><a class="text-secondary" href="index.php?&pg=noticiaspendentes">Notícias pendentes</a></p>
                 <p><a class="text-secondary" href="index.php?&pg=encontrarnoticia">Encontrar notícia</a></p>
             </div>
