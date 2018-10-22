@@ -69,7 +69,6 @@ if (isset($_POST["registrar"])) {
         ?>
         <script type="text/javascript">
             alert("Há algum problema com a senha, por favor, verifique");
-            document.location.href = "index.php?&pg=cadastro";
         </script>
         <?php
     }else{
