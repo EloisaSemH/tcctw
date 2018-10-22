@@ -2,7 +2,7 @@
 require_once ("conexao.class.php");
 class usuarioDAO {
 
-    private $us_email;
+    // private $us_email;
 
     function __construct() {
         $this->con = new Conexao();
@@ -23,7 +23,7 @@ class usuarioDAO {
             );
             return $stmt->execute($param);
         } catch (PDOException $ex) {
-            echo "ERRO 01: {$ex->getMessage()}";
+            echo "ERRO 101: {$ex->getMessage()}";
         }
     }
 
@@ -40,7 +40,7 @@ class usuarioDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 02: {$ex->getMessage()}";
+            echo "ERRO 102: {$ex->getMessage()}";
         }
     }
 
@@ -56,7 +56,7 @@ class usuarioDAO {
                 return FALSE;
             }
         } catch (PDOException $ex) {
-            echo "ERRO 03: {$ex->getMessage()}";
+            echo "ERRO 103: {$ex->getMessage()}";
         }
     }
     
@@ -78,7 +78,7 @@ class usuarioDAO {
                 return FALSE;
             }
         } catch (PDOException $ex) {
-            echo "ERRO 04: {$ex->getMessage()}";
+            echo "ERRO 104: {$ex->getMessage()}";
         }
     }
 
@@ -95,7 +95,7 @@ class usuarioDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 05: {$ex->getMessage()}";
+            echo "ERRO 105: {$ex->getMessage()}";
         }
     }
 
@@ -112,7 +112,7 @@ class usuarioDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 06: {$ex->getMessage()}";
+            echo "ERRO 106: {$ex->getMessage()}";
         }
     }
 
@@ -129,7 +129,7 @@ class usuarioDAO {
             return $stmt->execute($param);
 
         } catch (PDOException $ex) {
-            echo "ERRO 07: {$ex->getMessage()}";
+            echo "ERRO 107: {$ex->getMessage()}";
         }
     }
 
@@ -142,7 +142,7 @@ class usuarioDAO {
             return $stmt->execute($param);
 
         } catch (PDOException $ex) {
-            echo "ERRO 08: {$ex->getMessage()}";
+            echo "ERRO 108: {$ex->getMessage()}";
         }
     }
 }

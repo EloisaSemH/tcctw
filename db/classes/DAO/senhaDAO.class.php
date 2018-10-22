@@ -16,7 +16,7 @@ class senhaDAO {
             );
             return $stmt->execute($param);
         } catch (PDOException $ex) {
-            echo "ERRO 01: {$ex->getMessage()}";
+            echo "ERRO 201: {$ex->getMessage()}";
         }
     }
 }

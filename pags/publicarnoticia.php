@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['logado'] != 1 && $_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
+if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
     ?>
     <script type="text/javascript">
         alert("Faça login para acessar esta página");
@@ -8,23 +8,7 @@ if ($_SESSION['logado'] != 1 && $_SESSION['logado'] != 2 && $_SESSION['logado'] 
     <?php
 }
 
-require_once ("db/classes/DAO/usuarioDAO.class.php");
-$usuarioDAO = new usuarioDAO();
-
-$dados = $usuarioDAO->pegarInfos($_SESSION['cod_usuario']);
-
-if($dados['us_sexo'] == 'f'){
-    $sexo = '1';
-}elseif($dados['us_sexo'] == 'M'){
-    $sexo = '2';    
-}else{
-    $sexo = 'Outro';
-}
-
-$data = date('d/m/Y', strtotime($dados['us_data']));
-
 ?>
-
 
 <div class="container mt-4">
     <div class="row">
@@ -32,28 +16,20 @@ $data = date('d/m/Y', strtotime($dados['us_data']));
             <form name="login" action="" method="post" enctype="">
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
-                        <label>Nome:</label>
-                        <input type="text" name="us_nome" required="" class="form-control" value="<?php echo $dados['us_nome']; ?>"/>
+                        <label>Título:</label>
+                        <input type="text" name="not_titulo" required="" class="form-control" max="128"/>
                     </div>
                 </div>                          
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
-                        <label>Email:</label>
-                        <input type="email" name="us_email" required="" placeholder="nome@email.com" class="form-control" value="<?php echo $dados['us_email']; ?>"/>
+                        <label>Subtitulo:</label>
+                        <input type="text" name="not_subtitulo" class="form-control" max="256"/>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
-                        <label>Gênero:</label>
-                        <select name="us_sexo">
-                        <?php if($sexo == 1){ ?>
-                            <option value="f" selected>Feminino</option>                            
-                            <option value="m">Masculino</option>                                                        
-                        <?php }elseif($sexo == 2){ ?>
-                            <option value="f">Feminino</option>                            
-                            <option value="m " selected>Masculino</option>                                                        
-                        <?php } ?>
-                        </select>
+                        <label>Texto:</label><br/>
+                        <input type="text" name="not_texto" class="form-control" required=""/>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
@@ -61,11 +37,11 @@ $data = date('d/m/Y', strtotime($dados['us_data']));
                         <input type="submit" value="Atualizar" id="atualizar" name="atualizar" class="btn btn-outline-dark">
                     </div>
                 </div>
-				<div class="form-row justify-content-center">
+				<!-- <div class="form-row justify-content-center">
 					<div class="form-group col-md-3 text-center">
 						<a href="index.php?&pg=editarusuario" class="btn btn-link">Voltar</a>
 					</div>
-				</div>
+				</div> -->
             </form>
         </div>
     </div>
@@ -73,13 +49,11 @@ $data = date('d/m/Y', strtotime($dados['us_data']));
 <?php
 if (isset($_POST["atualizar"])) {
     require_once ("db/classes/Entidade/usuario.class.php");
+    require_once ("db/classes/DAO/usuarioDAO.class.php");
+    $usuarioDAO = new usuarioDAO();
     $usuario = new usuario();
 
-    $usuario->setUs_cod($dados["us_cod"]);
-    $usuario->setUs_nome($_POST["us_nome"]);
-    $usuario->setUs_email($_POST["us_email"]);
-    $usuario->setUs_sexo($_POST["us_sexo"]);
-    $usuario->setUs_tipo($dados["us_tipo"]);
+    $dados = $usuarioDAO->pegarInfos($_SESSION['cod_usuario']);
 
     if ($usuarioDAO->atualizarUsuario($usuario)) {
         ?>
