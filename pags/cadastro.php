@@ -63,15 +63,9 @@
 
 <?php
 if (isset($_POST["registrar"])) {
-
-    $verifsenha = "<script>document.write(resultado)</script>";
-    if($verifsenha != 'Senhas Iguais'){
-        ?>
-        <script type="text/javascript">
-            alert("Há algum problema com a senha, por favor, verifique");
-        </script>
-        <?php
-    }else{
+    
+    $verifsenha = "<script>document.write(verificar)</script>";
+    if($verifsenha == true){
         $usuario->setUs_nome($_POST["usNome"]);
         $usuario->setUs_email($_POST["usEmail"]);
         $usuario->setUs_sexo($_POST["slSexo"]);
@@ -102,6 +96,13 @@ if (isset($_POST["registrar"])) {
             </script>
             <?php
         }
+    }else{
+        ?>
+        <script type="text/javascript">
+            alert("Há algum problema com a senha, por favor, verifique <?php echo $verifsenha; ?>");
+        </script>
+        <?php
+        
     }
 }
 ?>

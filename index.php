@@ -10,9 +10,16 @@
 
     @$pag = $_GET['pg'];
     if($pag == NULL || $pag == ''){
-        if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
-            $_SESSION['logado'] = 0;
+        if(!isset($_SESSION['logado'])){
+        $_SESSION['logado'] = 0;
         }
+        ?>
+        <script type="text/javascript">
+            document.location.href = "index.php?&pg=!";
+        </script>
+        <?php
+        // if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
+        // }
     }
 
     echo $_SESSION['logado'];
