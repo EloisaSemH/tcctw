@@ -11,7 +11,7 @@
     @$pag = $_GET['pg'];
     if($pag == NULL || $pag == ''){
         if(!isset($_SESSION['logado'])){
-        $_SESSION['logado'] = 0;
+            $_SESSION['logado'] = 0;
         }
         ?>
         <script type="text/javascript">
