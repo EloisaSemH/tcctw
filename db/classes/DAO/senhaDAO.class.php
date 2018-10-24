@@ -19,4 +19,17 @@ class senhaDAO {
             echo "ERRO 201: {$ex->getMessage()}";
         }
     }
+
+    function verificacaoSenha($senha, $repSenha) {
+        if ($senha == '' || $repSenha == '') {
+            echo "<script language='javascript' type='text/javascript'>alert('Por favor, digite sua senha');window.location.href='index.php?&pg=cadastro';</script>!";
+        } else {
+            if ($senha != $repSenha) {
+                echo "<script language='javascript' type='text/javascript'>alert('As senhas digitadas não correspondem');window.location.href='index.php?&pg=cadastro';</script>!";
+            } else {
+                $verificacao = TRUE;
+                return $verificacao;
+            }
+        }
+    }
 }
