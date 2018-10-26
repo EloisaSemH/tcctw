@@ -29,12 +29,12 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>Texto:</label><br/>
-                        <input type="text" name="not_texto" class="form-control" required=""/>
+                        <textarea name="text_texto" class="form-control" required=""></textarea>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3 text-center">
-                        <input type="submit" value="Atualizar" id="atualizar" name="atualizar" class="btn btn-outline-dark">
+                        <input type="submit" value="Enviar notícia" id="enviar" name="enviar" class="btn btn-outline-dark">
                     </div>
                 </div>
 				<!-- <div class="form-row justify-content-center">
@@ -47,30 +47,59 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
     </div>
 </div>
 <?php
-if (isset($_POST["atualizar"])) {
-    require_once ("db/classes/Entidade/usuario.class.php");
+if (isset($_POST["enviar"])) {
     require_once ("db/classes/DAO/usuarioDAO.class.php");
+    require_once ("db/classes/Entidade/usuario.class.php");
     $usuarioDAO = new usuarioDAO();
     $usuario = new usuario();
 
+    require_once ("db/classes/DAO/textonoticiasDAO.class.php");
+    require_once ("db/classes/Entidade/textonoticias.class.php");
+    $textonoticiasDAO = new textonoticiasDAO();
+    $textonoticias = new textonoticias();
+
+    require_once ("db/classes/DAO/noticiasDAO.class.php");
+    require_once ("db/classes/Entidade/noticias.class.php");
+    $noticiasDAO = new noticiasDAO();
+    $noticias = new noticias();
+
     $dados = $usuarioDAO->pegarInfos($_SESSION['cod_usuario']);
 
-    if ($usuarioDAO->atualizarUsuario($usuario)) {
-        ?>
-        <script type="text/javascript">
-            alert("Usuário atualizado com sucesso!");
-            document.location.href = "index.php?&pg=adm";
-        </script>
-        <?php
-    } else {
-        ?>
-        <script type="text/javascript">
-            alert("Desculpe, houve um erro ao atualizar o usuário");
-            // document.location.href = "index.php?&pg=editarusuario";
-        </script>
-        <?php
-    }
-    
+    $noticias->setNot_autor($dados['us_nome']);
+    $noticias->setNot_titulo($_POST['not_titulo']);
+    $noticias->setNot_subtitulo($_POST['not_subtitulo']);
 
+    $textonoticias->setText_texto($_POST['text_texto']);
+
+    if($verifsenha == true){
+        $usuario->setUs_nome($_POST["usNome"]);
+        $usuario->setUs_email($_POST["usEmail"]);
+        $usuario->setUs_sexo($_POST["slSexo"]);
+        if ($usuarioDAO->cadastrar($usuario)) {
+            $codUsu = $usuarioDAO->consultarCodUsuario($_POST['usEmail']);
+            $senha->setSe_senha($_POST['usSenhaRep']);
+            $senha->setUs_cod($codUsu);
+            if ($senhaDAO->cadastrar($senha)) {
+                ?>
+                <script type="text/javascript">
+                    alert("Cadastrado com sucesso!");
+                    document.location.href = "index.php?&pg=login";
+                </script>
+                <?php
+            } else {
+                ?>
+                <script type="text/javascript">
+                    alert("Erro ao cadastrar");
+                </script>
+                <?php
+            }
+        }
+    }else{
+        ?>
+        <!-- <script type="text/javascript">
+            alert("Há algum problema com a senha, por favor, verifique <?php echo $verifsenha; ?>");
+        </script> -->
+        <?php
+}
 }
 ?>

@@ -9,12 +9,11 @@ class noticiasDAO {
 
     function inserirNoticia(noticias $entNoticias){
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO noticias VALUES ('', :not_autor, :not_titulo, :not_subtitulo, :not_texto, :not_data, :not_hora, :not_ativo)");
+            $stmt = $this->pdo->prepare("INSERT INTO noticias VALUES ('', :not_autor, :not_titulo, :not_subtitulo, :not_data, :not_hora, :not_ativo)");
             $param = array(
                 ":not_autor" => $entNoticias->getNot_autor(),
                 ":not_titulo" => $entNoticias->getNot_titulo(),
                 ":not_subtitulo" => $entNoticias->getNot_subitulo(),
-                ":not_texto" => $entNoticias->getNot_texto(),
                 ":not_data" => date("Y/m/d"),
                 ":not_hora" => date("H:i:s"),
                 ":not_ativo" => '0'
