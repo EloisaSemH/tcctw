@@ -1,6 +1,6 @@
 <?php
 #Criação da classe senha
-class setextonoticiasnha{
+class textonoticias{
     private $not_cod;
     private $text_texto;
     

@@ -9,10 +9,10 @@ class textonoticiasDAO {
 
     function cadastrar(textonoticias $enttextonoticias) {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO textonoticias VALUES (:not_cod, :text_textonoticias)");
+            $stmt = $this->pdo->prepare("INSERT INTO textonoticias VALUES (:not_cod, :text_texto)");
             $param = array(
                 ":not_cod" => $enttextonoticias->getNot_cod(),
-                ":text_textonoticias" => $enttextonoticias->getText_textonoticias()
+                ":text_texto" => $enttextonoticias->getText_texto()
             );
             return $stmt->execute($param);
         } catch (PDOException $ex) {

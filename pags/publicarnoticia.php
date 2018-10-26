@@ -63,43 +63,46 @@ if (isset($_POST["enviar"])) {
     $noticiasDAO = new noticiasDAO();
     $noticias = new noticias();
 
+    $data = date("Y/m/d");
+    $hora = date("H:i:s");
+
     $dados = $usuarioDAO->pegarInfos($_SESSION['cod_usuario']);
 
     $noticias->setNot_autor($dados['us_nome']);
     $noticias->setNot_titulo($_POST['not_titulo']);
-    $noticias->setNot_subtitulo($_POST['not_subtitulo']);
+    $noticias->setNot_data($data);
+    $noticias->setNot_hora($hora);
 
-    $textonoticias->setText_texto($_POST['text_texto']);
+    if(isset($_POST['not_subtitulo'])){
+        $noticias->setNot_subtitulo($_POST['not_subtitulo']);
+    }else{
+        $noticias->setNot_subtitulo('NULL');
+    }
 
-    if($verifsenha == true){
-        $usuario->setUs_nome($_POST["usNome"]);
-        $usuario->setUs_email($_POST["usEmail"]);
-        $usuario->setUs_sexo($_POST["slSexo"]);
-        if ($usuarioDAO->cadastrar($usuario)) {
-            $codUsu = $usuarioDAO->consultarCodUsuario($_POST['usEmail']);
-            $senha->setSe_senha($_POST['usSenhaRep']);
-            $senha->setUs_cod($codUsu);
-            if ($senhaDAO->cadastrar($senha)) {
-                ?>
-                <script type="text/javascript">
-                    alert("Cadastrado com sucesso!");
-                    document.location.href = "index.php?&pg=login";
-                </script>
-                <?php
-            } else {
-                ?>
-                <script type="text/javascript">
-                    alert("Erro ao cadastrar");
-                </script>
-                <?php
-            }
+    if ($noticiasDAO->inserirNoticia($noticias)) {
+        $codTexto = $noticiasDAO->consultarCodNotDataHora($data, $hora);
+        $textonoticias->setText_texto($_POST['text_texto']);
+        $textonoticias->setNot_cod($codTexto);
+        if ($textonoticiasDAO->cadastrar($textonoticias)) {
+            ?>
+            <script type="text/javascript">
+                alert("Notícia enviada com sucesso!");
+                document.location.href = "index.php?&pg=publicarnoticia";
+            </script>
+            <?php
+        } else {
+            ?>
+            <script type="text/javascript">
+                alert("Desculpe, houve um erro ao enviar a notícia, contate o Webmaster para resolvê-lo. Código: TEXT01");
+            </script>
+            <?php
         }
     }else{
-        ?>
-        <!-- <script type="text/javascript">
-            alert("Há algum problema com a senha, por favor, verifique <?php echo $verifsenha; ?>");
-        </script> -->
-        <?php
-}
+    ?>
+    <script type="text/javascript">
+        alert("Desculpe, houve um erro ao enviar a notícia, contate o Webmaster para resolvê-lo. Código: NOT01");
+    </script>
+    <?php
+    }
 }
 ?>

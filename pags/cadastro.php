@@ -100,7 +100,7 @@ if (isset($_POST["registrar"])) {
     }else{
         ?>
         <script type="text/javascript">
-            alert("Há algum problema com a senha, por favor, verifique <?php echo $verifsenha; ?>");
+            alert("Há algum problema com a senha, por favor, verifique");
         </script>
         <?php
         

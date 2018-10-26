@@ -13,9 +13,9 @@ class noticiasDAO {
             $param = array(
                 ":not_autor" => $entNoticias->getNot_autor(),
                 ":not_titulo" => $entNoticias->getNot_titulo(),
-                ":not_subtitulo" => $entNoticias->getNot_subitulo(),
-                ":not_data" => date("Y/m/d"),
-                ":not_hora" => date("H:i:s"),
+                ":not_subtitulo" => $entNoticias->getNot_subtitulo(),
+                ":not_data" => $entNoticias->getNot_data(),
+                ":not_hora" => $entNoticias->getNot_hora(),
                 ":not_ativo" => '0'
             );
             return $stmt->execute($param);
@@ -27,7 +27,7 @@ class noticiasDAO {
     function pegarNoticias($condicao){
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM noticias :condicao ORDER BY id DESC");
-            $param = array(":condicao" => $condicao;
+            $param = array(":condicao" => $condicao);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
@@ -60,15 +60,14 @@ class noticiasDAO {
 
     function atualizarNoticia(noticias $entNoticias){
         try {
-            $stmt = $this->pdo->prepare("UPDATE noticias SET not_titulo = :not_titulo, not_subtitulo = :not_subtitulo, not_texto = :not_texto, not_data = :not_data, not_hora = :not_hora, not_ativo = :not_ativo WHERE not_cod = :not_cod");
+            $stmt = $this->pdo->prepare("UPDATE noticias SET not_titulo = :not_titulo, not_subtitulo = :not_subtitulo, not_data = :not_data, not_hora = :not_hora, not_ativo = :not_ativo WHERE not_cod = :not_cod");
             $param = array(
                 ":not_titulo" => $entNoticias->getNot_titulo(),
                 ":not_subtitulo" => $entNoticias->getNot_subitulo(),
-                ":not_texto" => $entNoticias->getNot_texto(),
                 ":not_data" => date("Y/m/d"),
                 ":not_hora" => date("H:i:s"),
-                ":not_ativo" => $entNoticias->getNot_ativo();
-                ":not_cod" => $entNoticias->getNot_cod();
+                ":not_ativo" => $entNoticias->getNot_ativo(),
+                ":not_cod" => $entNoticias->getNot_cod(),
             );
             return $stmt->execute($param);
 
@@ -87,6 +86,23 @@ class noticiasDAO {
 
         } catch (PDOException $ex) {
             echo "ERRO 305: {$ex->getMessage()}";
+        }
+    }
+
+    function consultarCodNotDataHora($not_data, $not_hora) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_data = :not_data AND not_hora = :not_hora");
+            $param = array(":not_data" => $not_data, ":not_hora" => $not_hora);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $consulta['not_cod'];
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 306: {$ex->getMessage()}";
         }
     }
 }
