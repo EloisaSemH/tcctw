@@ -16,7 +16,20 @@ class textonoticiasDAO {
             );
             return $stmt->execute($param);
         } catch (PDOException $ex) {
-            echo "ERRO 201: {$ex->getMessage()}";
+            echo "ERRO 401: {$ex->getMessage()}";
+        }
+    }
+
+    function excluirNoticias(textonoticias $enttextoNoticias){
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM noticias WHERE not_cod = :not_cod");
+            $param = array(
+                ":not_cod" => $enttextoNoticias->getNot_cod()
+            );
+            return $stmt->execute($param);
+
+        } catch (PDOException $ex) {
+            echo "ERRO 402: {$ex->getMessage()}";
         }
     }
 }

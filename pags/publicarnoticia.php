@@ -33,6 +33,12 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <label>Inserir imagem:</label><br/>
+                        <input type="file" name="not_img" class="form-control" accept="image/png, image/jpeg"/>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
                     <div class="form-group col-md-3 text-center">
                         <input type="submit" value="Enviar notícia" id="enviar" name="enviar" class="btn btn-outline-dark">
                     </div>
@@ -81,15 +87,34 @@ if (isset($_POST["enviar"])) {
 
     if ($noticiasDAO->inserirNoticia($noticias)) {
         $codTexto = $noticiasDAO->consultarCodNotDataHora($data, $hora);
-        $textonoticias->setText_texto($_POST['text_texto']);
         $textonoticias->setNot_cod($codTexto);
+        $textonoticias->setText_texto($_POST['text_texto']);
+
+        if(isset($_FILES['not_img'])){
+            echo $imagem = $_FILES['not_img'];
+            
+            $extensao = pathinfo ($imagem, PATHINFO_EXTENSION);
+            $extensao = '.' . strtolower ($extensao);
+    
+            $novadata = str_replace("/", "", $data);
+            $novahora = str_replace(":", "", $hora);
+    
+            $nomeimagem = $codTexto . '_' . $novadata . $novahora . $extensao;
+    
+            move_uploaded_file($imagem, '/img/noticias/' . $nomeimagem);
+    
+            $noticias->setNot_img($nomeimagem);
+        }else{
+            $noticias->setNot_img('NULL'); 
+        }
+
         if ($textonoticiasDAO->cadastrar($textonoticias)) {
             ?>
             <script type="text/javascript">
-                alert("Notícia enviada com sucesso!");
-                document.location.href = "index.php?&pg=publicarnoticia";
+                // alert("Notícia enviada com sucesso!");
+                // document.location.href = "index.php?&pg=publicarnoticia";
             </script>
-            <?php
+            <?php echo 'foio';
         } else {
             ?>
             <script type="text/javascript">
