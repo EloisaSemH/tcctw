@@ -65,8 +65,8 @@
         <?php }else{ 
           // Normal ?>
           <form class="form-inline my-2 my-lg-0 ml-4">
-              <a class="btn btn-success my-2 my-sm-0"  href="index.php?&pg=login">Entrar</a>
-              <a class="btn btn-success my-2 my-sm-0 ml-4 ml-sm-2" href="index.php?&pg=cadastro">Cadastre-se</a>
+              <a class="btn btn-success my-2 mr-2 my-sm-0" href="index.php?&pg=login">Entrar</a>
+              <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=cadastro">Cadastre-se</a>
             </form>
         <?php } ?>
       </div>
