@@ -1,12 +1,8 @@
 <?php
-    //Setando a linguagem e localização
     setlocale(LC_ALL, 'pt_BR');
-    //Setando a localização do fuso horário
     date_default_timezone_set('America/Sao_Paulo');
 
     session_start();
-    // session_register($_SESSION['logado']);
-    // var_dump($_SESSION);
 
     @$pag = $_GET['pg'];
     if($pag == NULL || $pag == ''){
@@ -18,11 +14,9 @@
             document.location.href = "index.php?&pg=!";
         </script>
         <?php
-        // if($_SESSION['logado'] == null || $_SESSION['logado'] == ''){
-        // }
     }
 
-    echo $_SESSION['logado'];
+    // echo $_SESSION['logado'];
 
     if ($pag =='erro1') {
         ?>
@@ -55,6 +49,8 @@
         include('pags/login.php');
     }elseif($pag == 'cadastro'){
         include('pags/cadastro.php');
+    }elseif($pag == 'noticias'){
+        include('pags/noticias.php');
     }elseif($pag == 'eventos'){
         include('pags/eventos.php');
     } #Login
@@ -79,6 +75,8 @@
         include('pags/usuariopg.php');
     // }elseif($pag == ''){
     //     include('pags/.php');
+    }elseif($pag == 'noticia'){
+    include('pags/noticia.php');
     }else{
         include('pags/inicio.php');
 }

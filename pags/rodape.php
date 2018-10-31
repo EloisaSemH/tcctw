@@ -15,7 +15,7 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
           <h6 class="text-uppercase font-weight-bold text-dark">Sobre</h6>
           <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Uma breve e curta descriçao sobre o grupo Italianos em Itu e seu livro.</p>
+          <p>Site elaborado especialmente para o grupo Italianos em Itu, na intenção de divulgar o livro "Italianos em Itu: da imigração à atualidade".</p>
         </div>
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-2">
           <!-- Links -->

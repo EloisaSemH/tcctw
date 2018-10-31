@@ -9,7 +9,7 @@ class noticiasDAO {
 
     function inserirNoticia(noticias $entNoticias){
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO noticias VALUES ('', :not_autor, :not_titulo, :not_subtitulo, :not_data, :not_hora, :not_img, :not_ativo)");
+            $stmt = $this->pdo->prepare("INSERT INTO noticias VALUES ('', :not_autor, :not_titulo, :not_subtitulo, :not_data, :not_hora, :not_img, :not_cat, :not_ativo)");
             $param = array(
                 ":not_autor" => $entNoticias->getNot_autor(),
                 ":not_titulo" => $entNoticias->getNot_titulo(),
@@ -17,6 +17,7 @@ class noticiasDAO {
                 ":not_data" => $entNoticias->getNot_data(),
                 ":not_hora" => $entNoticias->getNot_hora(),
                 ":not_img" => $entNoticias->getNot_img(),
+                ":not_cat" => $entNoticias->getNot_cat(),
                 ":not_ativo" => '0'
             );
             return $stmt->execute($param);
@@ -25,10 +26,10 @@ class noticiasDAO {
         }
     }
 
-    function pegarNoticias($condicao){
+    function pegarNoticia($not_cod){
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM noticias :condicao ORDER BY id DESC");
-            $param = array(":condicao" => $condicao);
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_cod = :not_cod");
+            $param = array(":not_cod" => $not_cod);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
@@ -42,10 +43,10 @@ class noticiasDAO {
         }
     }
 
-    function pegarNoticiasAtivas(){
+    function pegarNoticiasAtivasOuNao($num){
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = :not_ativo ORDER BY id DESC LIMIT 15");
-            $param = array(":not_ativo" => 1);
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = :not_ativo ORDER BY not_cod DESC");
+            $param = array(":not_ativo" => $num);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
@@ -61,12 +62,13 @@ class noticiasDAO {
 
     function atualizarNoticia(noticias $entNoticias){
         try {
-            $stmt = $this->pdo->prepare("UPDATE noticias SET not_titulo = :not_titulo, not_subtitulo = :not_subtitulo, not_data = :not_data, not_hora = :not_hora, not_ativo = :not_ativo WHERE not_cod = :not_cod");
+            $stmt = $this->pdo->prepare("UPDATE noticias SET not_titulo = :not_titulo, not_subtitulo = :not_subtitulo, not_data = :not_data, not_hora = :not_hora, not_cat = :not_cat, not_ativo = :not_ativo WHERE not_cod = :not_cod");
             $param = array(
                 ":not_titulo" => $entNoticias->getNot_titulo(),
                 ":not_subtitulo" => $entNoticias->getNot_subitulo(),
                 ":not_data" => date("Y/m/d"),
                 ":not_hora" => date("H:i:s"),
+                ":not_cat" => $entNoticias->getNot_cat(),
                 ":not_ativo" => $entNoticias->getNot_ativo(),
                 ":not_cod" => $entNoticias->getNot_cod(),
             );
@@ -104,6 +106,69 @@ class noticiasDAO {
             }
         } catch (PDOException $ex) {
             echo "ERRO 306: {$ex->getMessage()}";
+        }
+    }
+
+    function contarNoticiasAtivasOuNao($condicao){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = :not_ativo ORDER BY not_cod DESC");
+            $param = array(":not_ativo" => $condicao);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->rowCount();
+                return $consulta;
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 307: {$ex->getMessage()}";
+        }
+    }
+
+    function pegarTodasNoticias($limite, $quantpag){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 ORDER BY not_cod DESC LIMIT :limite, :quantpag");
+            $param = array(":limite" => $limite, ":quantpag" => $quantpag);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $cel = $stmt->rowCount();
+                $col = 1;
+                $qtdcol = $quantpag;
+                $celconstruida = 0;
+                $colConstruida = 0;
+                echo '<table class="table">';        
+                for ($a = 0; $a < $qtdcol; $a++) {
+                    if ($col == 1) {
+                        echo '<tr>';
+                        $celconstruida++;
+                    }
+                    if ($celconstruida <= $cel) {
+                        while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            $not_titulo = utf8_encode($dados['not_titulo']);
+                            $not_subtitulo = utf8_encode($dados['not_subtitulo']);
+                            echo '<td>';
+                            echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_titulo . '</a>';
+                            if($not_subtitulo !== '' && $not_subtitulo !== ' ' && $not_subtitulo !== NULL){
+                                echo '<br/><a class="text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_subtitulo . '</a>';
+                            }
+                            echo '</td>';
+                            echo '</tr>';
+
+                            $colConstruida++;
+                            if($colConstruida == $qtdcol){
+                                $colConstruida = 0;
+                            }
+                        }
+                    }
+                }
+            echo '</table>';
+            }else{
+                
+            }
+        }catch (PDOException $ex){
+            echo "ERRO 308: {$ex->getMessage()}";
         }
     }
 }

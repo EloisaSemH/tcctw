@@ -29,6 +29,9 @@
               <a class="nav-link" href="index.php?&pg=eventos">Eventos</a>
           </li>
           <li class="nav-item mx-auto">
+              <a class="nav-link" href="index.php?&pg=noticias">Noticias</a>
+          </li>
+          <li class="nav-item mx-auto">
               <a class="nav-link" href="index.php?&pg=contato">Contato</a>
           </li>
         </ul>

@@ -39,6 +39,15 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <label>Categoria:</label>
+                        <select name="not_cat">
+                            <option value="not" selected>Noticia</option>                            
+                            <option value="eve">Evento</option>                                                        
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
                     <div class="form-group col-md-3 text-center">
                         <input type="submit" value="Enviar notícia" id="enviar" name="enviar" class="btn btn-outline-dark">
                     </div>
@@ -78,6 +87,8 @@ if (isset($_POST["enviar"])) {
     $noticias->setNot_titulo($_POST['not_titulo']);
     $noticias->setNot_data($data);
     $noticias->setNot_hora($hora);
+    $noticias->setNot_cat($_POST['not_cat']);
+    
 
     if(isset($_POST['not_subtitulo'])){
         $noticias->setNot_subtitulo($_POST['not_subtitulo']);

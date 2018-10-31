@@ -32,4 +32,21 @@ class textonoticiasDAO {
             echo "ERRO 402: {$ex->getMessage()}";
         }
     }
+
+    function pegarTextoNoticia($not_cod){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM textonoticias WHERE noticias_not_cod = :not_cod");
+            $param = array(":not_cod" => $not_cod);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $consulta;
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 302: {$ex->getMessage()}";
+        }
+    }
 }

@@ -9,6 +9,7 @@ class noticias{
     private $not_data;
     private $not_hora;
     private $not_img;
+    private $not_cat;
     private $not_ativo;
     
     function getNot_cod() {
@@ -41,6 +42,10 @@ class noticias{
 
     function getNot_img() {
         return $this->not_img;
+    }
+
+    function getNot_cat() {
+        return $this->not_cat;
     }
 
     function getNot_ativo() {
@@ -77,6 +82,10 @@ class noticias{
 
     function setNot_img($not_img) {
         $this->not_img = $not_img;
+    }
+
+    function setNot_cat($not_cat) {
+        $this->not_cat = $not_cat;
     }
 
     function setNot_ativo($not_ativo) {
