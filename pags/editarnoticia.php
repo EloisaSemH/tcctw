@@ -121,12 +121,13 @@ if (isset($_POST["atualizar"])) {
     $noticiasDAO = new noticiasDAO();
     $noticias = new noticias();
 
+    $noticias->setNot_cod($not_cod);
     $noticias->setNot_titulo($_POST['not_titulo']);
     $noticias->setNot_subtitulo($_POST['not_subtitulo']);
     $noticias->setNot_cat($_POST['not_cat']);
     $noticias->setNot_ativo($_POST['not_ativo']);
     
-    if(isset($_FILES['not_img'])){
+    if($_FILES['not_img'] == '' && $_FILES['not_img'] == NULL){
         $imagem = $_FILES['not_img'];
 
         $data = date("Y/m/d");
@@ -134,27 +135,25 @@ if (isset($_POST["atualizar"])) {
 
         $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
         $extensao = '.' . strtolower ($extensao);
-        
+
+        echo $noticia['not_img'];
+
         $novadata = str_replace("/", "", $data);
         $novahora = str_replace(":", "", $hora);
         
         $nomeimagem = $_POST['not_cat'] . '_' . $novadata . $novahora . $extensao;
-    }else{
-        $nomeimagem = '';
-    }
 
-    if($noticia['not_img'] != "" && $nomeimagem != ""){
-        unlink('img/noticias/' . $noticia['not_img']);
-        move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
-        $imagembanco = $nomeimagem;
-    } elseif ($noticia['not_img'] != "" && $nomeimagem == "") {
-        $imagembanco = $noticia['not_img'];
-    } elseif ($noticia['not_img'] == "" && $nomeimagem != ""){
-        move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
-        $imagembanco = $nomeimagem;
+        if($noticia['not_img'] != "" && $noticia['not_img'] != NULL){
+            unlink('img/noticias/' . $noticia['not_img']);
+            move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
+        } elseif ($noticia['not_img'] == ""){
+            move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
+        }
+
+        $noticias->setNot_img($nomeimagem);
+    }else{
+        $noticias->setNot_img($noticia['not_img']);
     }
-    echo $imagembanco;
-    $noticias->setNot_img($imagembanco);
 
     if ($noticiasDAO->atualizarNoticia($noticias)) {
         $textonoticias->setNot_cod($not_cod);

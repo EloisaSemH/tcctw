@@ -50,11 +50,11 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                         <input type="submit" value="Enviar notícia" id="enviar" name="enviar" class="btn btn-outline-dark">
                     </div>
                 </div>
-				<!-- <div class="form-row justify-content-center">
+				<div class="form-row justify-content-center">
 					<div class="form-group col-md-3 text-center">
-						<a href="index.php?&pg=editarusuario" class="btn btn-link">Voltar</a>
+						<a href="index.php" class="btn btn-link">Voltar</a>
 					</div>
-				</div> -->
+				</div>
             </form>
         </div>
     </div>
@@ -94,7 +94,7 @@ if (isset($_POST["enviar"])) {
         $noticias->setNot_subtitulo('NULL');
     }
 
-    if(isset($_FILES['not_img'])){
+    if($_FILES['not_img'] == '' && $_FILES['not_img'] == NULL){
         $imagem = $_FILES['not_img'];
         
         $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);

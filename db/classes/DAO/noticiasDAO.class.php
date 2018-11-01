@@ -66,9 +66,9 @@ class noticiasDAO {
             $param = array(
                 ":not_titulo" => $entNoticias->getNot_titulo(),
                 ":not_subtitulo" => $entNoticias->getNot_subtitulo(),
-                ":not_ativo" => $entNoticias->getNot_ativo(),
                 ":not_img" => $entNoticias->getNot_img(),
                 ":not_cat" => $entNoticias->getNot_cat(),
+                ":not_ativo" => $entNoticias->getNot_ativo(),
                 ":not_cod" => $entNoticias->getNot_cod()
             );
             return $stmt->execute($param);
@@ -125,10 +125,10 @@ class noticiasDAO {
         }
     }
 
-    function pegarTodasNoticias($limite, $quantpag){
+    function pegarTodasNoticias($ativo, $limite, $quantpag){
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 ORDER BY not_cod DESC LIMIT :limite, :quantpag");
-            $param = array(":limite" => $limite, ":quantpag" => $quantpag);
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = :not_ativo ORDER BY not_cod DESC LIMIT :limite, :quantpag");
+            $param = array(":not_ativo" => $ativo, ":limite" => $limite, ":quantpag" => $quantpag);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
@@ -168,6 +168,76 @@ class noticiasDAO {
             }
         }catch (PDOException $ex){
             echo "ERRO 308: {$ex->getMessage()}";
+        }
+    }
+
+    function contarEventosAtivasOuNao($num){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = :not_ativo AND not_cat = 'eve' ORDER BY not_cod DESC");
+            $param = array(":not_ativo" => $num);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->rowCount();
+                return $consulta;
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 309: {$ex->getMessage()}";
+        }
+    }
+
+    function pegarEventos($limite, $quantpag){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 AND not_cat = 'eve' ORDER BY not_cod DESC LIMIT :limite, :quantpag");
+            $param = array(":limite" => $limite, ":quantpag" => $quantpag);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $cel = $stmt->rowCount();
+                $col = 1;
+                $qtdcol = $quantpag;
+                $celconstruida = 0;
+                $colConstruida = 0;
+                for ($a = 0; $a < $qtdcol; $a++) {
+                    if ($col == 1) {
+                        echo '<div class="row">';
+                        $celconstruida++;
+                    }
+                    if ($celconstruida <= $cel) {
+                        while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            $not_img = utf8_encode($dados['not_img']);
+                            $not_titulo = $dados['not_titulo'];
+                            $not_subtitulo = $dados['not_subtitulo'];
+                            echo '<div class="col-sm-4 mt-2">';
+                            echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><div class="card-header text-dark text-center">' . $not_titulo . '</a>';
+                            if($not_subtitulo !== '' && $not_subtitulo !== ' ' && $not_subtitulo !== NULL){
+                                echo '<br/><a class="text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_subtitulo . '</a>';
+                            }else{
+                                // echo '</div></a>';
+                            }
+                            echo '</div>';
+                            if (file_exists('img/noticias/' . $not_img) && $not_img != '' && $not_img != NULL) {
+                                echo '<img src="img/noticias/'. $not_img . '" alt="Imagem do evento" class="img-thumbnail">';
+                            } else {
+                                echo '<img src="img/noticias/semfoto.jpg" class="img-thumbnail">';
+                            }
+                            echo '</div>';
+
+                            $colConstruida++;
+                            if($colConstruida == $qtdcol){
+                                $colConstruida = 0;
+                                echo '</div>';
+                        }
+                        }
+                    }
+                }
+            }else{
+                
+            }
+        }catch (PDOException $ex){
+            echo "ERRO 310: {$ex->getMessage()}";
         }
     }
 }

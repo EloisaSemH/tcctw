@@ -51,7 +51,7 @@
                 
 				<div class="form-row justify-content-center">
 					<div class="form-group col-md-3 text-center">
-						<a href="index.php?&pg=noticias&pagina=1" class="btn btn-link">Voltar</a>
+						<a href="index.php" class="btn btn-link">Voltar</a>
                         
                         <?php
                             if($_SESSION['logado'] == 2 || $_SESSION['logado'] == 3){

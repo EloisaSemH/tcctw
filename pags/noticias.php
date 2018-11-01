@@ -25,7 +25,7 @@
 <div class="container-fluid mt-2">
   <div class="container">
         <div class="row">
-            <?php $noticiasDAO->pegarTodasNoticias($inicio, $qntporpag); ?>
+            <?php $noticiasDAO->pegarTodasNoticias('1', $inicio, $qntporpag); ?>
         </div>
         <?php
 			$pagina_anterior = $pg - 1;
