@@ -69,10 +69,10 @@
           </form>
         <?php }else{ 
           // Normal ?>
-          <form class="form-inline my-2 my-lg-0 ml-4">
-              <a class="btn btn-success my-2 mr-2 my-sm-0" href="index.php?&pg=login">Entrar</a>
-              <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=cadastro">Cadastre-se</a>
-            </form>
+          <form class="form-inline my-1 mx-1 ml-2">
+              <a class="btn btn-success my-1 mr-1 col-sm-3 col-lg-4" href="index.php?&pg=login">Entrar</a>
+              <a class="btn btn-success my-1 mr-1 col-sm-3 col-lg-7" href="index.php?&pg=cadastro">Cadastre-se</a>
+          </form>
         <?php } ?>
       </div>
     </nav>
