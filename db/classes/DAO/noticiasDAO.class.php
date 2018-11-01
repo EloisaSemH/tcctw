@@ -207,21 +207,22 @@ class noticiasDAO {
                     }
                     if ($celconstruida <= $cel) {
                         while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            $not_img = utf8_encode($dados['not_img']);
+                            $not_img = $dados['not_img'];
                             $not_titulo = $dados['not_titulo'];
                             $not_subtitulo = $dados['not_subtitulo'];
-                            echo '<div class="col-sm-4 mt-2">';
-                            echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><div class="card-header text-dark text-center">' . $not_titulo . '</a>';
+                            echo '<div class="col-sm-4 mt-2"><div class="card-header text-dark text-center">';
+                            echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_titulo . '</a>';
                             if($not_subtitulo !== '' && $not_subtitulo !== ' ' && $not_subtitulo !== NULL){
                                 echo '<br/><a class="text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_subtitulo . '</a>';
                             }else{
                                 // echo '</div></a>';
                             }
                             echo '</div>';
-                            if (file_exists('img/noticias/' . $not_img) && $not_img != '' && $not_img != NULL) {
-                                echo '<img src="img/noticias/'. $not_img . '" alt="Imagem do evento" class="img-thumbnail">';
+                            if (file_exists('img/noticias/' . $not_img) && $not_img != '' && $not_img != NULL && $not_img != 'NULL') {
+                                echo $not_img;
+                                echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/'. $not_img . '" alt="Imagem do evento" class="img-thumbnail"></a>';
                             } else {
-                                echo '<img src="img/noticias/semfoto.jpg" class="img-thumbnail">';
+                                echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/semfoto.jpg" class="img-thumbnail" alt="Sem foto"></a>';
                             }
                             echo '</div>';
 
@@ -229,7 +230,7 @@ class noticiasDAO {
                             if($colConstruida == $qtdcol){
                                 $colConstruida = 0;
                                 echo '</div>';
-                        }
+                            }
                         }
                     }
                 }
