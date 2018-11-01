@@ -76,7 +76,9 @@
     // }elseif($pag == ''){
     //     include('pags/.php');
     }elseif($pag == 'noticia'){
-    include('pags/noticia.php');
+        include('pags/noticia.php');
+    }elseif($pag == 'editarnoticia'){
+        include('pags/editarnoticia.php');
     }else{
         include('pags/inicio.php');
 }

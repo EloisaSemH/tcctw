@@ -62,15 +62,14 @@ class noticiasDAO {
 
     function atualizarNoticia(noticias $entNoticias){
         try {
-            $stmt = $this->pdo->prepare("UPDATE noticias SET not_titulo = :not_titulo, not_subtitulo = :not_subtitulo, not_data = :not_data, not_hora = :not_hora, not_cat = :not_cat, not_ativo = :not_ativo WHERE not_cod = :not_cod");
+            $stmt = $this->pdo->prepare("UPDATE noticias SET not_titulo = :not_titulo, not_subtitulo = :not_subtitulo, not_img = :not_img, not_cat = :not_cat, not_ativo = :not_ativo WHERE not_cod = :not_cod");
             $param = array(
                 ":not_titulo" => $entNoticias->getNot_titulo(),
-                ":not_subtitulo" => $entNoticias->getNot_subitulo(),
-                ":not_data" => date("Y/m/d"),
-                ":not_hora" => date("H:i:s"),
-                ":not_cat" => $entNoticias->getNot_cat(),
+                ":not_subtitulo" => $entNoticias->getNot_subtitulo(),
                 ":not_ativo" => $entNoticias->getNot_ativo(),
-                ":not_cod" => $entNoticias->getNot_cod(),
+                ":not_img" => $entNoticias->getNot_img(),
+                ":not_cat" => $entNoticias->getNot_cat(),
+                ":not_cod" => $entNoticias->getNot_cod()
             );
             return $stmt->execute($param);
 
@@ -146,8 +145,8 @@ class noticiasDAO {
                     }
                     if ($celconstruida <= $cel) {
                         while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            $not_titulo = utf8_encode($dados['not_titulo']);
-                            $not_subtitulo = utf8_encode($dados['not_subtitulo']);
+                            $not_titulo = $dados['not_titulo'];
+                            $not_subtitulo = $dados['not_subtitulo'];
                             echo '<td>';
                             echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_titulo . '</a>';
                             if($not_subtitulo !== '' && $not_subtitulo !== ' ' && $not_subtitulo !== NULL){

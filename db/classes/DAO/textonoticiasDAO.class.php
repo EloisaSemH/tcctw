@@ -46,7 +46,20 @@ class textonoticiasDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 302: {$ex->getMessage()}";
+            echo "ERRO 403: {$ex->getMessage()}";
+        }
+    }
+
+    function atualizar(textonoticias $enttextonoticias) {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE textonoticias SET text_texto = :text_texto WHERE noticias_not_cod = :not_cod");
+            $param = array(
+                ":text_texto" => $enttextonoticias->getText_texto(),
+                ":not_cod" => $enttextonoticias->getNot_cod()
+            );
+            return $stmt->execute($param);
+        } catch (PDOException $ex) {
+            echo "ERRO 405: {$ex->getMessage()}";
         }
     }
 }

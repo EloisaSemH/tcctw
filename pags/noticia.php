@@ -19,11 +19,17 @@
 
     $textonoticia = $textonoticiasDAO->pegarTextoNoticia($not_cod);
 ?>
-
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
             <form name="noticia" action="" method="post" enctype="">
+                <div class="form-row justify-content-center">
+                    <?php if (file_exists('img/noticias/' . $noticia['not_img']) && $noticia['not_img'] != '' && $noticia['not_img'] != NULL) { ?>
+                        <img src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
+                    <?php } else { ?>
+                        <!-- <img src="img/noticias/erro.jpg"/> -->
+                    <?php } ?>
+                </div> 
                 <div class="form-row justify-content-center">
                     <div class="p-3 mb-2 bg-white text-dark"><?php if($noticia['not_cat'] == 'not'){
                         echo 'NOTÍCIA';
@@ -49,7 +55,7 @@
                         
                         <?php
                             if($_SESSION['logado'] == 2 || $_SESSION['logado'] == 3){
-                                echo '<a class="btn btn-link" href="#">Editar</a>';
+                                echo '<a class="btn btn-link" href="index.php?&pg=editarnoticia&id=' . $not_cod . '">Editar</a>';
                             }
                         ?>
 					</div>
