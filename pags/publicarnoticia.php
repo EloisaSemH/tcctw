@@ -95,7 +95,7 @@ if (isset($_POST["enviar"])) {
     }
     
 
-    if(!is_null($_FILES['not_img']['name'])){
+    if(is_null($_FILES['not_img']['error'])){
         $imagem = $_FILES['not_img'];
         
         $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);

@@ -20,19 +20,6 @@ class textonoticiasDAO {
         }
     }
 
-    function excluirNoticias(textonoticias $enttextoNoticias){
-        try {
-            $stmt = $this->pdo->prepare("DELETE FROM noticias WHERE not_cod = :not_cod");
-            $param = array(
-                ":not_cod" => $enttextoNoticias->getNot_cod()
-            );
-            return $stmt->execute($param);
-
-        } catch (PDOException $ex) {
-            echo "ERRO 402: {$ex->getMessage()}";
-        }
-    }
-
     function pegarTextoNoticia($not_cod){
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM textonoticias WHERE noticias_not_cod = :not_cod");
@@ -46,7 +33,7 @@ class textonoticiasDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 403: {$ex->getMessage()}";
+            echo "ERRO 402: {$ex->getMessage()}";
         }
     }
 
@@ -59,7 +46,7 @@ class textonoticiasDAO {
             );
             return $stmt->execute($param);
         } catch (PDOException $ex) {
-            echo "ERRO 405: {$ex->getMessage()}";
+            echo "ERRO 403: {$ex->getMessage()}";
         }
     }
 }

@@ -149,7 +149,7 @@ class noticiasDAO {
                             $not_subtitulo = $dados['not_subtitulo'];
                             echo '<td>';
                             echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_titulo . '</a>';
-                            if($not_subtitulo !== '' && $not_subtitulo !== ' ' && $not_subtitulo !== NULL){
+                            if(!is_null($not_subtitulo)){
                                 echo '<br/><a class="text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_subtitulo . '</a>';
                             }
                             echo '</td>';

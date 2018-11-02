@@ -1,5 +1,4 @@
 <?php //&
-
     if(isset($_GET['id'])){
         $not_cod = $_GET['id'];
     }else{
@@ -24,10 +23,8 @@
         <div class="col-md-12">
             <form name="noticia" action="" method="post" enctype="">
                 <div class="form-row justify-content-center">
-                    <?php if (file_exists('img/noticias/' . $noticia['not_img']) && $noticia['not_img'] != '' && $noticia['not_img'] != NULL) { ?>
+                    <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
                         <img src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
-                    <?php } else { ?>
-                        <!-- <img src="img/noticias/erro.jpg"/> -->
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center">
@@ -41,7 +38,7 @@
                     <div class="p-3 mb-2 bg-white text-dark"><?php echo $noticia['not_titulo']; ?></div>
                 </div>  
                 <div class="form-row justify-content-center">
-                    <?php if($noticia['not_subtitulo'] !== '' && $noticia['not_subtitulo'] !== ' ' && $noticia['not_subtitulo'] !== NULL){ ?>
+                    <?php if(!is_null($noticia['not_subtitulo'])){ ?>
                         <div class="p-3 mb-2 bg-white text-dark"><?php echo $noticia['not_subtitulo'] ?></div>
                     <?php } ?>
                 </div>
@@ -52,7 +49,6 @@
 				<div class="form-row justify-content-center">
 					<div class="form-group col-md-3 text-center">
 						<a href="index.php" class="btn btn-link">Voltar</a>
-                        
                         <?php
                             if($_SESSION['logado'] == 2 || $_SESSION['logado'] == 3){
                                 echo '<a class="btn btn-link" href="index.php?&pg=editarnoticia&id=' . $not_cod . '">Editar</a>';

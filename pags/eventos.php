@@ -15,7 +15,7 @@
 
     $numnoticias = $noticiasDAO->contarEventosAtivasOuNao('1');
 
-	$qntporpag = 10;
+	$qntporpag = 12;
 
 	$numpags = $numnoticias > $qntporpag ? ceil($numnoticias/$qntporpag) : null;
 

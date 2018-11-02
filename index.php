@@ -38,60 +38,76 @@
 
     include('pags/cabecalho.php');
 
-    // switch($pag) {
-    //     case 'inicio':
-    //         include('pags/inicio.php');
-    //         break;
-    //     case 'contato':
-    //         include('pags/contato.php');
-    //         break;
-    //     default:
-    //         include('pags/inicio.php');
-    // }
+    switch($pag) {
+        //Menu
+        case 'inicio':
+            include('pags/inicio.php');
+            break;
+        case 'galeria':
+            include('pags/galeria.php');
+            break;
+        case 'eventos':
+            include('pags/eventos.php');
+            break;
+        case 'noticias':
+            include('pags/noticias.php');
+            break;
+        case 'contato':
+            include('pags/contato.php');
+            break;
+        case 'login':
+            include('pags/login.php');
+            break;
+        case 'cadastro':
+            include('pags/cadastro.php');
+            break;
+        //Login
+        case 'painel':
+            include('pags/painel.php');
+            break;
+        case 'postador':
+            include('pags/postador.php');
+            break;
+        case 'adm':
+            include('pags/adm.php');
+            break;
+        //Noticias
+        case 'noticia':
+            include('pags/noticia.php');
+            break;
+        case 'publicarnoticia':
+            include('pags/publicarnoticia.php');
+            break;
+        case 'noticiaspendentes':
+            include('pags/noticiaspendentes.php');
+            break;
+        case 'editarnoticia':
+            include('pags/editarnoticia.php');
+            break;
+        //Usuário
+        case 'editarusuario':
+            include('pags/editarusuario.php');
+            break;
+        case 'editandousuario':
+            include('pags/editandousuario.php');
+            break;
+        case 'usuariopg':
+            include('pags/usuariopg.php');
+            break;
+        //Galeria
+        case 'publicarfoto':
+            include('pags/publicarfoto.php');
+            break;
+        case 'editarfoto':
+            include('pags/editarfoto.php');
+            break;
+        case 'foto':
+            include('pags/foto.php');
+            break;
+        default:
+            include('pags/inicio.php');
+            break;
+    }
 
-    if($pag == 'inicio'){
-        include('pags/inicio.php');
-    } #Menu
-    elseif($pag == 'contato'){
-        include('pags/contato.php');
-    }elseif($pag == 'galeria'){
-        include('pags/galeria.php');
-    }elseif($pag == 'login'){
-        include('pags/login.php');
-    }elseif($pag == 'cadastro'){
-        include('pags/cadastro.php');
-    }elseif($pag == 'noticias'){
-        include('pags/noticias.php');
-    }elseif($pag == 'eventos'){
-        include('pags/eventos.php');
-    } #Login
-    elseif($pag == 'painel'){
-        include('pags/painel.php');
-    }elseif($pag == 'adm'){
-        include('pags/adm.php');
-    }elseif($pag == 'postador'){
-        include('pags/postador.php');
-    } #admin
-    elseif($pag == 'publicarnoticia'){
-        include('pags/publicarnoticia.php');
-    }elseif($pag == 'editarusuario'){
-        include('pags/editarusuario.php');
-    }elseif($pag == 'noticiaspendentes'){
-        include('pags/noticiaspendentes.php');
-    }elseif($pag == 'Editar usuário'){
-        include('pags/Editar usuário.php');
-    }elseif($pag == 'editandousuario'){
-        include('pags/editandousuario.php');
-    }elseif($pag == 'usuariopg'){
-        include('pags/usuariopg.php');
-    // }elseif($pag == ''){
-    //     include('pags/.php');
-    }elseif($pag == 'noticia'){
-        include('pags/noticia.php');
-    }elseif($pag == 'editarnoticia'){
-        include('pags/editarnoticia.php');
-    }else{
-        include('pags/inicio.php');
-}
     include('pags/rodape.php');
 ?>

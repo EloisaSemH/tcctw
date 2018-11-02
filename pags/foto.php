@@ -1,0 +1,51 @@
+<?php //&
+
+    if(isset($_GET['id'])){
+        $gal_cod = $_GET['id'];
+    }else{
+        ?>
+        <script type="text/javascript">
+            document.location.href = "index.php?&pg=galeria&pagina=1";
+        </script>
+        <?php
+    }
+
+    require_once ("db/classes/DAO/galeriaDAO.class.php");
+    $galeriaDAO = new galeriaDAO();
+
+    $foto = $galeriaDAO->pegarFoto($gal_cod);
+
+?>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="foto" action="" method="post" enctype="">
+                <div class="form-row justify-content-center">
+                    <?php if (file_exists('img/galeria/' . $foto['gal_img']) && !is_null($foto['gal_img'])) { ?>
+                        <img src="img/galeria/<?php echo $foto['gal_img']; ?>" class=""/>
+                    <?php }else{ ?>
+                        <img src="img/galeria/semfoto.jpg" class=""/>
+                    <?php } ?>
+                </div>               
+                <div class="form-row justify-content-center">
+                    <div class="p-3 mb-2 bg-white text-dark"><?php echo $foto['gal_titulo']; ?></div>
+                </div>  
+                <div class="form-row justify-content-center">
+                    <?php if(!is_null($foto['gal_desc'])){ ?>
+                        <div class="p-3 mb-2 bg-white text-dark"><?php echo $foto['gal_desc'] ?></div>
+                    <?php } ?>
+                </div>                
+				<div class="form-row justify-content-center">
+					<div class="form-group col-md-3 text-center">
+						<a href="index.php?&pg=galeria" class="btn btn-link">Voltar</a>
+                        <?php
+                            if($_SESSION['logado'] == 2 || $_SESSION['logado'] == 3){
+                                echo '<a class="btn btn-link" href="index.php?&pg=editarfoto&id=' . $gal_cod . '">Editar</a>';
+                            }
+                        ?>
+					</div>
+				</div>
+            </form>
+        </div>
+    </div>
+</div>

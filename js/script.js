@@ -16,3 +16,12 @@ function validarSenha(senha1, senha2, campo){
     }
 }
 
+function excluirFunction() {
+    var txt;
+    var r = confirm("Tem certeza que quer excluir essa noticia?");
+    if (r == true) {
+        txt = "sim";
+    } else {
+        txt = "nao";
+    }
+}
