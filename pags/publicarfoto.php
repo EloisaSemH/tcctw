@@ -61,20 +61,28 @@ if (isset($_POST["enviar"])) {
     }
     
     //Fotos
-    $extensao = pathinfo ($_FILES['gal_img']['name'], PATHINFO_EXTENSION);
-    $extensao = '.' . strtolower ($extensao);
+    if(!is_null($_FILES['not_img']['error'])){
+        ?>
+        <script type="text/javascript">
+            alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+        </script>
+        <?php
+        die();
+    }else{
+        $extensao = pathinfo ($_FILES['gal_img']['name'], PATHINFO_EXTENSION);
+        $extensao = '.' . strtolower ($extensao);
 
-    $data = date("Y/m/d");
-    $hora = date("H:i:s");
-    $novadata = str_replace("/", "", $data);
-    $novahora = str_replace(":", "", $hora);
+        $data = date("Y/m/d");
+        $hora = date("H:i:s");
+        $novadata = str_replace("/", "", $data);
+        $novahora = str_replace(":", "", $hora);
 
-    $nomeimagem = 'gal' . '_' . $novadata . $novahora . $extensao;
-    
-    $a = move_uploaded_file($_FILES['gal_img']['tmp_name'], 'img/galeria/' . $nomeimagem);
+        $nomeimagem = 'gal' . '_' . $novadata . $novahora . $extensao;
+        
+        $a = move_uploaded_file($_FILES['gal_img']['tmp_name'], 'img/galeria/' . $nomeimagem);
 
-    $galeria->setGal_img($nomeimagem);
-
+        $galeria->setGal_img($nomeimagem);
+    }
     if ($galeriaDAO->inserirfoto($galeria)) {
         ?>
         <script type="text/javascript">

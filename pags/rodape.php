@@ -1,45 +1,45 @@
 <!--Rodapé-->
 <footer class="page-footer mt-3">
-    <div style="background-color: #3C4448;">
-      <div class="container">
-        <div class="row py-4 d-flex align-items-center">
-          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-            <h6 class="mb-0 text-white">Eu nao sei oq escrever aqui, é isto!</h6>
-          </div>
+  <div style="background-color: #3C4448;">
+    <div class="container">
+      <div class="row py-4 d-flex align-items-center">
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0 text-white">Italianos em Itu da imigração à atualidade.</h6>
         </div>
       </div>
     </div>
-    <div class="container text-center text-md-left mt-2">
-      <div class="row mt-3 text-secondary">
-        <!-- Sobre -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
-          <h6 class="text-uppercase font-weight-bold text-dark">Sobre</h6>
-          <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Site elaborado especialmente para o grupo Italianos em Itu, na intenção de divulgar o livro "Italianos em Itu: da imigração à atualidade".</p>
-        </div>
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-2">
-          <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold text-dark">Links Úteis</h6>
-          <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p><a class="text-secondary" href="#!">Sua conta</a></p>
-          <p><a class="text-secondary" href="https://www.facebook.com/pages/category/Nonprofit-Organization/Asilo-Mendicidade-Nossa-Senhora-da-Candel%C3%A1ria-175852372574937/">Asilo Mendicidade N. Sra. da Candelária</a></p>
-        
-          <p> <a class="text-secondary" href="#!">nao sei oq colocar</a></p>
+  </div>
+  <div class="container text-center text-md-left mt-2">
+    <div class="row mt-3 text-secondary">
+      <!-- Sobre -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+        <h6 class="text-uppercase font-weight-bold text-dark">Sobre</h6>
+        <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>Site elaborado gratuitamente especialmente para o grupo Italianos em Itu, na intenção de divulgar o livro "Italianos em Itu: da imigração à atualidade".</p>
       </div>
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
-          <!-- Contato -->
-          <h6 class="text-uppercase font-weight-bold text-dark">Contato</h6>
-          <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p><i></i>Endereço</p>
-          <p><i></i>Email</p>
-          <p> <i></i>Telefone</p>
-        </div>
+    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-2">
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold text-dark">Links Úteis</h6>
+        <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p><a class="text-secondary" href="#!">Sua conta</a></p>
+        <p><a class="text-secondary" href="https://www.facebook.com/pages/category/Nonprofit-Organization/Asilo-Mendicidade-Nossa-Senhora-da-Candel%C3%A1ria-175852372574937/">Asilo Mendicidade N. Sra. da Candelária</a></p>
+      
+        <p> <a class="text-secondary" href="#!">nao sei oq colocar</a></p>
+    </div>
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
+        <!-- Contato -->
+        <h6 class="text-uppercase font-weight-bold text-dark">Contato</h6>
+        <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p><i></i>Endereço</p>
+        <p><i></i>Email</p>
+        <p> <i></i>Telefone</p>
       </div>
     </div>
-    <!-- Copyright -->
-    <div  style="background-color: #3C4448;" class="footer-copyright text-center py-3 text-white">© 2018 Copyright</div>
-    <!-- Copyright -->
-  </footer>
+  </div>
+  <!-- Copyright -->
+  <div  style="background-color: #3C4448;" class="footer-copyright text-center py-3 text-white">Site elaborado por: <a href="#" class="font-weight-bold text-white">Caio Andrade</a>, <a href="#" class="font-weight-bold text-white">Eloísa Carvalho</a>, <a href="#" class="font-weight-bold text-white">Enrique Gomes</a> e <a href="#" class="font-weight-bold text-white">Érica Vitória</a>. 2018 - Copyright</div>
+  <!-- Copyright -->
+</footer>
     
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

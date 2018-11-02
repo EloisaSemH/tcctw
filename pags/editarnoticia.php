@@ -33,7 +33,7 @@
         <div class="col-md-12">
             <form name="login" action="" method="post" enctype="multipart/form-data">
                 <div class="form-row justify-content-center">
-                    <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null(&& $noticia['not_img'])) { ?>
+                    <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
                         <img src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
                     <?php } else { ?>
                         <!-- <img src="img/noticias/erro.jpg"/> -->
@@ -111,7 +111,7 @@ if (isset($_POST["atualizar"])) {
     require_once ("db/classes/Entidade/textonoticias.class.php");
     $textonoticias = new textonoticias();
 
-    require_once ("db/classes/DAO/noticiasDAO.class.php");
+    require_once ("db/classes/Entidade/noticias.class.php");
     $noticias = new noticias();
 
     $noticias->setNot_cod($not_cod);
@@ -120,7 +120,16 @@ if (isset($_POST["atualizar"])) {
     $noticias->setNot_cat($_POST['not_cat']);
     $noticias->setNot_ativo($_POST['not_ativo']);
 
-    if($_FILES['not_img']['error'] === 0){
+    if(is_null($_FILES['not_img']['error'])){
+        if($_FILES['not_img']['error'] == 1){
+            ?>
+            <script type="text/javascript">
+                alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+            </script>
+            <?php
+            die();
+        }else{
+
         $imagem = $_FILES['not_img'];
 
         $data = date("Y/m/d");
@@ -136,15 +145,28 @@ if (isset($_POST["atualizar"])) {
 
         if(!is_null($noticia['not_img'])){
             unlink('img/noticias/' . $noticia['not_img']);
-            move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
-        } elseif (is_null($noticia['not_img'])){
-            move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
         }
-
-        $noticias->setNot_img($nomeimagem);
-    }else{
-        $noticias->setNot_img($noticia['not_img']);
+        move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
     }
+        $noticias->setNot_img($nomeimagem);
+        print_r($_FILES['not_img']);
+        echo $noticias->getNot_img();
+        die();
+    }else{
+        if($_FILES['not_img']['error'] == 1){
+            ?>
+            <script type="text/javascript">
+                alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+            </script>
+            <?php
+            die();
+        }else{
+            $noticias->setNot_img($noticia['not_img']);
+            echo 'anitga ' . $noticia['not_img'];
+        }
+    }
+    die(print_r($_FILES['not_img']));
+
 
     if ($noticiasDAO->atualizarNoticia($noticias)) {
         $textonoticias->setNot_cod($not_cod);
