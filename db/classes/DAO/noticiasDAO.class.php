@@ -202,7 +202,7 @@ class noticiasDAO {
                 $colConstruida = 0;
                 for ($a = 0; $a < $qtdcol; $a++) {
                     if ($col == 1) {
-                        echo '<div class="row">';
+                        // echo '<div class="row">';
                         $celconstruida++;
                     }
                     if ($celconstruida <= $cel) {
@@ -212,14 +212,13 @@ class noticiasDAO {
                             $not_subtitulo = $dados['not_subtitulo'];
                             echo '<div class="col-sm-4 mt-2"><div class="card-header text-dark text-center">';
                             echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_titulo . '</a>';
-                            if($not_subtitulo !== '' && $not_subtitulo !== ' ' && $not_subtitulo !== NULL){
+                            if(!is_null($not_subtitulo)){
                                 echo '<br/><a class="text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_subtitulo . '</a>';
                             }else{
                                 // echo '</div></a>';
                             }
                             echo '</div>';
-                            if (file_exists('img/noticias/' . $not_img) && $not_img != '' && $not_img != NULL && $not_img != 'NULL') {
-                                echo $not_img;
+                            if (file_exists('img/noticias/' . $not_img) && !is_null($not_img)) {
                                 echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/'. $not_img . '" alt="Imagem do evento" class="img-thumbnail"></a>';
                             } else {
                                 echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/semfoto.jpg" class="img-thumbnail" alt="Sem foto"></a>';
@@ -229,7 +228,7 @@ class noticiasDAO {
                             $colConstruida++;
                             if($colConstruida == $qtdcol){
                                 $colConstruida = 0;
-                                echo '</div>';
+                                // echo '</div>';
                             }
                         }
                     }

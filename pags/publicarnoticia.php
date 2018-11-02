@@ -93,8 +93,9 @@ if (isset($_POST["enviar"])) {
     }else{
         $noticias->setNot_subtitulo('NULL');
     }
+    
 
-    if($_FILES['not_img'] == '' && $_FILES['not_img'] == NULL){
+    if(!is_null($_FILES['not_img']['name'])){
         $imagem = $_FILES['not_img'];
         
         $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);

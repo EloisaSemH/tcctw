@@ -38,6 +38,17 @@
 
     include('pags/cabecalho.php');
 
+    // switch($pag) {
+    //     case 'inicio':
+    //         include('pags/inicio.php');
+    //         break;
+    //     case 'contato':
+    //         include('pags/contato.php');
+    //         break;
+    //     default:
+    //         include('pags/inicio.php');
+    // }
+
     if($pag == 'inicio'){
         include('pags/inicio.php');
     } #Menu

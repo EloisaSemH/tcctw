@@ -126,8 +126,8 @@ if (isset($_POST["atualizar"])) {
     $noticias->setNot_subtitulo($_POST['not_subtitulo']);
     $noticias->setNot_cat($_POST['not_cat']);
     $noticias->setNot_ativo($_POST['not_ativo']);
-    
-    if($_FILES['not_img'] == '' && $_FILES['not_img'] == NULL){
+
+    if($_FILES['not_img']['error'] === 0){
         $imagem = $_FILES['not_img'];
 
         $data = date("Y/m/d");
@@ -135,8 +135,6 @@ if (isset($_POST["atualizar"])) {
 
         $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
         $extensao = '.' . strtolower ($extensao);
-
-        echo $noticia['not_img'];
 
         $novadata = str_replace("/", "", $data);
         $novahora = str_replace(":", "", $hora);
@@ -162,10 +160,10 @@ if (isset($_POST["atualizar"])) {
         if ($textonoticiasDAO->atualizar($textonoticias)) {
             ?>
             <script type="text/javascript">
-                // alert("Notícia enviada com sucesso!");
-                // document.location.href = "index.php?&pg=noticia&id=<?php echo $not_cod; ?>";
+                alert("Notícia enviada com sucesso!");
+                document.location.href = "index.php?&pg=noticia&id=<?php echo $not_cod; ?>";
             </script>
-            <?php echo $noticias->getNot_img();
+            <?php
         } else {
             ?>
             <script type="text/javascript">

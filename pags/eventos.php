@@ -15,17 +15,19 @@
 
     $numnoticias = $noticiasDAO->contarEventosAtivasOuNao('1');
 
-    $qntporpag = 10;
+	$qntporpag = 10;
 
-    $numpags = ceil($numnoticias/$qntporpag);
+	$numpags = $numnoticias > $qntporpag ? ceil($numnoticias/$qntporpag) : null;
 
     $inicio = ($qntporpag*$pg)-$qntporpag;
 ?>
 
 <div class="container-fluid mt-2">
     <div class="container">
-        <?php $noticiasDAO->pegarEventos($inicio, $qntporpag);
-        
+		<div class="row">
+        	<?php $noticiasDAO->pegarEventos($inicio, $qntporpag); ?>
+        </div>
+		<?php
 			$pagina_anterior = $pg - 1;
 			$pagina_posterior = $pg + 1;
 	    ?>
