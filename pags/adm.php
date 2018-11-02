@@ -18,7 +18,6 @@ if($dados['us_sexo'] == 'f'){
 }else{
     $sexo = 'o';    
 }
-//dfgfdgfdgdf
 ?>
 
 <div class="container mt-4">
