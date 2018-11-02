@@ -17,7 +17,7 @@ if ($_SESSION['logado'] != 1 && $_SESSION['logado'] != 2 && $_SESSION['logado'] 
     <div class="card">
         <div class="card-body text-justify">
             Nois é foda, o resto é moda!
-            <a href="index.php?&pg=logout"><img src="imgs/sair.png" alt="sair" class="float-right "></a>
+            <a href="index.php?&pg=logout"><i class="fas fa-times float-right text-dark" style="font-size: 25px;"></i></a>
         </div>
     </div>
     <div class="card">
