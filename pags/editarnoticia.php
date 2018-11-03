@@ -35,8 +35,6 @@
                 <div class="form-row justify-content-center">
                     <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
                         <img src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
-                    <?php } else { ?>
-                        <!-- <img src="img/noticias/erro.jpg"/> -->
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center">
@@ -120,7 +118,7 @@ if (isset($_POST["atualizar"])) {
     $noticias->setNot_cat($_POST['not_cat']);
     $noticias->setNot_ativo($_POST['not_ativo']);
 
-    if(is_null($_FILES['not_img']['error'])){
+    if(!is_null($_FILES['not_img']['name'])){
         if($_FILES['not_img']['error'] == 1){
             ?>
             <script type="text/javascript">

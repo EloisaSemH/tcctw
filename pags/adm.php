@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['logado'] != 3) {
+if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
     ?>
     <script type="text/javascript">
         alert("Desculpe, você não tem permissão para acessar o painel de administração");
@@ -25,7 +25,11 @@ if($dados['us_sexo'] == 'f'){
         <div class="card-body text-justify">
             <a href="index.php?&pg=logout"><i class="fas fa-times float-right text-dark" style="font-size: 25px;"></i></a>
             <h6><a class="text-uppercase font-weight-bold text-dark" href="?&pg=usuariopg"><?php echo $dados['us_nome']; ?></a></h6>
-            <p>Bem vind<?php echo $sexo; ?> a página de administração, Webmaster.</p>
+            <?php if ($_SESSION['logado'] === 3){ ?>
+            <p>Bem vind<?php echo $sexo; ?> à página de administração, Webmaster.</p>
+            <?php }else{ ?>
+            <p>Bem vind<?php echo $sexo; ?> à página de postagem.</p>
+            <?php } ?>
         </div>
     </div>
     <div class="card">
@@ -36,8 +40,9 @@ if($dados['us_sexo'] == 'f'){
                     <h6 class="text-uppercase font-weight-bold text-dark">Noticias</h6>
                     <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p><a class="text-secondary" href="index.php?&pg=publicarnoticia">Publicar notícia</a></p>
-                    <p><a class="text-secondary" href="index.php?&pg=noticiaspendentes">Notícias pendentes</a></p>
-                    <p><a class="text-secondary" href="index.php?&pg=encontrarnoticia">Encontrar notícia</a></p>
+                    <?php if ($_SESSION['logado'] === 3){ ?>
+                        <p><a class="text-secondary" href="index.php?&pg=noticiaspendentes">Notícias pendentes</a></p>
+                    <?php } ?>
                 </div>
                 <!-- Galeria -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-2">
@@ -47,12 +52,14 @@ if($dados['us_sexo'] == 'f'){
                     <p><a class="text-secondary" href="index.php?&pg=editarfoto">Editar foto</a></p>
                 </div>
                 <!-- Usuários -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
-                    <h6 class="text-uppercase font-weight-bold text-dark">Usuários</h6>
-                    <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p><a class="text-secondary" href="index.php?&pg=editarusuario">Editar usuário</a></p>
-                    </div>
-                </div>
+                <?php if ($_SESSION['logado'] === 3){ ?>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
+                        <h6 class="text-uppercase font-weight-bold text-dark">Usuários</h6>
+                        <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a class="text-secondary" href="index.php?&pg=editarusuario">Editar usuário</a></p>
+                        </div>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </div>

@@ -65,9 +65,6 @@
         case 'painel':
             include('pags/painel.php');
             break;
-        case 'postador':
-            include('pags/postador.php');
-            break;
         case 'adm':
             include('pags/adm.php');
             break;

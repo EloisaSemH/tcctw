@@ -57,7 +57,7 @@
             // Gisele é a mais linda
             ?>
           <form class="form-inline my-2 my-lg-0 ml-4">
-              <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=postador">Painel de postagem</a>
+              <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=adm">Painel de postagem</a>
               <a class="nav-link"  href="index.php?&pg=logout">Sair</a>
           </form>
           <?php
