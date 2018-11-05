@@ -253,7 +253,9 @@ class noticiasDAO {
                         echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/semfoto.jpg" class="d-block w-100" height="50%" width="100%" alt="Sem foto"></a>';
                     }
                     echo '<h5>'. $dados['not_titulo'] .'</h5>';
-                    echo '<p>'. $dados['not_titulo'] .'</p>'
+                    if(!is_null($dados['not_titulo'])){
+                        echo '<p>'. $dados['not_titulo'] .'</p>';
+                    }
                     echo '</div>';
                 }
                 // return $dados = $stmt->fetch(PDO::FETCH_ASSOC);
