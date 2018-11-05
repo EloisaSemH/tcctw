@@ -73,39 +73,49 @@ if (isset($_POST["atualizar"])) {
     $galeria->setGal_cod($gal_cod);
     $galeria->setGal_titulo($_POST['gal_titulo']);
     $galeria->setGal_desc($_POST['gal_desc']);
+    $galeria->setGal_img($foto['gal_img']);
 
-    if (file_exists('img/galeria/' . $foto['gal_img']) && !is_null($foto['gal_img'])){
-        $galeria->setGal_img($foto['gal_img']);
-    }else{
-        if($_FILES['gal_img']['error'] === 0){
-            $imagem = $_FILES['gal_img'];
+    if(isset($_FILES['gal_img'])){
+        if(!is_null($_FILES['gal_img']['name'])){
+            if($_FILES['gal_img']['error'] == 1){
+                ?>
+                <script type="text/javascript">
+                    alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+                </script>
+                <?php
+                die();
+            }else{
+                $imagem = $_FILES['gal_img'];
 
-            $data = date("Y/m/d");
-            $hora = date("H:i:s");
+                $data = date("Y/m/d");
+                $hora = date("H:i:s");
 
-            $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
-            $extensao = '.' . strtolower ($extensao);
+                $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
+                $extensao = '.' . strtolower ($extensao);
 
-            $novadata = str_replace("/", "", $data);
-            $novahora = str_replace(":", "", $hora);
-            
-            $nomeimagem = 'gal_' . $novadata . $novahora . $extensao;
+                $novadata = str_replace("/", "", $data);
+                $novahora = str_replace(":", "", $hora);
+                
+                $nomeimagem = 'gal_' . $novadata . $novahora . $extensao;
 
-            if(!is_null($foto['gal_img'])){
-                unlink('img/galeria/' . $foto['gal_img']);
-                move_uploaded_file($imagem['tmp_name'], 'img/galeria/' . $nomeimagem);
-            } elseif (is_null($foto['gal_img'])){
-                move_uploaded_file($imagem['tmp_name'], 'img/galeria/' . $nomeimagem);
+                if(!is_null($foto['gal_img']) && $foto['gal_img'] == 'NULL'){
+                    unlink('img/galeria/' . $foto['gal_img']);
+                }
+
+                $verf = move_uploaded_file($imagem['tmp_name'], 'img/galeria/' . $nomeimagem);
+
+                if($verf == 1){
+                    $galeria->setgal_img($nomeimagem);
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert("Ocorreu algum erro ao enviar a imagem, por favor, tente novamente");
+                        document.location.href = "index.php?&pg=editarfoto&id=<?php echo $gal_cod; ?>";
+                    </script>
+                    <?php
+                    die();
+                }
             }
-
-            $galeria->setGal_img($nomeimagem);
-        }else{
-            ?>
-            <script type="text/javascript">
-                alert("Ocorreu algum erro ao enviar a imagem, por favor, tente novamente");
-            </script>
-            <?php
-            die();
         }
     }
 
