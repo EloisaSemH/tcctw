@@ -49,7 +49,7 @@
     </div>
   </div>
   <!-- Copyright -->
-  <div  style="background-color: #3C4448;" class="footer-copyright text-center py-3 text-white">Site elaborado por: <a href="#" class="font-weight-bold text-white">Caio Andrade</a>, <a href="#" class="font-weight-bold text-white">Eloísa Carvalho</a>, <a href="#" class="font-weight-bold text-white">Enrique Gomes</a> e <a href="#" class="font-weight-bold text-white">Érica Vitória</a>. 2018 - Copyright</div>
+  <div  style="background-color: #3C4448;" class="footer-copyright text-center py-3 text-white">Site elaborado por: <a href="#" class="font-weight-bold text-white">Caio Andrade</a>, <a href="http://instagram.com/EloisaSemH" class="font-weight-bold text-white">Eloísa Carvalho</a>, <a href="#" class="font-weight-bold text-white">Enrique Gomes</a> e <a href="#" class="font-weight-bold text-white">Érica Vitória</a>. 2018 - Copyright</div>
   <!-- Copyright -->
 </footer>
 <!-- JS -->
