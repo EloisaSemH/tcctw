@@ -37,6 +37,7 @@
     }
 
     include('pags/cabecalho.php');
+    include('pags/menu.php');
 
     switch($pag) {
         //Menu
@@ -60,6 +61,9 @@
             break;
         case 'cadastro':
             include('pags/cadastro.php');
+            break;
+        case 'pesquisar':
+            include('pags/pesquisar.php');
             break;
         //Login
         case 'painel':

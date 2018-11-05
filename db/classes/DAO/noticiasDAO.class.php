@@ -239,23 +239,23 @@ class noticiasDAO {
 
     function carrossel(){
         try {
-            $stmt = $this->pdo->prepare("SELECT not_cod, not_img FROM noticias WHERE not_ativo = 1 AND not_cat = 'eve' ORDER BY not_cod DESC LIMIT :limite");
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 AND not_cat = 'eve' ORDER BY not_cod DESC LIMIT :limite");
             $param = array(":limite" => 2);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
                 while($dados = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    // return $not_img = $dados['not_img'];
+                    echo $not_img = $dados['not_img'];
                     echo '<div class="carousel-item">';
-                    if (file_exists('img/noticias/' . $not_img) && !is_null($not_img)) {
-                        echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/'. $not_img . '" alt="Imagem do evento"  class="d-block w-100" height="50%" width="100%"></a>';
-                    } else {
-                        echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/semfoto.jpg" class="d-block w-100" height="50%" width="100%" alt="Sem foto"></a>';
-                    }
+                    // if (file_exists('img/noticias/' . $not_img) && !is_null($not_img)) {
+                    //     echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/'. $not_img . '" alt="Imagem do evento"  class="d-block w-100" height="50%" width="100%"></a>';
+                    // } else {
+                    //     echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/semfoto.jpg" class="d-block w-100" height="50%" width="100%" alt="Sem foto"></a>';
+                    // }
                     echo '<h5>'. $dados['not_titulo'] .'</h5>';
-                    if(!is_null($dados['not_titulo'])){
-                        echo '<p>'. $dados['not_titulo'] .'</p>';
-                    }
+                    // if(!is_null($dados['not_subtitulo'])){
+                        echo '<p>'. $dados['not_subtitulo'] .'</p>';
+                    // }
                     echo '</div>';
                 }
                 // return $dados = $stmt->fetch(PDO::FETCH_ASSOC);

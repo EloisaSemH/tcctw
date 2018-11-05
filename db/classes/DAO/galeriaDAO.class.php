@@ -106,42 +106,24 @@ class galeriaDAO {
                             $gal_img = $dados['gal_img'];
                             $gal_titulo = $dados['gal_titulo'];
                             $gal_desc = $dados['gal_desc'];
-                            echo '<div class="col-sm-4 mt-2">';
-                                echo '<a href="#" style="text-decoration: none">';
-                                    echo '<div class="card-header text-dark text-center" data-toggle="modal" data-target="#1">' . $gal_titulo . '</div>';
-                                    if (file_exists('img/galeria/' . $gal_img) && !is_null($gal_img)) {
-                                        echo '<img src="img/galeria/'. $gal_img . '" alt="' . $gal_titulo . '" class="img-thumbnail" data-toggle="modal" data-target="#1">';
-                                    } else {
-                                        echo '<img src="img/galeria/semfoto.jpg" class="img-thumbnail" alt="Sem foto" data-toggle="modal" data-target="#1" >';
-                                    }
-                                    echo '<div class="modal fade" id="1" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true">';
-                                        echo '<div class="modal-dialog modal-dialog-centered" role="document">';
-                                            echo '<div class="modal-content">';
-                                                echo '<div class="modal-header">';
-                                                    echo '<a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '">';
-                                                        echo '<h5 class="modal-title text-dark" id="' . $dados['gal_cod'] . '">' . $gal_titulo . '</h5>';
-                                                    echo '<a/>';
-                                                    echo '<button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">';
-                                                    echo '<a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '">';
-                                                        echo '<span aria-hidden="true">&times;</span></button></div><div class="modal-body text-dark">';
-                                                        if (file_exists('img/galeria/' . $gal_img) && !is_null($gal_img)) {
-                                                            echo '<img src="img/galeria/'. $gal_img . '" alt="' . $gal_titulo . '" class="img-thumbnail" data-toggle="modal" data-target="#1">';
-                                                        } else {
-                                                            echo '<img src="img/galeria/semfoto.jpg" class="img-thumbnail" alt="Sem foto" data-toggle="modal" data-target="#1" >';
-                                                        }
-                                                        if(!is_null($gal_desc)){
-                                                            echo  '<p class="text-center text-dark" style="text-decoration: none">' . $gal_desc . '</p>';
-                                                        }
-                                                    echo '</a>';
-                                                    echo '<div class="modal-footer">';
-                                                        echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>';
-                                                    echo '</div>';
-                                                echo '</div>';
-                                            echo '</div>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                echo '</a>';
-                            echo '</div>';
+                            echo '<div class="col-sm-4 mt-2"><a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '">' . $gal_titulo . '</div>';
+                            if (file_exists('img/galeria/' . $gal_img) && !is_null($gal_img)) {
+                                echo '<img src="img/galeria/'. $gal_img . '" alt="' . $gal_titulo . '" class="img-thumbnail" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '">';
+                            } else {
+                                echo '<img src="img/galeria/semfoto.jpg" class="img-thumbnail" alt="Sem foto" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '" >';
+                            }
+                            echo '<div class="modal fade" id="' . $dados['gal_cod'] . '" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document">';
+                            echo '<div class="modal-content"><div class="modal-header"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '"><h5 class="modal-title text-dark" id="' . $dados['gal_cod'] . '">' . $gal_titulo . '</h5>';
+                            echo '<a/><button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '"><span aria-hidden="true">&times;</span></button></div><div class="modal-body text-dark">';
+                            if (file_exists('img/galeria/' . $gal_img) && !is_null($gal_img)) {
+                                echo '<img src="img/galeria/'. $gal_img . '" alt="' . $gal_titulo . '" class="img-thumbnail" data-toggle="modal" data-target="#1">';
+                            } else {
+                                echo '<img src="img/galeria/semfoto.jpg" class="img-thumbnail" alt="Sem foto" data-toggle="modal" data-target="#1" >';
+                            }
+                            if(!is_null($gal_desc)){
+                                echo  '<p class="text-center text-dark" style="text-decoration: none">' . $gal_desc . '</p>';
+                            }
+                            echo '</a><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button></div></div></div></div></div></a></div>';
 
                             $colConstruida++;
                             if($colConstruida == $qtdcol){

@@ -19,6 +19,8 @@ $noticiasDAO = new noticiasDAO();
     <div class="carousel-item">
       <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Terceiro slide">
     </div> -->
+<?php print_r($noticiasDAO->carrossel()); ?>
+
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -29,7 +31,6 @@ $noticiasDAO = new noticiasDAO();
     <span class="sr-only">Próximo</span>
   </a>
 </div>
-<?php print_r($noticiasDAO->carrossel()); ?>
 
 <!-- Sobre 1 -->
 <div class="col-sm-4 float-left mt-2">
