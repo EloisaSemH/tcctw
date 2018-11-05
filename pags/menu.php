@@ -23,9 +23,19 @@
             <a class="nav-link" href="index.php?&pg=contato">Contato</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
-        <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit">Pesquisar</button>
+      <form class="form-inline my-2 my-lg-0" action="" method="POST">
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa">
+        <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit" name="ir">Pesquisar</button>
+        <?php
+        if(isset($_POST['ir'])){
+          $pesquisa  = str_replace(" ", "+", $_POST['pesquisa']);
+          ?>
+          <script type="text/javascript">
+            document.location.href = "index.php?&pg=pesquisar&pagina=1&<?php echo $pesquisa; ?>";
+          </script>
+          <?php
+        }
+        ?>
       </form>
 
       <?php
