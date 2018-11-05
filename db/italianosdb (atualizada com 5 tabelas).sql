@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Out-2018 às 19:41
+-- Generation Time: 02-Nov-2018 às 20:27
 -- Versão do servidor: 10.1.36-MariaDB
 -- versão do PHP: 7.2.10
 
@@ -27,6 +27,19 @@ USE `italianosdb`;
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `galeria`
+--
+
+CREATE TABLE `galeria` (
+  `gal_cod` int(11) NOT NULL,
+  `gal_img` varchar(64) NOT NULL,
+  `gal_titulo` varchar(128) NOT NULL,
+  `gal_desc` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `noticias`
 --
 
@@ -34,9 +47,11 @@ CREATE TABLE `noticias` (
   `not_cod` int(11) NOT NULL,
   `not_autor` varchar(100) NOT NULL,
   `not_titulo` varchar(128) NOT NULL,
-  `not_subtitulo` varchar(256) NOT NULL,
+  `not_subtitulo` varchar(256) DEFAULT NULL,
   `not_data` date NOT NULL,
   `not_hora` time NOT NULL,
+  `not_img` varchar(256) DEFAULT NULL,
+  `not_cat` varchar(3) NOT NULL DEFAULT 'not',
   `not_ativo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -50,6 +65,13 @@ CREATE TABLE `senha` (
   `usuario_us_cod` int(11) NOT NULL,
   `se_senha` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `senha`
+--
+
+INSERT INTO `senha` (`usuario_us_cod`, `se_senha`) VALUES
+(1, '38f41bb7c2e458bd8b9b3f5cf3f0b84f');
 
 -- --------------------------------------------------------
 
@@ -80,8 +102,21 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`us_cod`, `us_nome`, `us_email`, `us_sexo`, `us_data`, `us_hora`, `us_ip`, `us_tipo`) VALUES
+(1, 'Eloísa Carvalho', 'eloisactrindade21@gmail.com', 'f', '2018-10-26', '14:48:27', '::1', 3);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `galeria`
+--
+ALTER TABLE `galeria`
+  ADD PRIMARY KEY (`gal_cod`);
 
 --
 -- Indexes for table `noticias`
@@ -116,10 +151,22 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT for table `galeria`
+--
+ALTER TABLE `galeria`
+  MODIFY `gal_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
+--
+-- AUTO_INCREMENT for table `noticias`
+--
+ALTER TABLE `noticias`
+  MODIFY `not_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
+--
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `us_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `us_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -135,7 +182,7 @@ ALTER TABLE `senha`
 -- Limitadores para a tabela `textonoticias`
 --
 ALTER TABLE `textonoticias`
-  ADD CONSTRAINT `fk_textonoticias_noticias` FOREIGN KEY (`noticias_not_cod`) REFERENCES `noticias` (`not_cod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_textonoticias_noticias` FOREIGN KEY (`noticias_not_cod`) REFERENCES `noticias` (`not_cod`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
