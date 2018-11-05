@@ -36,7 +36,7 @@
         <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p><a class="text-secondary" href="#!">Sua conta</a></p>
         <p><a class="text-secondary" href="https://www.facebook.com/pages/category/Nonprofit-Organization/Asilo-Mendicidade-Nossa-Senhora-da-Candel%C3%A1ria-175852372574937/">Asilo Mendicidade N. Sra. da Candelária</a></p>
-        <p> <a class="text-secondary" href="#!" title="Em breve!">Comprar ebook</a></p>
+        <p> <a class="text-secondary" href="#!" title="Em breve!">Compre o ebook!</a></p>
     </div>
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
         <!-- Contato -->

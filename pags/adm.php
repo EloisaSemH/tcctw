@@ -23,8 +23,8 @@ if($dados['us_sexo'] == 'f'){
 <div class="container mt-4">
     <div class="card">
         <div class="card-body text-justify">
-            <a href="index.php?&pg=logout"><i class="fas fa-times float-right text-dark" style="font-size: 25px;"></i></a>
-            <h6><a class="text-uppercase font-weight-bold text-dark" href="?&pg=usuariopg"><?php echo $dados['us_nome']; ?></a></h6>
+            <a href="index.php?&pg=logout" title="Sair"><i class="fas fa-times float-right text-dark" style="font-size: 25px;"></i></a>
+            <h6><a class="text-uppercase font-weight-bold text-dark" href="?&pg=usuariopg" title="Ir para a página de edição do usuário"><?php echo $dados['us_nome']; ?></a></h6>
             <?php if ($_SESSION['logado'] === 3){ ?>
             <p>Bem vind<?php echo $sexo; ?> à página de administração, Webmaster.</p>
             <?php }else{ ?>

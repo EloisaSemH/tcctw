@@ -2,7 +2,6 @@
 require_once ("db/classes/DAO/noticiasDAO.class.php");
 $noticiasDAO = new noticiasDAO();
 ?>
-
 <!-- Os slides -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">

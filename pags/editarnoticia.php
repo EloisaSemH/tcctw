@@ -61,6 +61,16 @@
                         <input type="file" name="not_img" class="form-control" accept="image/png, image/jpeg"/>
                     </div>
                 </div>
+                <?php if($noticia['not_cat'] == 'not'){ ?>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" name='excluirfoto'>
+                            <label class="custom-control-label" for="customCheck1">Excluir foto da notícia</label>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>Categoria:</label>
@@ -117,54 +127,45 @@ if (isset($_POST["atualizar"])) {
     $noticias->setNot_subtitulo($_POST['not_subtitulo']);
     $noticias->setNot_cat($_POST['not_cat']);
     $noticias->setNot_ativo($_POST['not_ativo']);
+    $noticias->setNot_img($noticia['not_img']);
 
-    if(!is_null($_FILES['not_img']['name'])){
-        if($_FILES['not_img']['error'] == 1){
-            ?>
-            <script type="text/javascript">
-                alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
-            </script>
-            <?php
-            die();
-        }else{
-
-        $imagem = $_FILES['not_img'];
-
-        $data = date("Y/m/d");
-        $hora = date("H:i:s");
-
-        $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
-        $extensao = '.' . strtolower ($extensao);
-
-        $novadata = str_replace("/", "", $data);
-        $novahora = str_replace(":", "", $hora);
-        
-        $nomeimagem = $_POST['not_cat'] . '_' . $novadata . $novahora . $extensao;
-
-        if(!is_null($noticia['not_img'])){
-            unlink('img/noticias/' . $noticia['not_img']);
-        }
-        move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
-    }
-        $noticias->setNot_img($nomeimagem);
-        print_r($_FILES['not_img']);
-        echo $noticias->getNot_img();
-        die();
+    if(isset($_POST['excluirfoto'])){
+        $noticias->setNot_img(NULL);
     }else{
-        if($_FILES['not_img']['error'] == 1){
-            ?>
-            <script type="text/javascript">
-                alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
-            </script>
-            <?php
-            die();
-        }else{
-            $noticias->setNot_img($noticia['not_img']);
-            echo 'anitga ' . $noticia['not_img'];
+        if(!is_null($_FILES['not_img']['name'])){
+            if($_FILES['not_img']['error'] == 1){
+                ?>
+                <script type="text/javascript">
+                    alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+                </script>
+                <?php
+                die();
+            }else{
+                $imagem = $_FILES['not_img'];
+
+                $data = date("Y/m/d");
+                $hora = date("H:i:s");
+
+                $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
+                $extensao = '.' . strtolower ($extensao);
+
+                $novadata = str_replace("/", "", $data);
+                $novahora = str_replace(":", "", $hora);
+                
+                $nomeimagem = $_POST['not_cat'] . '_' . $novadata . $novahora . $extensao;
+
+                if(!is_null($noticia['not_img']) && $noticia['not_img'] == 'NULL'){
+                    unlink('img/noticias/' . $noticia['not_img']);
+                }
+
+                $verf = move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
+
+                if($verf == 1){
+                    $noticias->setNot_img($nomeimagem);
+                }
+            }
         }
     }
-    die(print_r($_FILES['not_img']));
-
 
     if ($noticiasDAO->atualizarNoticia($noticias)) {
         $textonoticias->setNot_cod($not_cod);

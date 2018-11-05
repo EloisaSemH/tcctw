@@ -87,31 +87,40 @@ if (isset($_POST["enviar"])) {
     $noticias->setNot_hora($hora);
     $noticias->setNot_cat($_POST['not_cat']);
     
-
     if(isset($_POST['not_subtitulo'])){
         $noticias->setNot_subtitulo($_POST['not_subtitulo']);
     }else{
-        $noticias->setNot_subtitulo('NULL');
+        $noticias->setNot_subtitulo();
     }
     
+    if(!is_null($_FILES['not_img']['name'])){
+        if($_FILES['not_img']['error'] == 1){
+            ?>
+            <script type="text/javascript">
+                alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+            </script>
+            <?php
+            die();
+        }else{
+            $imagem = $_FILES['not_img'];
 
-    if(is_null($_FILES['not_img']['error'])){
-        $imagem = $_FILES['not_img'];
-        
-        $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
-        $extensao = '.' . strtolower ($extensao);
+            $data = date("Y/m/d");
+            $hora = date("H:i:s");
 
-        $novadata = str_replace("/", "", $data);
-        $novahora = str_replace(":", "", $hora);
+            $extensao = pathinfo ($imagem['name'], PATHINFO_EXTENSION);
+            $extensao = '.' . strtolower ($extensao);
 
-        $nomeimagem = $_POST['not_cat'] . '_' . $novadata . $novahora . $extensao;
+            $novadata = str_replace("/", "", $data);
+            $novahora = str_replace(":", "", $hora);
+            
+            $nomeimagem = $_POST['not_cat'] . '_' . $novadata . $novahora . $extensao;
 
-        $noticias->setNot_img($nomeimagem);
-        
-        move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
+            $verf = move_uploaded_file($imagem['tmp_name'], 'img/noticias/' . $nomeimagem);
 
-    }else{
-        $noticias->setNot_img('NULL'); 
+            if($verf == 1){
+                $noticias->setNot_img($nomeimagem);
+            }
+        }
     }
 
     if ($noticiasDAO->inserirNoticia($noticias)) {
@@ -123,7 +132,7 @@ if (isset($_POST["enviar"])) {
             ?>
             <script type="text/javascript">
                 alert("Notícia enviada com sucesso!");
-                document.location.href = "index.php?&pg=publicarnoticia";
+                document.location.href = "index.php?&pg=adm";
             </script>
             <?php
         } else {

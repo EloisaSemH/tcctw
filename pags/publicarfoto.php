@@ -61,28 +61,47 @@ if (isset($_POST["enviar"])) {
     }
     
     //Fotos
-    if(!is_null($_FILES['not_img']['error'])){
+    if(!is_null($_FILES['gal_img']['name'])){
+        if($_FILES['gal_img']['error'] == 1){
+            ?>
+            <script type="text/javascript">
+                alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+            </script>
+            <?php
+            die();
+        }else{
+            $extensao = pathinfo ($_FILES['gal_img']['name'], PATHINFO_EXTENSION);
+            $extensao = '.' . strtolower ($extensao);
+
+            $data = date("Y/m/d");
+            $hora = date("H:i:s");
+            $novadata = str_replace("/", "", $data);
+            $novahora = str_replace(":", "", $hora);
+            
+            $nomeimagem = 'gal_' . $novadata . $novahora . $extensao;
+
+            $verf = move_uploaded_file($_FILES['gal_img']['tmp_name'], 'img/galeria/' . $nomeimagem);
+
+            if($verf == 1){
+                $galeria->setGal_img($nomeimagem);
+            }else{
+                ?>
+                <script type="text/javascript">
+                    alert("Desculpe, houve um erro ao enviar a foto, contate o Webmaster para resolvê-lo. Código: IMGISNULL01");
+                    document.location.href = "index.php?&pg=publicarfoto";
+                </script>
+                <?php
+            }
+        }
+    }else{
         ?>
         <script type="text/javascript">
-            alert("Desculpe, houve um erro ao enviar a imagem. Envie uma imagem diferente e tente novamente.");
+            alert("É preciso eviar uma foto!");
+            document.location.href = "index.php?&pg=publicarfoto";
         </script>
         <?php
-        die();
-    }else{
-        $extensao = pathinfo ($_FILES['gal_img']['name'], PATHINFO_EXTENSION);
-        $extensao = '.' . strtolower ($extensao);
-
-        $data = date("Y/m/d");
-        $hora = date("H:i:s");
-        $novadata = str_replace("/", "", $data);
-        $novahora = str_replace(":", "", $hora);
-
-        $nomeimagem = 'gal' . '_' . $novadata . $novahora . $extensao;
-        
-        $a = move_uploaded_file($_FILES['gal_img']['tmp_name'], 'img/galeria/' . $nomeimagem);
-
-        $galeria->setGal_img($nomeimagem);
     }
+
     if ($galeriaDAO->inserirfoto($galeria)) {
         ?>
         <script type="text/javascript">
@@ -92,7 +111,7 @@ if (isset($_POST["enviar"])) {
     }else{
         ?>
         <script type="text/javascript">
-            alert("Desculpe, houve um erro ao enviar a foto, contate o Webmaster para resolvê-lo.");
+            alert("Desculpe, houve um erro ao enviar a foto, contate o Webmaster para resolvê-lo. Código: IMGINSERT01");
         </script>
         <?php
     }
