@@ -240,13 +240,13 @@ class noticiasDAO {
     function carrossel(){
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 AND not_cat = 'eve' ORDER BY not_cod DESC LIMIT :limite");
-            $param = array(":limite" => 2);
+            $param = array(":limite" => 3);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
                 while($dados = $stmt->fetch(PDO::FETCH_ASSOC)){
                     echo $not_img = $dados['not_img'];
-                    echo '<div class="carousel-item">';
+                    // echo '<div class="carousel-item">';
                     // if (file_exists('img/noticias/' . $not_img) && !is_null($not_img)) {
                     //     echo '<a href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '"><img src="img/noticias/'. $not_img . '" alt="Imagem do evento"  class="d-block w-100" height="50%" width="100%"></a>';
                     // } else {
@@ -256,7 +256,7 @@ class noticiasDAO {
                     // if(!is_null($dados['not_subtitulo'])){
                         echo '<p>'. $dados['not_subtitulo'] .'</p>';
                     // }
-                    echo '</div>';
+                    // echo '</div>';
                 }
                 // return $dados = $stmt->fetch(PDO::FETCH_ASSOC);
             }else{
@@ -264,6 +264,70 @@ class noticiasDAO {
             }
         } catch (PDOException $ex) {
             echo "ERRO 311: {$ex->getMessage()}";
+        }
+
+    }
+
+    function pesquisarNoticiasQnt($pesquisa){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 AND not_titulo LIKE '%:pesquisa%'");
+            $param = array(":pesquisa" => $pesquisa);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $consulta;
+            }else{
+                return '';
+            }
+        } catch (PDOException $ex) {
+            echo "ERRO 312: {$ex->getMessage()}";
+        }
+    }
+
+    function pesquisarNoticias($pesquisa, $limite, $quantpag){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM noticias WHERE not_ativo = 1 AND not_titulo LIKE '%:pesquisa%' ORDER BY not_cod DESC LIMIT :limite, :quantpag");
+            $param = array(":pesquisa" => $pesquisa, ":limite" => $limite, ":quantpag" => $quantpag);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $cel = $stmt->rowCount();
+                $col = 1;
+                $qtdcol = $quantpag;
+                $celconstruida = 0;
+                $colConstruida = 0;
+                echo '<table class="table">';        
+                for ($a = 0; $a < $qtdcol; $a++) {
+                    if ($col == 1) {
+                        echo '<tr>';
+                        $celconstruida++;
+                    }
+                    if ($celconstruida <= $cel) {
+                        while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            $not_titulo = $dados['not_titulo'];
+                            $not_subtitulo = $dados['not_subtitulo'];
+                            echo '<td>';
+                            echo '<a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_titulo . '</a>';
+                            if(!is_null($not_subtitulo)){
+                                echo '<br/><a class="text-dark" href="index.php?&pg=noticia&id=' . $dados['not_cod'] . '">' . $not_subtitulo . '</a>';
+                            }
+                            echo '</td>';
+                            echo '</tr>';
+
+                            $colConstruida++;
+                            if($colConstruida == $qtdcol){
+                                $colConstruida = 0;
+                            }
+                        }
+                    }
+                }
+            echo '</table>';
+            }else{
+                
+            }
+        }catch (PDOException $ex){
+            echo "ERRO 313: {$ex->getMessage()}";
         }
     }
 }

@@ -28,10 +28,11 @@
         <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit" name="ir">Pesquisar</button>
         <?php
         if(isset($_POST['ir'])){
+          //selectlike
           $pesquisa  = str_replace(" ", "+", $_POST['pesquisa']);
           ?>
           <script type="text/javascript">
-            document.location.href = "index.php?&pg=pesquisar&pagina=1&<?php echo $pesquisa; ?>";
+            document.location.href = "index.php?&pg=pesquisar&pagina=1&search=<?php echo $pesquisa; ?>";
           </script>
           <?php
         }

@@ -1,20 +1,23 @@
 <?php //&
-    if(isset($_GET['pagina'])){
-        $pg = $_GET['pagina'];
+	if(isset($_GET['search'])){
+        $pesquisa = $_GET['search'];
     }else{
         ?>
         <script type="text/javascript">
-            document.location.href = "index.php?&pg=pesquisar&pagina=1";
+            document.location.href = "index.php?&pg=!";
         </script>
         <?php
-    }
+	}
+	
+    $pg = $_GET['pagina'];
+
 
     require_once ("db/classes/DAO/noticiasDAO.class.php");
     $noticiasDAO = new noticiasDAO();
 
-    $numnoticias = $noticiasDAO->contarNoticiasAtivasOuNao('1');
+    echo $numnoticias = $noticiasDAO->pesquisarNoticiasQnt($pesquisa);
 
-    $qntporpag = 10;
+    $qntporpag = 12;
 
     $numpags = ceil($numnoticias/$qntporpag);
 
@@ -24,7 +27,7 @@
 <div class="container-fluid mt-2">
   <div class="container">
         <div class="row">
-            <?php $noticiasDAO->pegarTodasNoticias('1', $inicio, $qntporpag); ?>
+            <?php //$noticiasDAO->pesquisarNoticias($pesquisa, $inicio, $qntporpag); ?>
         </div>
         <?php
 			$pagina_anterior = $pg - 1;
