@@ -250,7 +250,7 @@ class noticiasDAO {
                 return 0;
             }
         } catch (PDOException $ex) {
-            echo "ERRO 312: {$ex->getMessage()}";
+            echo "ERRO 311: {$ex->getMessage()}";
         }
     }
 
@@ -286,7 +286,7 @@ class noticiasDAO {
                 return '';
             }
         } catch (PDOException $ex) {
-            echo "ERRO 311: {$ex->getMessage()}";
+            echo "ERRO 312: {$ex->getMessage()}";
         }
 
     }
@@ -304,7 +304,7 @@ class noticiasDAO {
                 return 0;
             }
         } catch (PDOException $ex) {
-            echo "ERRO 312: {$ex->getMessage()}";
+            echo "ERRO 313: {$ex->getMessage()}";
         }
     }
 
@@ -350,7 +350,7 @@ class noticiasDAO {
                 return '';
             }
         }catch (PDOException $ex){
-            echo "ERRO 313: {$ex->getMessage()}";
+            echo "ERRO 314: {$ex->getMessage()}";
         }
     }
 }

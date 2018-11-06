@@ -11,7 +11,6 @@
 	
     $pg = $_GET['pagina'];
 
-
     require_once ("db/classes/DAO/noticiasDAO.class.php");
     $noticiasDAO = new noticiasDAO();
 
@@ -27,9 +26,13 @@
 <div class="container-fluid mt-2">
   <div class="container">
         <div class="row">
-			<?php $res = $noticiasDAO->pesquisarNoticias($pesquisa, $inicio, $qntporpag);
+			<?php
+			if($_GET['search'] != ''){
+				$res = $noticiasDAO->pesquisarNoticias($pesquisa, $inicio, $qntporpag);
 				if(!is_null($res)){ ?>
 					<h5><p>Desculpe, não foi possível encontrar resultados com base nas palavras pesquisadas.</p></h5>
+				<?php }}else{ ?>
+					<h5><p>Pesquisa nula, por favor, digite palavras relacionadas ao que procura na barra de pesquisa.</p></h5>
 				<?php } ?>
         </div>
         <?php
