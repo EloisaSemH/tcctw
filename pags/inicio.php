@@ -5,22 +5,23 @@ $noticiasDAO = new noticiasDAO();
 <!-- Os slides -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <?php
+      $numcar = $noticiasDAO->contarCarrossel();
+      for($i = 0; $i < $numcar; $i++){
+        switch($i){
+          case 0:
+            $classe = 'class="active"';
+            break;
+          default:
+            $classe = '';
+            break;
+        }
+        echo '<li data-target="#carouselExampleIndicators" data-slide-to="'. $i .'"'. $classe .'></li>';
+      }
+    ?>
   </ol>
   <div class="carousel-inner">
-    <!-- <div class="carousel-item active">
-      <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Primeiro slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Segundo slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="img/Italianos em Itu.png" height="50%" width="100%" alt="Terceiro slide">
-    </div> -->
-<?php print_r($noticiasDAO->carrossel()); ?>
-
+    <?php $noticiasDAO->carrossel(); ?>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

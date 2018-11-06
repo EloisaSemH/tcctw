@@ -15,9 +15,9 @@
     require_once ("db/classes/DAO/noticiasDAO.class.php");
     $noticiasDAO = new noticiasDAO();
 
-    echo $numnoticias = $noticiasDAO->pesquisarNoticiasQnt($pesquisa);
+	$numnoticias = $noticiasDAO->pesquisarNoticiasQnt($pesquisa);
 
-    $qntporpag = 12;
+	$qntporpag = 12;
 
     $numpags = ceil($numnoticias/$qntporpag);
 
@@ -27,7 +27,10 @@
 <div class="container-fluid mt-2">
   <div class="container">
         <div class="row">
-            <?php //$noticiasDAO->pesquisarNoticias($pesquisa, $inicio, $qntporpag); ?>
+			<?php $res = $noticiasDAO->pesquisarNoticias($pesquisa, $inicio, $qntporpag);
+				if(!is_null($res)){ ?>
+					<h5><p>Desculpe, não foi possível encontrar resultados com base nas palavras pesquisadas.</p></h5>
+				<?php } ?>
         </div>
         <?php
 			$pagina_anterior = $pg - 1;
