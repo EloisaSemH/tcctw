@@ -38,7 +38,7 @@
 				<li class="page-item">
 					<?php
 					if($pagina_anterior != 0){ ?>
-						<a href="index.php?&pg=noticias&pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous" class="page-link">
+						<a href="index.php?&pg=noticias&pagina=<?php echo $pagina_anterior; ?>&search=<?php echo $pesquisa; ?>" aria-label="Previous" class="page-link">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					<?php }else{ ?>
@@ -47,12 +47,12 @@
 				</li>
 				<?php 
 				for($i = 1; $i < $numpags + 1; $i++){ ?>
-					<li class="page-item"><a href="index.php?&pg=noticias&pagina=<?php echo $i; ?>" class="page-link"><?php echo $i; ?></a></li>
+					<li class="page-item"><a href="index.php?&pg=noticias&pagina=<?php echo $i; ?>&search=<?php echo $pesquisa; ?>" class="page-link"><?php echo $i; ?></a></li>
 				<?php } ?>
 				<li class="page-item">
 					<?php
 					if($pagina_posterior <= $numpags){ ?>
-						<a href="index.php?&pg=noticias&pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous" class="page-link">
+						<a href="index.php?&pg=noticias&pagina=<?php echo $pagina_posterior; ?>&search=<?php echo $pesquisa; ?>" aria-label="Previous" class="page-link">
 							<span aria-hidden="true" >&raquo;</span>
 						</a>
 					<?php }else{ ?>
