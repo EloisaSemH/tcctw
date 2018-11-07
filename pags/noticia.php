@@ -88,15 +88,42 @@
                         </div>
                     </div>
                 </form>
-            <?php }
+                <?php
+                    if(isset($_POST['enviar'])){
+                        $comentario->setCom_not_cod($noticia['not_cod']);
+                        $comentario->setCom_us_cod($_SESSION['cod_usuario']);
+                        $comentario->setCom_texto($_POST['com_texto']);
+                        $comentario->setCom_data(date("Y/m/d"));
+                        $comentario->setCom_hora(date("H:i:s"));
+
+                        if ($comentarioDAO->enviarComentario($comentario)) {
+                            ?>
+                            <script type="text/javascript">
+                                alert("Comentário enviado com sucesso!");
+                                document.location.href = "#";
+                            </script>
+                            <?php
+                        } else {
+                            ?>
+                            <script type="text/javascript">
+                                alert("Desculpe, houve algum erro ao enviar seu comentário.");
+                            </script>
+                            <?php
+                        }
+                    }
+            }
                 $qnt = $comentarioDAO->contarNumeroComentarios($noticia['not_cod']);
                 $retorno = $comentarioDAO->pegarComentarios($noticia['not_cod']);
-                
-                for($i = 1; $i <= $qnt; $i++){
-                    $usu = $usuarioDAO->pegarInfos($retorno["$i"]['com_us_cod']);
-                    $dataComent = date("d/m/Y", strtotime($retorno["$i"]['com_data']));
-                    $horaComent = date("H:i", strtotime($retorno["$i"]['com_hora']));
+                echo $qnt;
+                print_r($retorno);
+// die();
+$listaComentario = $comentarioController->RetornarComentario('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+                foreach($retorno as $dado){
+                    $usu = $usuarioDAO->pegarInfos($dado['com_us_cod']);
+                    $dataComent = date("d/m/Y", strtotime($dado['com_data']));
+                    $horaComent = date("H:i", strtotime($dado['com_hora']));
                     ?>
+                
                     <div class="form-row justify-content-center">
                         <div class="bg-white text-dark"><?= $usu['us_nome']; ?></div>
                     </div>
@@ -104,37 +131,37 @@
                         <div class="bg-white text-dark"><?= $dataComent . ' às ' . $horaComent; ?></div>
                     </div>
                     <div class="form-row justify-content-center">
-                        <div class="mb-3 bg-white text-dark"><?= $retorno["$i"]['com_texto']; ?></div>
+                        <div class="mb-3 bg-white text-dark"><?= $dado['com_texto']; ?></div>
                     </div>
                     <div class="form-row justify-content-center">
-                        <?php if($retorno["$i"]['com_us_cod'] === $usu['us_cod'] || $_SESSION['logado'] == 3){ ?>
+                        <?php if($_SESSION['cod_usuario']  === $usu['us_cod'] || $_SESSION['logado'] == 3){?>
                             <form action="" method="post">
                                 <button name="excluirComentario" class="btn btn-danger mb-4"><i class="far fa-trash-alt float-right text-dark"></i></button>
                             <?php if(isset($_POST['excluirComentario'])){ ?>
                                 <div class="alert alert-danger justify-content-center" role="alert">
-                                <label>Você realmente deseja excluir o comentário?</label><br/>
-                                <input type="submit" value="Sim" name="excluirComentarioSIM" class="btn btn-outline-danger mb-4">
-                                <input type="submit" value="Cancelar" name="excluirComentarioNAO" class="btn btn-outline-dark mb-4"> 
+                                    <label>Você realmente deseja excluir o comentário?</label><br/>
+                                    <input type="submit" value="Sim" name="excluirComentarioSIM" class="btn btn-outline-danger mb-4">
+                                    <input type="submit" value="Cancelar" name="excluirComentarioNAO" class="btn btn-outline-dark mb-4"> 
                                 </div>
                             </form>
-                            <?php }
-                                if(isset($_POST['excluirComentarioSIM'])){
-                                    $comentario->setCom_cod($retorno["$i"]['com_cod']);
+                            <?php // }
+                            //     if(isset($_POST['excluirComentarioSIM'])){
+                            //         $comentario->setCom_cod($dado['com_cod']);
                                     
-                                    if ($comentarioDAO->excluirComentario($comentario)) {
-                                        ?>
-                                        <script type="text/javascript">
-                                            alert("Comentário excluido com sucesso!");
-                                            document.location.href = "index.php?&pg=noticia&id='". <?= $not_cod; ?> . "'";
-                                        </script>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <script type="text/javascript">
-                                            alert("Desculpe, houve algum erro ao excluido seu comentário.");
-                                        </script>
-                                        <?php
-                                    }
+                            //         if ($comentarioDAO->excluirComentario($comentario)) {
+                            //             ?>
+                                         <script type="text/javascript">
+                            //                 alert("Comentário excluido com sucesso!");
+                            //                 document.location.href = "#";
+                            //             </script>
+                                         <?php
+                            //         } else {
+                            //             ?>
+                                         <script type="text/javascript">
+                            //                 alert("Desculpe, houve algum erro ao excluido seu comentário.");
+                            //             </script>
+                                         <?php
+                            //         }
                                 }
                             }
                             ?>
@@ -143,27 +170,3 @@
         </div>
     </div>
 </div>
-<?php
-if(isset($_POST['enviar'])){
-    $comentario->setCom_not_cod($noticia['not_cod']);
-    $comentario->setCom_us_cod($_SESSION['cod_usuario']);
-    $comentario->setCom_texto($_POST['com_texto']);
-    $comentario->setCom_data(date("Y/m/d"));
-    $comentario->setCom_hora(date("H:i:s"));
-
-    if ($comentarioDAO->enviarComentario($comentario)) {
-        ?>
-        <script type="text/javascript">
-            alert("Comentário enviado com sucesso!");
-            document.location.href = "index.php?&pg=noticia&id='". <?= $not_cod; ?> . "'";
-        </script>
-        <?php
-    } else {
-        ?>
-        <script type="text/javascript">
-            alert("Desculpe, houve algum erro ao enviar seu comentário.");
-        </script>
-        <?php
-    }
-}
-?>

@@ -42,7 +42,7 @@ class comentarioDAO{
 
     function excluirComentario(comentario $entComentario){
         try {
-            $stmt = $this->pdo->prepare("DELETE FROM comentario WHERE com_cod = :com_cod");
+            $stmt = $this->pdo->prepare("DELETE FROM comentario WHERE `comentario`.`com_cod` = :com_cod");
             $param = array(
                 ":com_cod" => $entComentario->getCom_cod()
             );
@@ -77,18 +77,30 @@ class comentarioDAO{
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
-                // $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
                 $num = 0;
-                while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $num++;
-                    $retorno["$num"]['com_cod'] = $dados['com_cod'];
-                    $retorno["$num"]['com_not_cod'] = $dados['com_not_cod'];
-                    $retorno["$num"]['com_us_cod'] = $dados['com_us_cod'];
-                    $retorno["$num"]['com_texto'] = $dados['com_texto'];
-                    $retorno["$num"]['com_data'] = $dados['com_data'];
-                    $retorno["$num"]['com_hora'] = $dados['com_hora'];
+                // while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                //     $num++;
+                //     $retorno["$num"]['com_cod'] = $dados['com_cod'];
+                //     $retorno["$num"]['com_not_cod'] = $dados['com_not_cod'];
+                //     $retorno["$num"]['com_us_cod'] = $dados['com_us_cod'];
+                //     $retorno["$num"]['com_texto'] = $dados['com_texto'];
+                //     $retorno["$num"]['com_data'] = $dados['com_data'];
+                //     $retorno["$num"]['com_hora'] = $dados['com_hora'];
+                // }
+                $listaComentario = [];
+            
+                foreach ($consulta as $dr) {
+                    $comentario = new Comentario();
+                    $comentario->setCod($dr["cod"]);
+                    $comentario->setNome($dr["nome"]);
+                    $comentario->setMensagem($dr["mensagem"]);
+
+                    $listaComentario[] = $comentario;
                 }
-                return $retorno;
+
+                return $listaComentario;
+                // return $retorno;
             }else{
                 return '';
             }

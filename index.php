@@ -8,6 +8,7 @@
     if($pag == NULL || $pag == ''){
         if(!isset($_SESSION['logado'])){
             $_SESSION['logado'] = 0;
+            $_SESSION['cod_usuario'] = '';
         }
         ?>
         <script type="text/javascript">
@@ -67,6 +68,9 @@
             include('pags/pesquisar.php');
             break;
         //Login
+        case 'recuperarsenha':
+            include('pags/recuperarsenha.php');
+            break;
         case 'painel':
             include('pags/painel.php');
             break;
