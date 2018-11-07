@@ -31,6 +31,7 @@
         ?>
         <script type="text/javascript">
             alert("Até breve!");
+            document.location.href = "index.php?&pg=!";
         </script>
         <?php
         $_SESSION['logado'] = 0;
