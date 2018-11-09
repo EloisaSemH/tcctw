@@ -4,6 +4,7 @@ class comentario{
     private $com_cod;
     private $com_not_cod;
     private $com_us_cod;
+    private $com_autor;
     private $com_texto;
     private $com_data;
     private $com_hora;
@@ -18,6 +19,10 @@ class comentario{
 
     function getCom_us_cod() {
         return $this->com_us_cod;
+    }
+
+    function getCom_autor() {
+        return $this->com_autor;
     }
 
     function getCom_texto() {
@@ -42,6 +47,10 @@ class comentario{
 
     function setCom_us_cod($com_us_cod) {
         $this->com_us_cod = $com_us_cod;
+    }
+
+    function setCom_autor($com_autor) {
+        $this->com_autor = $com_autor;
     }
 
     function setCom_texto($com_texto) {

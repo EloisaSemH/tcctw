@@ -8,10 +8,11 @@ class comentarioDAO{
 
     function enviarComentario(comentario $entComentario){
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO comentario VALUES ('', :com_not_cod, :com_us_cod, :com_texto, :com_data, :com_hora)");
+            $stmt = $this->pdo->prepare("INSERT INTO comentario VALUES ('', :com_not_cod, :com_us_cod, :com_autor, :com_texto, :com_data, :com_hora)");
             $param = array(
                 ":com_not_cod" => $entComentario->getCom_not_cod(),
                 ":com_us_cod" => $entComentario->getCom_us_cod(),
+                ":com_autor" => $entComentario->getCom_autor(),
                 ":com_texto" => $entComentario->getCom_texto(),
                 ":com_data" => $entComentario->getCom_data(),
                 ":com_hora" => $entComentario->getCom_hora()
@@ -40,11 +41,11 @@ class comentarioDAO{
         }
     }
 
-    function excluirComentario(comentario $entComentario){
+    function excluirComentario($com_cod){
         try {
             $stmt = $this->pdo->prepare("DELETE FROM comentario WHERE `comentario`.`com_cod` = :com_cod");
             $param = array(
-                ":com_cod" => $entComentario->getCom_cod()
+                ":com_cod" => $com_cod
             );
             return $stmt->execute($param);
 
@@ -70,37 +71,23 @@ class comentarioDAO{
         }
     }
 
-    function pegarComentarios($not_cod){
+    function pegarComentarios($not_cod, $sessionUsu, $sessionLog){
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM comentario WHERE com_not_cod = :not_cod ORDER BY com_cod DESC");
             $param = array(":not_cod" => $not_cod);
             $stmt->execute($param);
             
             if($stmt->rowCount() > 0){
-                $consulta = $stmt->fetch(PDO::FETCH_ASSOC);
-                $num = 0;
-                // while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                //     $num++;
-                //     $retorno["$num"]['com_cod'] = $dados['com_cod'];
-                //     $retorno["$num"]['com_not_cod'] = $dados['com_not_cod'];
-                //     $retorno["$num"]['com_us_cod'] = $dados['com_us_cod'];
-                //     $retorno["$num"]['com_texto'] = $dados['com_texto'];
-                //     $retorno["$num"]['com_data'] = $dados['com_data'];
-                //     $retorno["$num"]['com_hora'] = $dados['com_hora'];
-                // }
-                $listaComentario = [];
-            
-                foreach ($consulta as $dr) {
-                    $comentario = new Comentario();
-                    $comentario->setCod($dr["cod"]);
-                    $comentario->setNome($dr["nome"]);
-                    $comentario->setMensagem($dr["mensagem"]);
-
-                    $listaComentario[] = $comentario;
+                while($consulta = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $dataComent = date("d/m/Y", strtotime($consulta['com_data']));
+                    $horaComent = date("H:i", strtotime($consulta['com_hora']));
+                    echo '<div class="form-row justify-content-center"><div class="bg-white text-dark">'. $consulta['com_autor'] .'</div></div>';
+                    echo '<div class="form-row justify-content-center"><div class="bg-white text-dark">'. $dataComent . ' às ' . $horaComent .'</div></div>';
+                    echo '<div class="form-row justify-content-center"><div class="bg-white text-dark">'. $consulta['com_texto'] .'</div></div>';
+                    if($sessionUsu === $consulta['com_us_cod'] || $sessionLog == 3){
+                        echo '<form action="" method="post" class="justify-content-center"><input type="hidden" value="'. $consulta['com_cod'] .'" name="codComent"/><button name="excluirComentario" class="btn btn-danger mb-4"><i class="far fa-trash-alt float-right text-dark"></i></button></form>';
+                    }
                 }
-
-                return $listaComentario;
-                // return $retorno;
             }else{
                 return '';
             }
