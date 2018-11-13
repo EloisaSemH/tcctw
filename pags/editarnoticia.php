@@ -34,7 +34,7 @@
             <form name="login" action="" method="post" enctype="multipart/form-data">
                 <div class="form-row justify-content-center">
                     <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
-                        <img src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
+                        <img widht="400" height="400" src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center">

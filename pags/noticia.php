@@ -32,47 +32,59 @@
     <div class="row">
         <div class="col-md-12">
             <form name="noticia" action="" method="post" enctype="">
+                
                 <div class="form-row justify-content-center">
-                    <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
-                        <img src="img/noticias/<?= $noticia['not_img']; ?>" class=""/>
-                    <?php } ?>
-                </div> 
-                <div class="form-row justify-content-center">
-                    <div class="p-3 mb-2 bg-white text-dark"><?php if($noticia['not_cat'] == 'not'){
-                        echo 'NOTÍCIA';
-                    }elseif($noticia['not_cat'] == 'eve'){
-                        echo 'EVENTO';
-                    } ?></div>                    
+                    <div class="p-3 mb-2 bg-white text-dark"></div>                    
                 </div>                
                 
-                <div class="form-row justify-content-center">
-                    <div class="p-2 mb-2 bg-white text-dark"><h5><?= $noticia['not_titulo']; ?></h5></div>
+                <div class="form-row text-center">
+                <div class="p-2 mb-2 bg-white text-dark"><h2>
+                <?php if($noticia['not_cat'] == 'not'){
+                        echo 'NOTÍCIA: ';
+                    }elseif($noticia['not_cat'] == 'eve'){
+                        echo 'EVENTO: ';
+                    } ?>
+                    <?= $noticia['not_titulo']; ?></h2></div>
                 </div>  
                 <?php if($noticia['not_subtitulo'] != ''){ ?>
-                    <div class="form-row justify-content-center">
-                        <div class="p-3 mb-2 bg-white text-dark"><?= $noticia['not_subtitulo']; ?></div>
+                    <div class="form-row">
+                        <div class="lead p-3 mb-2 bg-white text-dark"><?= $noticia['not_subtitulo']; ?></div>
                     </div>
                 <?php } ?>
-                <div class="form-row justify-content-center">
+
+                <div class="text-right">
                     <div class="bg-white text-dark">Publicado por: <?= $noticia['not_autor']; ?></div>
                 </div>
-                <div class="form-row justify-content-center">
+                <div class="text-right">
                     <div class="mb-2 bg-white text-dark"><?= $data . ' às ' . $hora; ?></div>
+                </div>  
+
+                <div>
                 </div>
-                <div class="form-row justify-content-center">
-                    <div class="p-3 mb-2 bg-white text-dark"><?= $textonoticia['text_texto']; ?></div>
+
+                <div class="border-top">
+                    <div class="form-row justify-content-center mt-2">
+                        <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
+                            <img widht="400" height="400" src="img/noticias/<?= $noticia['not_img']; ?>" class=""/>
+                        <?php } ?>
+                    </div> 
+
+                    
+                    <div class="form-row justify-content-center">
+                        <div class="p-3 mb-2 bg-white text-dark"><?= $textonoticia['text_texto']; ?></div>
+                    </div>
+                    
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-3 text-center">
+                            <a href="index.php" class="btn btn-link">Voltar</a>
+                            <?php
+                                if($_SESSION['logado'] == 2 || $_SESSION['logado'] == 3){
+                                    echo '<a class="btn btn-link" href="index.php?&pg=editarnoticia&id=' . $not_cod . '">Editar</a>';
+                                }
+                            ?>
+                        </div>
+                    </div>
                 </div>
-                
-				<div class="form-row justify-content-center">
-					<div class="form-group col-md-3 text-center">
-						<a href="index.php" class="btn btn-link">Voltar</a>
-                        <?php
-                            if($_SESSION['logado'] == 2 || $_SESSION['logado'] == 3){
-                                echo '<a class="btn btn-link" href="index.php?&pg=editarnoticia&id=' . $not_cod . '">Editar</a>';
-                            }
-                        ?>
-					</div>
-				</div>
             </form>
             <?php 
             if(isset($_POST['excluirComentario'])){
