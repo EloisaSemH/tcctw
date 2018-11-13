@@ -84,8 +84,9 @@
                         txt;
                         var res = confirm("Tem certeza que quer excluir esse comentario?");
                         if(res == true){
-                            var txt = 1;                            
+                            var txt = 'sim';                            
                         }else if(res == false){
+						    var txt = 'nao';                            
                         }
                     </script>
                 <!-- <form name="comentarioexcluir" action="" method="post" enctype="">
@@ -99,9 +100,10 @@
                 </div>
                 </form> -->
                 <?php
-                echo $variavelphp = "<script>document.write(txt)</script>";
+				echo $variavelphp = "<script>document.write(txt)</script>";
+                echo gettype($variavelphp);
                 
-                if($variavelphp == "1"){
+                if($variavelphp == 'sim'){
                     echo 'pqp';
                     if ($comentarioDAO->excluirComentario($comcod)) {
                         ?>
