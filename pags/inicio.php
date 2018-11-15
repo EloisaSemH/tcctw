@@ -40,7 +40,7 @@ $noticiasDAO = new noticiasDAO();
         Edson Carlos
       </div>
       <!-- <div style="width: 502px, heigh: 412px"> -->
-        <img src="img/edsonefatima.png" alt="Edson Carlos" class="">
+        <img src="img/edsonefatima.png" alt="Edson Carlos" class="" style="width: 502px, heigh: 412px">
       <!-- </div> -->
       <div class="card-footer text-muted">
       Edson Carlos de Oliveira é conferencista e engenheiro.

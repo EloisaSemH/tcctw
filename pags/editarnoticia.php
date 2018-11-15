@@ -27,7 +27,8 @@
 
     $textonoticia = $textonoticiasDAO->pegarTextoNoticia($not_cod);
 ?>
-
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">

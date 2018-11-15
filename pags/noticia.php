@@ -58,18 +58,12 @@
                 <div class="text-right">
                     <div class="mb-2 bg-white text-dark"><?= $data . ' às ' . $hora; ?></div>
                 </div>  
-
-                <div>
-                </div>
-
                 <div class="border-top">
                     <div class="form-row justify-content-center mt-2">
                         <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
                             <img widht="400" height="400" src="img/noticias/<?= $noticia['not_img']; ?>" class=""/>
                         <?php } ?>
-                    </div> 
-
-                    
+                    </div>                   
                     <div class="form-row justify-content-center">
                         <div class="p-3 mb-2 bg-white text-dark"><?= $textonoticia['text_texto']; ?></div>
                     </div>
@@ -86,67 +80,10 @@
                     </div>
                 </div>
             </form>
-            <?php 
-            if(isset($_POST['excluirComentario'])){
-                    // $comentario->setCom_cod($_POST['codComent']);
-                $comcod = $_POST['codComent'];
-                // if ($comentarioDAO->excluirComentario($comcod)) {
-                    ?>
-                    <script type="text/javascript">
-                        var res = confirm("Tem certeza que quer excluir esse comentario?");
-                        if(res == true){
-                            <?php
-                                if ($comentarioDAO->excluirComentario($comcod)) {
-                                    ?>
-                                        alert("Comentário excluida com sucesso!");
-                                        document.location.href = "#";
-                                    <?php
-                                } else {
-                                    ?>
-                                        alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
-                                    <?php
-                                }  
-                            ?>                            
-                        }else if(res == false){
-                        }
-                    </script>
-                <!-- <form name="comentarioexcluir" action="" method="post" enctype="">
-                <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3 text-center">
-                        <div class="alert alert-warning" role="alert">Você tem certeza que quer excluir o comentário?<br/>(A ação não poderá ser desfeita)
-                            <input type="submit" value="Sim" id="confirmaexcluirSIM" name="confirmaexcluirSIM" class="btn btn-outline-danger mt-1">
-                            <input type="submit" value="Cancelar" id="confirmaexcluirNAO" name="confirmaexcluirNAO" class="btn btn-outline-secondary mt-1">
-                        </div>
-                    </div>
-                </div>
-                </form> -->
-                <?php
-				// echo $variavelphp = "<script>document.write(txt)</script>";
-                // echo gettype($variavelphp);
-                
-                // if($variavelphp == 'sim'){
-                //     echo 'pqp';
-                //     if ($comentarioDAO->excluirComentario($comcod)) {
-                //         ?>
-                //         <script type="text/javascript">
-                //             alert("Comentário excluida com sucesso!");
-                //             document.location.href = "#";
-                //         </script>
-                //         <?php
-                //     } else {
-                //         ?>
-                //         <script type="text/javascript">
-                //             alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
-                //         </script>
-                //         <?php
-                //     }
-                // }
-            }
-
-            if($_SESSION['logado'] != 0){?>
+            <?php if($_SESSION['logado'] != 0){ ?>
                 <form name="enviarcomentario" action="" method="post" enctype="">
                     <div class="form-row justify-content-center">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-8">
                             <label>Insira seu comentário:</label><br/>
                             <textarea name="com_texto" class="form-control" required=""></textarea>
                         </div>
@@ -172,7 +109,7 @@
                             ?>
                             <script type="text/javascript">
                                 alert("Comentário enviado com sucesso!");
-                                document.location.href = "#";
+                                document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
                             </script>
                             <?php
                         } else {
@@ -189,3 +126,42 @@
         </div>
     </div>
 </div>
+
+<?php 
+if(isset($_POST['excluirComentario'])){
+    echo $comcod = $_POST['codComent'];
+    ?>
+    <script type="text/javascript">
+        var res = confirm("Tem certeza que quer excluir esse comentario?");
+        if(res){
+            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>&res=true";                            
+        }else{
+            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>&res=''";
+        }
+    </script>
+    <?php
+    
+    if($res == 'true'){
+        if ($comentarioDAO->excluirComentario($comcod)) {
+            ?>
+            <script type="text/javascript">
+                alert("Comentário excluida com sucesso!");
+                document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
+            </script>
+            <?php
+        } else {
+            ?>
+            <script type="text/javascript">
+                alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
+            </script>
+            <?php
+        }
+    }else{
+        ?>
+        <script type="text/javascript">
+            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
+        </script>
+        <?php
+    }
+}
+?>
