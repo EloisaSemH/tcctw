@@ -39,9 +39,9 @@ $noticiasDAO = new noticiasDAO();
       <div class="card-header">
         Edson Carlos
       </div>
-      <div class="card-body">
-        <img src="img/Italianos em Itu.png" alt="Edson Carlos" class="img-thumbnail">
-      </div>
+      <!-- <div style="width: 502px, heigh: 412px"> -->
+        <img src="img/edsonefatima.png" alt="Edson Carlos" class="">
+      <!-- </div> -->
       <div class="card-footer text-muted">
       Edson Carlos de Oliveira é conferencista e engenheiro.
       <br/>Publicação: Família Lunardon e suas raízes italianas, lançado em Itu, em Veneza e em Bassano del Grappa – Itália.
@@ -55,7 +55,7 @@ $noticiasDAO = new noticiasDAO();
         Maria de Fátima
       </div>
       <div class="card-body">
-        <img src="img/Italianos em Itu.png" alt="Maria de Fátima" class="img-thumbnail">
+        <img src="img/edsonefatima.png" alt="Maria de Fátima" class="">
       </div>
       <div class="card-footer text-muted">
       Maria de Fátima Boni Oliveira é advogada e pesquisadora da Imigração italiana.
@@ -70,7 +70,7 @@ $noticiasDAO = new noticiasDAO();
         Vilma Pavão
       </div>
       <div class="card-body">
-        <img src="img/Italianos em Itu.png" alt="Vilma Pavão" class="img-thumbnail rounded-circle mx-auto d-block">
+        <img src="img/vilma.png" alt="Vilma Pavão" class="">
       </div>
       <div class="card-footer text-muted">
       Vilma Pavão Folino, pedagoga e psicopedagoga aposentada, trabalhou na área de educação nos diversos níveis, do pré-escolar ao superior. Seu conto “Patrimônio que transcende tempo e espaço” foi selecionado para publicação pelo II Concurso Literário Brasil-Itália, COMITES, 2017.

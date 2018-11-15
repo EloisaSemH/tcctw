@@ -93,12 +93,21 @@
                 // if ($comentarioDAO->excluirComentario($comcod)) {
                     ?>
                     <script type="text/javascript">
-                        txt;
                         var res = confirm("Tem certeza que quer excluir esse comentario?");
                         if(res == true){
-                            var txt = 'sim';                            
+                            <?php
+                                if ($comentarioDAO->excluirComentario($comcod)) {
+                                    ?>
+                                        alert("Comentário excluida com sucesso!");
+                                        document.location.href = "#";
+                                    <?php
+                                } else {
+                                    ?>
+                                        alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
+                                    <?php
+                                }  
+                            ?>                            
                         }else if(res == false){
-						    var txt = 'nao';                            
                         }
                     </script>
                 <!-- <form name="comentarioexcluir" action="" method="post" enctype="">
@@ -112,26 +121,26 @@
                 </div>
                 </form> -->
                 <?php
-				echo $variavelphp = "<script>document.write(txt)</script>";
-                echo gettype($variavelphp);
+				// echo $variavelphp = "<script>document.write(txt)</script>";
+                // echo gettype($variavelphp);
                 
-                if($variavelphp == 'sim'){
-                    echo 'pqp';
-                    if ($comentarioDAO->excluirComentario($comcod)) {
-                        ?>
-                        <script type="text/javascript">
-                            alert("Comentário excluida com sucesso!");
-                            document.location.href = "#";
-                        </script>
-                        <?php
-                    } else {
-                        ?>
-                        <script type="text/javascript">
-                            alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
-                        </script>
-                        <?php
-                    }
-                }
+                // if($variavelphp == 'sim'){
+                //     echo 'pqp';
+                //     if ($comentarioDAO->excluirComentario($comcod)) {
+                //         ?>
+                //         <script type="text/javascript">
+                //             alert("Comentário excluida com sucesso!");
+                //             document.location.href = "#";
+                //         </script>
+                //         <?php
+                //     } else {
+                //         ?>
+                //         <script type="text/javascript">
+                //             alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
+                //         </script>
+                //         <?php
+                //     }
+                // }
             }
 
             if($_SESSION['logado'] != 0){?>
