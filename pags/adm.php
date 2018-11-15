@@ -14,21 +14,20 @@ $usuarioDAO = new usuarioDAO();
 $dados = $usuarioDAO->pegarInfos($_SESSION['cod_usuario']);
 
 if($dados['us_sexo'] == 'f'){
-    $sexo = 'a';
+    $sexo = 'a à';
 }else{
-    $sexo = 'o';    
+    $sexo = 'o a';    
 }
 ?>
-
 <div class="container mt-4">
     <div class="card">
         <div class="card-body text-justify">
             <a href="index.php?&pg=logout" title="Sair"><i class="fas fa-times float-right text-dark" style="font-size: 25px;"></i></a>
-            <h6><a class="text-uppercase font-weight-bold text-dark" href="?&pg=usuariopg" title="Ir para a página de edição do usuário"><?php echo $dados['us_nome']; ?></a></h6>
+            <h6><a class="text-uppercase font-weight-bold text-dark" href="?&pg=usuariopg" title="Ir para a página de edição do usuário"><?= $dados['us_nome']; ?></a></h6>
             <?php if ($_SESSION['logado'] === 3){ ?>
-            <p>Bem vind<?php echo $sexo; ?> à página de administração, Webmaster.</p>
+            <p>Bem vind<?= $sexo; ?> página de administração, Webmaster.</p>
             <?php }else{ ?>
-            <p>Bem vind<?php echo $sexo; ?> à página de postagem.</p>
+            <p>Bem vind<?= $sexo; ?> página de postagem.</p>
             <?php } ?>
         </div>
     </div>
@@ -49,7 +48,6 @@ if($dados['us_sexo'] == 'f'){
                     <h6 class="text-uppercase font-weight-bold text-dark">Galeria</h6>
                     <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p><a class="text-secondary" href="index.php?&pg=publicarfoto">Publicar foto</a></p>
-                    <p><a class="text-secondary" href="index.php?&pg=editarfoto">Editar foto</a></p>
                 </div>
                 <!-- Usuários -->
                 <?php if ($_SESSION['logado'] === 3){ ?>

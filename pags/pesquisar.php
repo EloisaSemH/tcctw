@@ -1,4 +1,4 @@
-<?php //&
+<?php
 	if(isset($_GET['search'])){
         $pesquisa = $_GET['search'];
     }else{
@@ -22,9 +22,8 @@
 
     $inicio = ($qntporpag*$pg)-$qntporpag;
 ?>
-
 <div class="container-fluid mt-2">
-  <div class="container">
+  	<div class="container">
         <div class="row">
 			<?php
 			if($_GET['search'] != ''){
@@ -67,5 +66,5 @@
 				</li>
 			</ul>
 		</nav>
-  </div>
+  	</div>
 </div>

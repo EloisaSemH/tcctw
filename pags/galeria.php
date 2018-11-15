@@ -1,5 +1,4 @@
-<?php //&
-
+<?php
     if(isset($_GET['pagina'])){
         $pg = $_GET['pagina'];
     }else{

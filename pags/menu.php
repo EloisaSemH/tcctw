@@ -1,4 +1,3 @@
-<!-- MENU -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="index.php?&pg=inicio"><img src="img/Logo.png" height="50px" width="50px" alt="Logo"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,7 @@
         // Usuário comum
         ?>
         <form class="form-inline my-2 my-lg-0 ml-4">
-          <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=painel">Painel de usuário</a>
+          <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=usuariopg">Editar informações</a>
           <a class="nav-link"  href="index.php?&pg=logout">Sair</a>
         </form>
         <?php

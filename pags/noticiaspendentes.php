@@ -1,5 +1,4 @@
-<?php //&
-
+<?php
     if(isset($_GET['pagina'])){
         $pg = $_GET['pagina'];
     }else{
@@ -21,9 +20,8 @@
 
     $inicio = ($qntporpag*$pg)-$qntporpag;
 ?>
-
 <div class="container-fluid mt-2">
-  <div class="container">
+  	<div class="container">
         <div class="row">
             <?php $noticiasDAO->pegarTodasNoticias('0', $inicio, $qntporpag); ?>
         </div>
@@ -59,5 +57,5 @@
 				</li>
 			</ul>
 		</nav>
-  </div>
+  	</div>
 </div>

@@ -1,4 +1,4 @@
-<?php //&
+<?php
     if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
         ?>
         <script type="text/javascript">
@@ -23,7 +23,6 @@
 
     $foto = $galeriaDAO->pegarFoto($gal_cod);
 ?>
-
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">

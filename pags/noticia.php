@@ -1,4 +1,4 @@
-<?php //&
+<?php
     if(isset($_GET['id'])){
         $not_cod = $_GET['id'];
     }else{
@@ -152,7 +152,6 @@
         </div>
     </div>
 </div>
-
 <?php 
 if(isset($_POST['excluirComentario'])){
     $comcod = $_POST['codComent'];

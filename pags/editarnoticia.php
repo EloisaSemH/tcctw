@@ -1,4 +1,4 @@
-<?php //&
+<?php
     if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
         ?>
         <script type="text/javascript">
@@ -208,6 +208,7 @@ if(isset($_POST['excluir'])){
     <?php
     
 }
+
 if(isset($_POST['confirmaexcluirSIM'])){
     require_once ("db/classes/Entidade/noticias.class.php");
     $noticias = new noticias();

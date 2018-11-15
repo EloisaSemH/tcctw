@@ -60,12 +60,10 @@
         </div>
     </div>
 </div>
-
 <?php
 if (isset($_POST["registrar"])) {
-    
     $verifsenha = $senhaDAO->verificacaoSenha($_POST['usSenha'], $_POST['usSenhaRep']);
-
+    
     if($verifsenha == true){
         $usuario->setUs_nome($_POST["usNome"]);
         $usuario->setUs_email($_POST["usEmail"]);

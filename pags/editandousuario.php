@@ -23,10 +23,7 @@ if($dados['us_sexo'] == 'f'){
 }
 
 $data = date('d/m/Y', strtotime($dados['us_data']));
-
 ?>
-
-
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
@@ -121,7 +118,5 @@ if (isset($_POST["atualizar"])) {
         </script>
         <?php
     }
-    
-
 }
 ?>

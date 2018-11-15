@@ -17,8 +17,6 @@
         <?php
     }
 
-    // echo $_SESSION['logado'];
-
     if ($pag =='erro1') {
         ?>
         <script type="text/javascript">
@@ -71,8 +69,8 @@
         case 'recuperarsenha':
             include('pags/recuperarsenha.php');
             break;
-        case 'painel':
-            include('pags/painel.php');
+        case 'redefinirsenha':
+            include('pags/redefinirsenha.php');
             break;
         case 'adm':
             include('pags/adm.php');

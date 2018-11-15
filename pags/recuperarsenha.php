@@ -17,3 +17,14 @@
         </div>
     </div>
 </div>
+<?php
+if (isset($_POST['enviar'])) {
+    $mail = $_POST['us_email'];
+    $mailCript = base64_encode($_POST['us_email']);
+    $mensagem = "Você está recebendo este e-mail porque foi solicitada a alteração de senha para o site Italianos em Itu. Clique no link abaixo para redefinir sua senha. <br/><a href='http://localhost/logSystem/redefinirSenha.php?conta={$mailCript}'>Recuperar Senha</a>";
+    
+    require_once("pags/enviarEmail.php");
+
+    enviarEmail($_POST['us_email'], "Prezado", "Recuperação de senha", $mensagem);
+}
+?>

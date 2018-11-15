@@ -1,5 +1,4 @@
-<?php //&
-
+<?php
     if(isset($_GET['id'])){
         $gal_cod = $_GET['id'];
     }else{
@@ -14,7 +13,6 @@
     $galeriaDAO = new galeriaDAO();
 
     $foto = $galeriaDAO->pegarFoto($gal_cod);
-
 ?>
 <div class="container mt-4">
     <div class="row">

@@ -1,5 +1,4 @@
-<?php //&
-
+<?php
     if(isset($_GET['pagina'])){
         $pg = $_GET['pagina'];
     }else{
@@ -21,7 +20,6 @@
 
     $inicio = ($qntporpag*$pg)-$qntporpag;
 ?>
-
 <div class="container-fluid mt-2">
     <div class="container">
 		<div class="row">

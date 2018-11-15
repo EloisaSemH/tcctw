@@ -44,7 +44,6 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
         </div>
     </div>
 </div>
-
 <?php
 if (isset($_POST["enviar"])) {
     require_once ("db/classes/DAO/galeriaDAO.class.php");
