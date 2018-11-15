@@ -8,7 +8,7 @@
         </script>
         <?php
     }
-
+    
     require_once ("db/classes/DAO/noticiasDAO.class.php");
     require_once ("db/classes/DAO/textonoticiasDAO.class.php");
     $noticiasDAO = new noticiasDAO();
@@ -27,6 +27,32 @@
     $textonoticia = $textonoticiasDAO->pegarTextoNoticia($not_cod);
     $data = date("d/m/Y", strtotime($noticia['not_data']));
     $hora = date("H:i", strtotime($noticia['not_hora']));
+
+    if(isset($_GET['res'])){
+        $res = $_GET['res'];
+        if($res == 'true'){
+            if ($comentarioDAO->excluirComentario($_GET['comcod'])) {
+                ?>
+                <script type="text/javascript">
+                    alert("Comentário excluida com sucesso!");
+                    document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
+                </script>
+                <?php
+            } else {
+                ?>
+                <script type="text/javascript">
+                    alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
+                </script>
+                <?php
+            }
+        }else{
+            ?>
+            <script type="text/javascript">
+                document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
+            </script>
+            <?php
+        }
+    }
 ?>
 <div class="container mt-4">
     <div class="row">
@@ -129,39 +155,17 @@
 
 <?php 
 if(isset($_POST['excluirComentario'])){
-    echo $comcod = $_POST['codComent'];
+    $comcod = $_POST['codComent'];
     ?>
     <script type="text/javascript">
         var res = confirm("Tem certeza que quer excluir esse comentario?");
         if(res){
-            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>&res=true";                            
+            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>&res=true&comcod=<?=$comcod?>";                            
         }else{
-            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>&res=''";
+            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>&res=false";
         }
     </script>
     <?php
     
-    if($res == 'true'){
-        if ($comentarioDAO->excluirComentario($comcod)) {
-            ?>
-            <script type="text/javascript">
-                alert("Comentário excluida com sucesso!");
-                document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
-            </script>
-            <?php
-        } else {
-            ?>
-            <script type="text/javascript">
-                alert("Desculpe, houve um erro ao comentário a notícia, contate o Webmaster para resolvê-lo. Código: EXCOM01");
-            </script>
-            <?php
-        }
-    }else{
-        ?>
-        <script type="text/javascript">
-            document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
-        </script>
-        <?php
-    }
 }
 ?>
