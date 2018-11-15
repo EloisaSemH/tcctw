@@ -8,6 +8,8 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
     <?php
 }
 ?>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
