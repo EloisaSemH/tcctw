@@ -63,7 +63,7 @@ if (isset($_POST['entrar'])) {
 
         ?>
         <script type="text/javascript">
-            document.location.href = "index.php?&pg=painel";
+            document.location.href = "index.php";
         </script>
         <?php
     } else {
