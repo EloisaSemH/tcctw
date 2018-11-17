@@ -38,7 +38,7 @@
                         <img widht="400" height="400" src="img/noticias/<?php echo $noticia['not_img']; ?>" class=""/>
                     <?php } ?>
                 </div> 
-                <div class="form-row justify-content-center">
+                <div class="form-row justify-content-center mt-2">
                     <div class="form-group col-md-3">
                         <label>Título:</label>
                         <input type="text" name="not_titulo" required="" class="form-control" max="128" value="<?php echo $noticia['not_titulo']; ?>"/>
@@ -53,7 +53,7 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>Texto:</label><br/>
-                        <textarea name="text_texto" class="form-control" required=""><?php echo $textonoticia['text_texto']; ?></textarea>
+                        <textarea style="height: 300px;" name="text_texto" class="form-control" required=""><?php echo $textonoticia['text_texto']; ?></textarea>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">

@@ -43,7 +43,7 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>Descrição:</label>
-                        <input type="text" name="gal_desc" class="form-control" max="256" value="<?php echo $foto['gal_desc']; ?>"/>
+                        <textarea style="height: 200px;" name="gal_desc" class="form-control"><?php echo $foto['gal_desc']; ?></textarea>
                     </div>
                 </div>
                 <?php if (!file_exists('img/galeria/' . $foto['gal_img']) || is_null($foto['gal_img'])) { ?>

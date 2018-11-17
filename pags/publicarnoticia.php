@@ -29,7 +29,7 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>Texto:</label><br/>
-                        <textarea name="text_texto" class="form-control" required=""></textarea>
+                        <textarea style="height: 300px;" name="text_texto" class="form-control" required=""></textarea>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">

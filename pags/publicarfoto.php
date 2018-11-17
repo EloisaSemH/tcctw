@@ -21,7 +21,7 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>Descrição:</label>
-                        <input type="text" name="gal_desc" class="form-control" max="256"/>
+                        <textarea style="height: 200px;" name="gal_desc" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">

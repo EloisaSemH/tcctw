@@ -24,7 +24,7 @@
 ?>
 <div class="container-fluid mt-2">
   	<div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
 			<?php
 			if($_GET['search'] != ''){
 				$res = $noticiasDAO->pesquisarNoticias($pesquisa, $inicio, $qntporpag);
