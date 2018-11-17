@@ -42,26 +42,26 @@
       if ($_SESSION['logado'] == 1) {
         // Usuário comum
         ?>
-        <form class="form-inline my-2 my-lg-0 ml-4">
-          <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=usuariopg">Editar informações</a>
-          <a class="nav-link"  href="index.php?&pg=logout">Sair</a>
+        <form class="form-inline my-1 mx-1 ml-2">
+          <a class="btn btn-success my-1 mr-1 col-sm-3 col-lg-9" href="index.php?&pg=usuariopg">Editar informações</a>
+          <a class="nav-link text-center my-1 mr-1 col-sm-3 col-lg-2"  href="index.php?&pg=logout">Sair</a>
         </form>
         <?php
       }elseif ($_SESSION['logado'] == 2){
         // Usuário postador
         // Gisele é a mais linda
         ?>
-      <form class="form-inline my-2 my-lg-0 ml-4">
-          <a class="btn btn-success my-2 my-sm-0" href="index.php?&pg=adm">Painel de postagem</a>
-          <a class="nav-link"  href="index.php?&pg=logout">Sair</a>
+      <form class="form-inline my-1 mx-1 ml-2">
+          <a class="btn btn-success my-1 mr-1 col-sm-3- col-lg-9" href="index.php?&pg=adm">Painel de postagem</a>
+          <a class="nav-link text-center my-1 mr-1 col-sm-3 col-lg-2" href="index.php?&pg=logout">Sair</a>
       </form>
       <?php
       }elseif ($_SESSION['logado'] == 3){
         // Webmaster
       ?>
-      <form class="form-inline my-2 my-lg-0 ml-4">
-          <a class="btn btn-success" href="index.php?&pg=adm">Painel administrador</a>
-          <a class="nav-link"  href="index.php?&pg=logout">Sair</a>
+      <form class="form-inline my-1 mx-1 ml-2">
+          <a class="btn btn-success my-1 mr-1 col-sm-3 col-lg-9" href="index.php?&pg=adm">Painel administrador</a>
+          <a class="nav-link text-center my-1 mr-1 col-sm-3 col-lg-2" href="index.php?&pg=logout">Sair</a>
       </form>
     <?php }else{ 
       // Normal ?>
