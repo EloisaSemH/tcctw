@@ -34,7 +34,7 @@
             if ($comentarioDAO->excluirComentario($_GET['comcod'])) {
                 ?>
                 <script type="text/javascript">
-                    alert("Comentário excluida com sucesso!");
+                    alert("Comentário excluído com sucesso!");
                     document.location.href = "index.php?&pg=noticia&id=<?= $not_cod?>";
                 </script>
                 <?php
