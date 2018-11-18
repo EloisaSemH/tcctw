@@ -40,7 +40,7 @@ $noticiasDAO = new noticiasDAO();
         Edson Carlos
       </div>
       <!-- <div style="width: 502px, heigh: 412px"> -->
-        <img src="img/edsonefatima.png" alt="Edson Carlos" class="" style="width: 502px, heigh: 412px">
+        <img src="img/edsonefatima.png" alt="Edson Carlos" class="img-fluid" style="width: 502px, heigh: 412px">
       <!-- </div> -->
       <div class="card-footer text-muted">
       Edson Carlos de Oliveira é conferencista e engenheiro.
@@ -54,9 +54,7 @@ $noticiasDAO = new noticiasDAO();
       <div class="card-header">
         Maria de Fátima
       </div>
-      <div class="card-body">
-        <img src="img/edsonefatima.png" alt="Maria de Fátima" class="">
-      </div>
+        <img src="img/edsonefatima.png" alt="Maria de Fátima" class="img-fluid" style="width: 502px, heigh: 412px">
       <div class="card-footer text-muted">
       Maria de Fátima Boni Oliveira é advogada e pesquisadora da Imigração italiana.
       <br/> Publicações: Família Lunardon e suas raízes italianas em co-autoria. Vozes ítalo-brasileiras I -2016 e Vozes ítalo-brasileiras II.
@@ -69,9 +67,7 @@ $noticiasDAO = new noticiasDAO();
       <div class="card-header">
         Vilma Pavão
       </div>
-      <div class="card-body">
-        <img src="img/vilma.png" alt="Vilma Pavão" class="">
-      </div>
+        <img src="img/vilma.png" alt="Vilma Pavão" class="img-fluid" style="width: 502px, heigh: 412px">
       <div class="card-footer text-muted">
       Vilma Pavão Folino, pedagoga e psicopedagoga aposentada, trabalhou na área de educação nos diversos níveis, do pré-escolar ao superior. Seu conto “Patrimônio que transcende tempo e espaço” foi selecionado para publicação pelo II Concurso Literário Brasil-Itália, COMITES, 2017.
       </div>
