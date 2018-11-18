@@ -30,9 +30,9 @@
         <!-- Contato -->
         <h6 class="text-uppercase font-weight-bold text-dark">Contato</h6>
         <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p><i></i>Endereço</p>
-        <p><i></i>Email</p>
-        <p> <i></i>Telefone</p>
+        <p><a class="text-secondary" href="https://www.facebook.com/italianosemitu/" title="Página no Facebook do Grupo Italianos em Itu">Facebook</a></p>
+        <p><i></i>Email: italianosemitu@gmail.com</p>
+        <!-- <p> <i></i>Telefone</p> -->
       </div>
     </div>
   </div>
