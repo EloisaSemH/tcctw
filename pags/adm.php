@@ -36,7 +36,7 @@ if($dados['us_sexo'] == 'f'){
             <div class="row mt-3 text-secondary">
                 <!-- Noticias -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-2">
-                    <h6 class="text-uppercase font-weight-bold text-dark">Noticias</h6>
+                    <h6 class="text-uppercase font-weight-bold text-dark">Notícias</h6>
                     <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
                     <p><a class="text-secondary" href="index.php?&pg=publicarnoticia">Publicar notícia</a></p>
                     <?php if ($_SESSION['logado'] === 3){ ?>
