@@ -81,11 +81,12 @@ class comentarioDAO{
                 while($consulta = $stmt->fetch(PDO::FETCH_ASSOC)){
                     $dataComent = date("d/m/Y", strtotime($consulta['com_data']));
                     $horaComent = date("H:i", strtotime($consulta['com_hora']));
+                    echo '<div class="border-top"></div>';
                     echo '<div class="form-row justify-content-center"><div class="bg-white text-dark">'. $consulta['com_autor'] .'</div></div>';
                     echo '<div class="form-row justify-content-center"><div class="bg-white text-dark">'. $dataComent . ' às ' . $horaComent .'</div></div>';
-                    echo '<div class="form-row justify-content-center"><div class="bg-white text-dark">'. $consulta['com_texto'] .'</div></div>';
+                    echo '<div class="form-row"><div class="bg-white text-dark">'. $consulta['com_texto'] .'</div></div>';
                     if($sessionUsu === $consulta['com_us_cod'] || $sessionLog == 3){
-                        echo '<form action="" method="post" class="justify-content-center"><input type="hidden" value="'. $consulta['com_cod'] .'" name="codComent"/><button name="excluirComentario" class="btn btn-danger mb-4"><i class="far fa-trash-alt float-right text-dark"></i></button></form>';
+                        echo '<form action="" method="post" class=""><input type="hidden" value="'. $consulta['com_cod'] .'" name="codComent"/><div class="form-row justify-content-end"><div class="form-group"><button name="excluirComentario" class="btn btn-danger mb-2"><i class="far fa-trash-alt float-right text-dark"></i></button></div></div></form>';
                     }
                 }
             }else{
