@@ -15,31 +15,31 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
         <div class="col-md-12">
             <form name="publicarnoticia" action="" method="post" enctype="multipart/form-data">
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Título:</label>
                         <input type="text" name="not_titulo" required="" class="form-control" max="128"/>
                     </div>
                 </div>                          
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Subtitulo:</label>
                         <input type="text" name="not_subtitulo" class="form-control" max="256"/>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Texto:</label><br/>
                         <textarea style="height: 300px;" name="text_texto" class="form-control" required=""></textarea>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Inserir imagem:</label><br/>
                         <input type="file" name="not_img" class="form-control" accept="image/png, image/jpeg"/>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label>Categoria:</label>
                         <select name="not_cat">
                             <option value="not" selected>Noticia</option>                            

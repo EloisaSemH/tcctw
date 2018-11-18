@@ -39,32 +39,32 @@
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center mt-2">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Título:</label>
                         <input type="text" name="not_titulo" required="" class="form-control" max="128" value="<?php echo $noticia['not_titulo']; ?>"/>
                     </div>
                 </div>                          
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Subtitulo:</label>
                         <input type="text" name="not_subtitulo" class="form-control" max="256" value="<?php echo $noticia['not_subtitulo']; ?>"/>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Texto:</label><br/>
                         <textarea style="height: 300px;" name="text_texto" class="form-control" required=""><?php echo $textonoticia['text_texto']; ?></textarea>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Inserir imagem:</label><br/>
                         <input type="file" name="not_img" class="form-control" accept="image/png, image/jpeg"/>
                     </div>
                 </div>
                 <?php if($noticia['not_cat'] == 'not'){ ?>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheck1" name='excluirfoto'>
                             <label class="custom-control-label" for="customCheck1">Excluir foto da notícia</label>
@@ -73,7 +73,7 @@
                 </div>
                 <?php } ?>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label>Categoria:</label>
                         <select name="not_cat">
                             <?php if($noticia['not_cat'] == 'not'){
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label>Ativo:</label>
                         <select name="not_ativo">
                             <?php

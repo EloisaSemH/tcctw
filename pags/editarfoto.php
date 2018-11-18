@@ -35,13 +35,13 @@
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Título:</label>
                         <input type="text" name="gal_titulo" required="" class="form-control" max="128" value="<?php echo $foto['gal_titulo']; ?>"/>
                     </div>
                 </div>                          
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                         <label>Descrição:</label>
                         <textarea style="height: 200px;" name="gal_desc" class="form-control"><?php echo $foto['gal_desc']; ?></textarea>
                     </div>
