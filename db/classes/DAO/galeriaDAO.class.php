@@ -102,34 +102,33 @@ class galeriaDAO {
                         $celconstruida++;
                     }
                     if ($celconstruida <= $cel) {
+                        echo '<div class="conteiner my-3 "><div class="card-columns">';
                         while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            $gal_img = $dados['gal_img'];
-                            $gal_titulo = $dados['gal_titulo'];
-                            $gal_desc = $dados['gal_desc'];
-                            echo '<div class="col-sm-4 mt-2"><a href="#" style="text-decoration: none"><div class="card-header text-dark text-center" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '">' . $gal_titulo . '</div>';
-                            if (file_exists('img/galeria/' . $gal_img) && !is_null($gal_img)) {
-                                echo '<img src="img/galeria/'. $gal_img . '" alt="' . $gal_titulo . '" class="img-thumbnail" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '">';
+                            echo '<div class="card" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '">';
+                            if (file_exists('img/galeria/' . $dados['gal_img']) && !is_null($dados['gal_img'])) {
+                                echo '<img src="img/galeria/'. $dados['gal_img'] . '" alt="' . $dados['gal_titulo'] . '" class="card-img-top">';
                             } else {
-                                echo '<img src="img/galeria/semfoto.jpg" class="img-thumbnail" alt="Sem foto" data-toggle="modal" data-target="#' . $dados['gal_cod'] . '" >';
+                                echo '<img src="img/galeria/semfoto.jpg" class="card-img-top" alt="Sem foto">';
                             }
-                            echo '<div class="modal fade" id="' . $dados['gal_cod'] . '" tabindex="-1" role="dialog" aria-labelledby="2" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document">';
-                            echo '<div class="modal-content"><div class="modal-header"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '"><h5 class="modal-title text-dark" id="' . $dados['gal_cod'] . '">' . $gal_titulo . '</h5>';
-                            echo '<a/><button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '"><span aria-hidden="true">&times;</span></button></div><div class="modal-body text-dark">';
-                            if (file_exists('img/galeria/' . $gal_img) && !is_null($gal_img)) {
-                                echo '<img src="img/galeria/'. $gal_img . '" alt="' . $gal_titulo . '" class="img-thumbnail" data-toggle="modal" data-target="#1">';
+                            echo '</div><div class="modal fade" id="' . $dados['gal_cod'] . '" tabindex="-1" role="dialog" aria-labelledby="' . $dados['gal_cod'] . '" aria-hidden="true"><div class="modal-dialog" role="document">';
+                            echo '<div class="modal-content"><div class="modal-header"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '"><h5 class="modal-title text-dark" id="' . $dados['gal_cod'] . '">' . $dados['gal_titulo'] . '</h5>';
+                            echo '<a/><button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '">';
+                            if (file_exists('img/galeria/' . $dados['gal_img']) && !is_null($dados['gal_img'])) {
+                                echo '<img src="img/galeria/'. $dados['gal_img'] . '" alt="' . $dados['gal_titulo'] . '" class="img-fluid">';
                             } else {
-                                echo '<img src="img/galeria/semfoto.jpg" class="img-thumbnail" alt="Sem foto" data-toggle="modal" data-target="#1" >';
+                                echo '<img src="img/galeria/semfoto.jpg" class="img-fluid" alt="Sem foto">';
                             }
-                            if(!is_null($gal_desc)){
-                                echo  '<p class="text-center text-dark" style="text-decoration: none">' . $gal_desc . '</p>';
+                            if(!is_null($dados['gal_desc'])){
+                                echo  '<p class="text-center text-dark mt-1" style="text-decoration: none">' . $dados['gal_desc'] . '</p>';
                             }
-                            echo '</a><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button></div></div></div></div></div></a></div>';
+                            echo '</a></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button></div></div></div></div>';
 
                             $colConstruida++;
                             if($colConstruida == $qtdcol){
                                 $colConstruida = 0;
                             }
                         }
+                        echo '</div></div>';
                     }
                 }
             }else{

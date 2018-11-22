@@ -53,9 +53,9 @@
         case 'noticias':
             include('pags/noticias.php');
             break;
-        case 'contato':
-            include('pags/contato.php');
-            break;
+        // case 'contato':
+        //     include('pags/contato.php');
+        //     break;
         case 'login':
             include('pags/login.php');
             break;

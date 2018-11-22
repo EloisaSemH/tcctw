@@ -18,9 +18,9 @@
       <li class="nav-item mx-auto">
           <a class="nav-link" href="index.php?&pg=noticias">Noticias</a>
       </li>
-      <li class="nav-item mx-auto">
+      <!-- <li class="nav-item mx-auto">
           <a class="nav-link" href="index.php?&pg=contato">Contato</a>
-      </li>
+      </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0" action="" method="POST">
       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa">

@@ -14,7 +14,7 @@
 
     $numgaleria = $galeriaDAO->contarFotos();
 
-    $qntporpag = 12;
+    $qntporpag = 21;
 
     $numpags = ceil($numgaleria/$qntporpag);
 
