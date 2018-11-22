@@ -23,6 +23,8 @@
 
     $foto = $galeriaDAO->pegarFoto($gal_cod);
 ?>
+<script src="js/tinymce/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
@@ -40,8 +42,6 @@
                         <input type="text" name="gal_titulo" required="" class="form-control" max="128" value="<?php echo $foto['gal_titulo']; ?>"/>
                     </div>
                 </div>                          
-                <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-                <script>tinymce.init({ selector:'textarea' });</script>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-8">
                         <label>Descrição:</label>

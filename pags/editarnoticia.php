@@ -27,7 +27,7 @@
 
     $textonoticia = $textonoticiasDAO->pegarTextoNoticia($not_cod);
 ?>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script src="js/tinymce/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 <div class="container mt-4">
     <div class="row">
@@ -86,24 +86,25 @@
                         </select>                   
                     </div>
                 </div>
-                <div class="form-row justify-content-center">
-                    <div class="form-group col-md-2">
-                        <label>Ativo:</label>
-                        <select name="not_ativo">
-                            <?php
-                            if($_SESSION['logado'] == 3){
-                                if($noticia['not_ativo'] == '0'){
-                                    echo '<option value="0" selected>Desativado</option>';                           
-                                    echo '<option value="1">Ativado</option>';
-                                }elseif($noticia['not_ativo'] == '1'){
-                                    echo '<option value="0">Desativado</option>';                      
-                                    echo '<option value="1" selected>Ativado</option>';
-                                }
-                            }
-                            ?>                                            
-                        </select>                   
+                <?php
+                if($_SESSION['logado'] == 3){?>
+                    <div class="form-row justify-content-center">
+                        <div class="form-group col-md-2">
+                            <label>Ativo:</label>
+                            <select name="not_ativo">
+                                <?php
+                                    if($noticia['not_ativo'] == '0'){
+                                        echo '<option value="0" selected>Desativado</option>';                           
+                                        echo '<option value="1">Ativado</option>';
+                                    }elseif($noticia['not_ativo'] == '1'){
+                                        echo '<option value="0">Desativado</option>';                      
+                                        echo '<option value="1" selected>Ativado</option>';
+                                    }
+                                ?>                                            
+                            </select>                   
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3 text-center">
                         <input type="submit" value="Atualizar notícia" id="atualizar" name="atualizar" class="btn btn-outline-dark">

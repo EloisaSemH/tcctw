@@ -112,7 +112,7 @@ class galeriaDAO {
                             }
                             echo '</div><div class="modal fade" id="' . $dados['gal_cod'] . '" tabindex="-1" role="dialog" aria-labelledby="' . $dados['gal_cod'] . '" aria-hidden="true"><div class="modal-dialog" role="document">';
                             echo '<div class="modal-content"><div class="modal-header"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '"><h5 class="modal-title text-dark" id="' . $dados['gal_cod'] . '">' . $dados['gal_titulo'] . '</h5>';
-                            echo '<a/><button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '">';
+                            echo '<a/><button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><a href="index.php?&pg=foto&id=' . $dados['gal_cod'] . '" class="text-center text-dark">';
                             if (file_exists('img/galeria/' . $dados['gal_img']) && !is_null($dados['gal_img'])) {
                                 echo '<img src="img/galeria/'. $dados['gal_img'] . '" alt="' . $dados['gal_titulo'] . '" class="img-fluid">';
                             } else {

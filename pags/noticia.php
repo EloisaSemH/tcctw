@@ -107,6 +107,8 @@
                 </div>
             </form>
             <?php if($_SESSION['logado'] != 0){ ?>
+                <script src="js/tinymce/tinymce.min.js"></script>
+                <script>tinymce.init({ selector:'textarea' });</script>
                 <form name="enviarcomentario" action="" method="post" enctype="">
                     <div class="form-row justify-content-center">
                         <div class="form-group col-md-8">
