@@ -23,8 +23,8 @@
       </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0" action="" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa">
-      <button class="btn btn-outline-success my-2 my-sm-0 mx-auto" type="submit" name="ir">Pesquisar</button>
+      <input class="form-control col-md-12 col-lg-7 mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa">
+      <button class="btn btn-outline-success col-md-12 col-lg-4 my-2 my-sm-0 mx-auto" type="submit" name="ir">Pesquisar</button>
       <?php
       if(isset($_POST['ir'])){
         //selectlike
@@ -66,8 +66,8 @@
     <?php }else{ 
       // Normal ?>
       <form class="form-inline my-1 mx-1 ml-2">
-          <a class="btn btn-success my-1 mr-1 col-sm-3 col-lg-4" href="index.php?&pg=login">Entrar </a>
-          <a class="btn btn-success my-1 mr-1 col-sm-3 col-lg-7" href="index.php?&pg=cadastro">Cadastre-se</a>
+          <a class="btn btn-success my-1 mr-1 col-sm-3 col-md-12 col-lg-4" href="index.php?&pg=login">Entrar </a>
+          <a class="btn btn-success my-1 mr-1 col-sm-3 col-md-12 col-lg-7" href="index.php?&pg=cadastro">Cadastre-se</a>
       </form>
     <?php } ?>
   </div>
