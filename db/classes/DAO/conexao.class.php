@@ -11,7 +11,7 @@ class Conexao {
     public function Connect() {
         try {
             $this->user = "root"; //webmaster
-            $this->pass = ""; //ImigracaoItu2018!
+            $this->pass = ""; //Imigracao2018!
             $this->host = "127.0.0.1";
             $this->base = "italianosdb";
 
