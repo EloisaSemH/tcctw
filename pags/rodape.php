@@ -23,7 +23,7 @@
   <?php if($_SESSION['logado'] != 0){ ?>
         <p><a class="text-secondary" href="index.php?&pg=usuariopg">Sua conta</a></p>
   <?php } ?>
-        <p><a class="text-secondary" href="https://www.facebook.com/pages/category/Nonprofit-Organization/Asilo-Mendicidade-Nossa-Senhora-da-Candel%C3%A1ria-175852372574937/">Asilo Mendicidade N. Sra. da Candelária</a></p>
+        <p><a class="text-secondary" href="https://www.facebook.com/pages/category/Nonprofit-Organization/Asilo-Mendicidade-Nossa-Senhora-da-Candel%C3%A1ria-175852372574937/" target="_blank">Lar N. Sra. da Candelária</a></p>
         <p> <a class="text-secondary" href="#" title="Em breve!">Compre o ebook!</a></p>
     </div>
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">

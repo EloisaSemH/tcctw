@@ -25,9 +25,9 @@
                  <div class="border-top pt-2">
                     <div class="form-row justify-content-center">
                         <?php if (file_exists('img/galeria/' . $foto['gal_img']) && !is_null($foto['gal_img'])) { ?>
-                            <img src="img/galeria/<?php echo $foto['gal_img']; ?>" class=""/>
+                            <img src="img/galeria/<?php echo $foto['gal_img']; ?>" class="d-block w-100" height="50%"/>
                         <?php }else{ ?>
-                            <img src="img/galeria/semfoto.jpg" class=""/>
+                            <img src="img/galeria/semfoto.jpg" class="d-block w-100" height="50%"/>
                         <?php } ?>
                     </div>               
 

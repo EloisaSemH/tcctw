@@ -31,9 +31,9 @@
             <form name="editarfoto" action="" method="post" enctype="multipart/form-data">
                 <div class="form-row justify-content-center">
                     <?php if (file_exists('img/galeria/' . $foto['gal_img']) && !is_null($foto['gal_img'])) { ?>
-                        <img src="img/galeria/<?php echo $foto['gal_img']; ?>" class=""/>
+                        <img src="img/galeria/<?php echo $foto['gal_img']; ?>" class="d-block w-100" height="50%"/>
                     <?php } else { ?>
-                        <img src="img/galeria/erro.jpg"/>
+                        <img src="img/galeria/erro.jpg" class="d-block w-100" height="50%"/>
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center">
