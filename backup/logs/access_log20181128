@@ -1,0 +1,3 @@
+177.9.226.111 - - [28/Nov/2018:21:40:10 -0200] "GET / HTTP/1.1" 403 5968 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36" 55981
+177.9.226.111 - - [28/Nov/2018:21:40:11 -0200] "GET /favicon.ico HTTP/1.1" 404 1280 "http://italianosemitu.com.br/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36" 55980
+177.9.226.111 - - [28/Nov/2018:21:46:44 -0200] "GET / HTTP/1.1" 403 5968 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36" 56061
