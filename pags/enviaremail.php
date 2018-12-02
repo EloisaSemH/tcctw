@@ -8,7 +8,7 @@ function enviarEmail($email, $nome, $assunto, $mensagem) {
     $usuario = $nome;
     $emailusuario = $email;
 
-    require_once("classes/phpMailer/class.phpmailer.php"); //Aqui vem o diretório da classe.
+    require_once("db/classes/phpMailer/class.phpmailer.php"); //Aqui vem o diretório da classe.
     $mail = new PHPMailer();
 
     $mail->IsSMTP(); // telling the class to use SMTP
@@ -34,7 +34,8 @@ function enviarEmail($email, $nome, $assunto, $mensagem) {
     if ($mail->Send()) {
         ?>
         <script>
-            alert("Enviamos para seu e-mail informações de como redefinir a senha de sua conta.");
+            alert("E-mail enviado com sucesso! Cheque sua caixa de e-mail para a redefinição de senha.");
+			document.location.href = "index.php?&pg=login";
         </script>
         <?php
 

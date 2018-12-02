@@ -148,7 +148,11 @@
                             <?php
                         }
                     }
-            }
+            }else{ ?>
+                <div class="row justify-content-center">
+                  <h6 class="mt-1 mb-1">Faça <a href="index.php?&pg=login">login</a> para comentar</h6>
+                </div><br/>
+            <?php }
             $retorno = $comentarioDAO->pegarComentarios($noticia['not_cod'], $_SESSION['cod_usuario'], $_SESSION['logado']);
             ?>
         </div>
