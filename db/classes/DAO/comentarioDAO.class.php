@@ -85,7 +85,7 @@ class comentarioDAO{
                     
                     echo '<div class="form-row justify-content float-left"><div class="bg-white text-dark font-weight-bold">'. $consulta['com_autor'] .'</div></div>';
                     if($sessionUsu === $consulta['com_us_cod'] || $sessionLog == 3){
-                        echo '<form action="" method="post" class=""><input type="hidden" value="'. $consulta['com_cod'] .'" name="codComent"/><div class="form-row justify-content-end float-right"><div class="form-group"><button name="excluirComentario" class="btn btn-danger mb-2"><i class="far fa-trash-alt float-right text-dark"></i></button></div></div></form>';
+                        echo '<form action="" method="post" class=""><input type="hidden" value="'. $consulta['com_cod'] .'" name="codComent"/><div class="form-row justify-content-end float-right"><div class="form-group"><button name="excluirComentario" class="btn btn-danger mb-2"><spam class="float-right text-dark font-weight-bold">Excluir</spam></i></button></div></div></form>';
                     }
                     echo '<br/><div class="form-row justify-content-center float-left"><div class="bg-white text-dark font-weight-light font-italic">'. $dataComent . ' às ' . $horaComent .'</div></div>';
                     

@@ -10,10 +10,6 @@
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> -->
     <!-- V Bootstrap Offline V -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- V FontAwesome Online V -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
-    <!-- V FontAwesome Offline V -->
-    <link href="fontawesome-free-5.5.0-web/css/all.css" rel="stylesheet">
     <script type="text/javascript" src="js/script.js"></script>
   </head>
   <body>
