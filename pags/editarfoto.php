@@ -38,7 +38,7 @@
                 </div> 
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-8">
-                        <label>Título:</label>
+                        <label>Título: *</label>
                         <input type="text" name="gal_titulo" required="" class="form-control" max="128" value="<?php echo $foto['gal_titulo']; ?>"/>
                     </div>
                 </div>                          
@@ -51,11 +51,16 @@
                 <?php if (!file_exists('img/galeria/' . $foto['gal_img']) || is_null($foto['gal_img'])) { ?>
                     <div class="form-row justify-content-center">
                         <div class="form-group col-md-3">
-                            <label>Houve algum erro na imagem. Por favor, envie uma substituta:</label><br/>
+                            <label>Houve algum erro na imagem. Por favor, envie uma substituta: * </label><br/>
                             <input type="file" name="gal_img" class="form-control" accept="image/png, image/jpeg" required=""/>
                         </div>
                     </div>
                 <?php } ?>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-8">
+                        <label class="text-danger">* Item obrigatório</label>
+                    </div>
+                </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3 text-center">
                         <input type="submit" value="Atualizar foto" id="atualizar" name="atualizar" class="btn btn-outline-dark">

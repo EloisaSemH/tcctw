@@ -25,15 +25,15 @@ class senhaDAO {
         if ($senha == '' || $repSenha == '') {
             echo "<script language='javascript' type='text/javascript'>alert('Por favor, digite sua senha');window.location.href='#';</script>!";
         } else {
-            if ($senha != $repSenha) {
-                echo "<script language='javascript' type='text/javascript'>alert('As senhas digitadas não correspondem');window.location.href='#';</script>!";
-            } else {
-				if($tamanho >= 8){
-					$verificacao = TRUE;
-					return $verificacao;
-				}else{
-					echo "<script language='javascript' type='text/javascript'>alert('Por favor, digite uma senha com, no mínimo, 8 caracteres');window.location.href='#';</script>!";
+            if($tamanho >= 8){
+                if ($senha != $repSenha) {
+                    echo "<script language='javascript' type='text/javascript'>alert('As senhas digitadas não correspondem');window.location.href='#';</script>!";
+                } else {
+                    $verificacao = TRUE;
+                    return $verificacao;
 				}
+            }else{
+                echo "<script language='javascript' type='text/javascript'>alert('Por favor, digite uma senha com, no mínimo, 8 caracteres');window.location.href='#';</script>!";
             }
         }
     }

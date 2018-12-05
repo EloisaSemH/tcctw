@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="index.php?&pg=inicio"><img src="img/Logo.png" height="50px" width="50px" alt="Logo"></a>
+  <a class="navbar-brand" href="index.php?&pg=inicio"><img src="img/Logo.png" width="50px" alt="Logo"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,7 +37,6 @@
       }
       ?>
     </form>
-
     <?php
       if ($_SESSION['logado'] == 1) {
         // Usuário comum
@@ -66,7 +65,7 @@
     <?php }else{ 
       // Normal ?>
       <form class="form-inline my-1 mx-1 ml-2">
-          <a class="btn btn-success my-1 mr-1 col-sm-3 col-md-12 col-lg-4" href="index.php?&pg=login">Entrar </a>
+          <a class="btn btn-success my-1 mr-1 col-sm-3 col-md-12 col-lg-4" href="index.php?&pg=login">Entrar</a>
           <a class="btn btn-success my-1 mr-1 col-sm-3 col-md-12 col-lg-7" href="index.php?&pg=cadastro">Cadastre-se</a>
       </form>
     <?php } ?>

@@ -16,7 +16,7 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
             <form name="publicarfoto" action="" method="post" enctype="multipart/form-data">
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-8">
-                        <label>Título:</label>
+                        <label>Título: *</label>
                         <input type="text" name="gal_titulo" required="" class="form-control" max="128"/>
                     </div>
                 </div>                          
@@ -28,8 +28,13 @@ if ($_SESSION['logado'] != 2 && $_SESSION['logado'] != 3) {
                 </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-8">
-                        <label>Inserir imagem:</label><br/>
+                        <label>Inserir imagem: * </label><br/>
                         <input type="file" name="gal_img" class="form-control" accept="image/png, image/jpeg" required=""/>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-8">
+                        <label class="text-danger">* Item obrigatório</label>
                     </div>
                 </div>
                 <div class="form-row justify-content-center">

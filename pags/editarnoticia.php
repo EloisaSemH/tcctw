@@ -35,12 +35,12 @@
             <form name="login" action="" method="post" enctype="multipart/form-data">
                 <div class="form-row justify-content-center">
                     <?php if (file_exists('img/noticias/' . $noticia['not_img']) && !is_null($noticia['not_img'])) { ?>
-                        <img widht="400" height="400" src="img/noticias/<?php echo $noticia['not_img']; ?>" class="d-block w-100" height="50%"/>
+                        <img src="img/noticias/<?php echo $noticia['not_img']; ?>" class="d-block w-100" height="50%"/>
                     <?php } ?>
                 </div> 
                 <div class="form-row justify-content-center mt-2">
                     <div class="form-group col-md-8">
-                        <label>Título:</label>
+                        <label>Título: *</label>
                         <input type="text" name="not_titulo" required="" class="form-control" max="128" value="<?php echo $noticia['not_titulo']; ?>"/>
                     </div>
                 </div>                          
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-8">
-                        <label>Texto:</label><br/>
+                        <label>Texto: *</label><br/>
                         <textarea style="height: 300px;" name="text_texto" class="form-control" required=""><?php echo $textonoticia['text_texto']; ?></textarea>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 <?php } ?>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-2">
-                        <label>Categoria:</label>
+                        <label>Categoria: * </label>
                         <select name="not_cat">
                             <?php if($noticia['not_cat'] == 'not'){
                                 echo '<option value="not" selected>Noticia</option>';                           
@@ -90,7 +90,7 @@
                 if($_SESSION['logado'] == 3){?>
                     <div class="form-row justify-content-center">
                         <div class="form-group col-md-2">
-                            <label>Ativo:</label>
+                            <label>Ativo: * </label>
                             <select name="not_ativo">
                                 <?php
                                     if($noticia['not_ativo'] == '0'){
@@ -105,6 +105,11 @@
                         </div>
                     </div>
                 <?php } ?>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-8">
+                        <label class="text-danger">* Item obrigatório</label>
+                    </div>
+                </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3 text-center">
                         <input type="submit" value="Atualizar notícia" id="atualizar" name="atualizar" class="btn btn-outline-dark">
