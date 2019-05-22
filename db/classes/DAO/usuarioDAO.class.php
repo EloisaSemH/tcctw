@@ -145,5 +145,55 @@ class usuarioDAO {
             echo "ERRO 108: {$ex->getMessage()}";
         }
     }
+    
+    function pegarTodosUsuarios($limite, $quantpag){
+        try {
+            $stmt = $this->pdo->prepare("SELECT us_cod, us_nome, us_email, us_tipo FROM usuario ORDER BY us_cod DESC LIMIT :limite, :quantpag");
+            $param = array(":limite" => $limite, ":quantpag" => $quantpag);
+            $stmt->execute($param);
+            
+            if($stmt->rowCount() > 0){
+                $cel = $stmt->rowCount();
+                $col = 1;
+                $qtdcol = $quantpag;
+                $celconstruida = 0;
+                $colConstruida = 0;
+                echo '<table class="table table-striped"><thead class="thead-dark"><tr><th>Código</th><th>Tipo</th><th>Nome</th><th>E-mail</th></tr></thead><tbody>';   
+                for ($a = 0; $a < $qtdcol; $a++) {
+                    if ($col == 1) {
+                        echo '<tr>';
+                        $celconstruida++;
+                    }
+                    if ($celconstruida <= $cel) {
+                        while ($dados = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            $us_nome = $dados['us_nome'];
+                            $us_email = $dados['us_email'];
+                            echo '<td>' . $dados['us_cod'] . '</td>';
+                            if($dados['us_tipo'] == 1){
+                                echo '<td>Comum</td>';
+                            }else if ($dados['us_tipo'] == 2){
+                                echo '<td>Postador</td>';
+                            }else{
+                                echo '<td>Webmaster</td>';
+                            }
+                            echo '<td><a class="text-uppercase font-weight-bold text-dark" href="index.php?&pg=editandousuario&id=' . $dados['us_cod'] . '">' . $us_nome . '</a></td>';
+                            echo '<td>' . $us_email . '</td>';
+                            echo '</tr>';
+
+                            $colConstruida++;
+                            if($colConstruida == $qtdcol){
+                                $colConstruida = 0;
+                            }
+                        }
+                    }
+                }
+            echo '</tbody></table>';
+            }else{
+                
+            }
+        }catch (PDOException $ex){
+            echo "ERRO 109: {$ex->getMessage()}";
+        }
+    }
 }
 ?>
