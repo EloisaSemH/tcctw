@@ -89,6 +89,9 @@
             include('pags/editarnoticia.php');
             break;
         //Usuário
+        case 'todosusuarios':
+            include('pags/todosusuarios.php');
+            break;
         case 'editarusuario':
             include('pags/editarusuario.php');
             break;
