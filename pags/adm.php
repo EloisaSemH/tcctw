@@ -54,6 +54,7 @@ if($dados['us_sexo'] == 'f'){
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2">
                         <h6 class="text-uppercase font-weight-bold text-dark">Usuários</h6>
                         <hr class="teal accent-3 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a class="text-secondary" href="index.php?&pg=todosusuarios">Todos os usuários</a></p>
                         <p><a class="text-secondary" href="index.php?&pg=editarusuario">Editar usuário</a></p>
                         </div>
                 <?php } ?>
