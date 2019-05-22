@@ -11,7 +11,12 @@ if ($_SESSION['logado'] != 3) {
 require_once ("db/classes/DAO/usuarioDAO.class.php");
 $usuarioDAO = new usuarioDAO();
 
-$cod = $usuarioDAO->consultarCodUsuario($_POST['us_email']);
+if($_GET['id']){
+    $cod = $_GET['id'];
+}else{
+    $cod = $usuarioDAO->consultarCodUsuario($_POST['us_email']);
+}
+
 $dados = $usuarioDAO->pegarInfos($cod);
 
 if($dados['us_sexo'] == 'f'){
